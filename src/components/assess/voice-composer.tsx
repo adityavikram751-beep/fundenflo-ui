@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 
 export const EXAMPLES = [
   { id: "en", label: "Business Owner · English", text: "Hi, my name is Rajesh Sharma from Pune. I run an auto parts manufacturing business which is 6 years old. Our annual turnover is 3 crore and net profit is around 25 lakh. I need a loan of 50 lakh for a new CNC machine, for 5 years. We currently pay EMI of 40,000 per month. My CIBIL score is 752 and we are GST registered." },
-  { id: "hi", label: "व्यापार / दुकान · हिंदी", text: "मेरा नाम सुनील है, इंदौर में किराना होलसेल का बिज़नेस है जो 4 साल पुराना है। साल का टर्नओवर डेढ़ करोड़ है और मुनाफा 12 लाख। मुझे स्टॉक के लिए 25 लाख का लोन चाहिए, 3 साल के लिए। अभी 15 हज़ार की ईएमआई चल रही है। जीएसटी रजिस्टर्ड है, सिबिल 718 है।" },
+  { id: "hi", label: "व्यापार / ट्रेडिंग · हिंदी", text: "मेरा नाम सुनील है, इंदौर में होलसेल ट्रेडिंग का बिज़नेस है जो 4 साल पुराना है। साल का टर्नओवर डेढ़ करोड़ है और मुनाफा 12 लाख। मुझे स्टॉक के लिए 25 लाख का लोन चाहिए, 3 साल के लिए। अभी 15 हज़ार की ईएमआई चल रही है। जीएसटी रजिस्टर्ड है, सिबिल 718 है।" },
   { id: "sal", label: "Salaried · Home Loan", text: "I am Priya, 31 years old, working at an IT company in Bengaluru for 7 years. My in-hand salary is 1.2 lakh per month. I want a home loan of 60 lakh for 20 years. I have a car loan EMI of 14,000. My credit score is 781." },
 ]
 

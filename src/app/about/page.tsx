@@ -100,7 +100,7 @@ export default function AboutPage() {
         <section>
           <div className="mx-auto mb-8 max-w-2xl text-center">
             <span className="ff-eyebrow">Who We Serve</span>
-            <h2 className="mt-4 text-3xl font-bold">From Kirana Stores To Manufacturers</h2>
+            <h2 className="mt-4 text-3xl font-bold">From Retail Businesses To Manufacturers</h2>
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
             {SERVE.map((s) => (
