@@ -77,7 +77,7 @@ export const FEATURES: { icon: LucideIcon; t: string; d: string }[] = [
   { icon: Gauge, t: "Explainable Score", d: "See exactly which factors pull your score down — and how many points each fix adds." },
   { icon: FileCheck, t: "Document Auto-Check", d: "Instant checks for missing, blurry or mismatched documents before you submit." },
   { icon: Lightbulb, t: "Score Improvement Coach", d: "A step-by-step plan to raise your score and unlock lower interest rates." },
-  { icon: Bot, t: "Flo — 24×7 AI Assistant", d: "Ask anything in English or Hinglish — EMI, documents, eligibility, status." },
+  { icon: Bot, t: "Flo — 24×7 AI Assistant", d: "Ask anything in English or Hindi — EMI, documents, eligibility, status." },
 ]
 
 export const STEPS = [

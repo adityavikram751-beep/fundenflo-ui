@@ -225,7 +225,7 @@ export default function HomePage() {
           <div>
             <span className="ff-eyebrow">FAQ</span>
             <h2 className="mt-4 text-3xl font-bold">Questions, answered</h2>
-            <p className="mt-3 text-muted-foreground">Still unsure? Ask <b className="text-navy">Flo</b>, our AI assistant — bottom-right corner, in English or Hinglish.</p>
+            <p className="mt-3 text-muted-foreground">Still unsure? Ask <b className="text-navy">Flo</b>, our AI assistant — bottom-right corner, in English or Hindi.</p>
             <ul className="mt-6 grid gap-2 text-sm">
               {["Free eligibility & score check", "Soft assessment — no CIBIL impact", "Business & personal products", "Dedicated MSME support"].map((x) => (
                 <li key={x} className="flex items-center gap-2"><CircleCheck className="size-4 text-success" /> {x}</li>

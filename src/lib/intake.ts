@@ -7,6 +7,7 @@
    ========================================================== */
 import { productById, type ApplicantType } from "./data"
 import type { Profile } from "./scoring"
+import { devanagariToHinglish } from "./use-speech"
 
 /* ---------- spoken numbers → digits ---------- */
 const EN_UNITS: Record<string, number> = {
@@ -39,9 +40,9 @@ function wordsToNumber(phrase: string): number | null {
   return seen ? total + cur + frac : null
 }
 
-/** Normalise speech/Hinglish: number words → digits, unit synonyms → standard units */
+/** Normalise speech/Hindi: Devanagari + number words → digits, unit synonyms → standard units */
 export function normaliseSpoken(input: string): string {
-  let s = " " + input.replace(/\r/g, "") + " "
+  let s = " " + devanagariToHinglish(input).replace(/\r/g, "") + " "
   const words = [...Object.keys(EN_UNITS), ...Object.keys(EN_TENS), ...Object.keys(HI_NUM), "hundred", "half", "point", "and", "a"]
   const wordRe = new RegExp(`\\b((?:(?:${words.join("|")})[\\s-]+){0,4}(?:${[...Object.keys(EN_UNITS), ...Object.keys(EN_TENS), ...Object.keys(HI_NUM), "hundred", "half"].join("|")}))\\b${UNIT_AFTER}`, "gi")
   s = s.replace(wordRe, (m) => {

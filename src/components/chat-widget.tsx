@@ -106,7 +106,7 @@ export function ChatWidget() {
           <div className="grid size-10 place-items-center rounded-full bg-gold text-navy"><Bot className="size-5" /></div>
           <div>
             <div className="font-semibold">Flo · FundenFlo AI</div>
-            <div className="flex items-center gap-1.5 text-xs text-[#b8c6e3]"><span className="size-1.5 rounded-full bg-[#2ecc71]" /> Online · English & Hinglish</div>
+            <div className="flex items-center gap-1.5 text-xs text-[#b8c6e3]"><span className="size-1.5 rounded-full bg-[#2ecc71]" /> Online · English & Hindi</div>
           </div>
           <button onClick={() => setOpen(false)} aria-label="Close chat" className="ml-auto grid size-9 place-items-center rounded-lg bg-white/10 hover:bg-white/20">
             <X className="size-4" />
@@ -149,7 +149,7 @@ export function ChatWidget() {
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type in English or Hinglish…"
+            placeholder="Type in English or Hindi…"
             aria-label="Message"
             className="h-11 flex-1 rounded-xl border border-input px-3 text-sm outline-none focus:border-trust-blue focus:ring-3 focus:ring-trust-blue/15"
           />

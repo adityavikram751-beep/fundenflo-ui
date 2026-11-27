@@ -86,6 +86,7 @@ const HI_MAP: Record<string, string> = {
   "प्रॉफिट": "profit", "प्रोफिट": "profit", "मुनाफा": "profit", "मुनाफ़ा": "profit", "ईएमआई": "emi", "किस्त": "emi", "सिबिल": "cibil",
   "स्कोर": "score", "बिज़नेस": "business", "बिजनेस": "business", "व्यापार": "business", "धंधा": "business", "कंपनी": "company", "दुकान": "shop",
   "फैक्ट्री": "factory", "चाहिए": "chahiye", "पुराना": "purana", "पुरानी": "purani", "जीएसटी": "gst", "आईटीआर": "itr", "मशीन": "machine",
+  "किराना": "kirana", "होलसेल": "wholesale", "स्टॉक": "stock", "रजिस्टर्ड": "registered", "चल": "chal", "रही": "rahi",
   "सैलरी": "salary", "तनख्वाह": "salary", "नौकरी": "naukri", "का": "ka", "की": "ki", "के": "ke", "है": "hai", "हैं": "hai", "नहीं": "nahi",
   "मेरा": "mera", "मेरी": "meri", "मुझे": "mujhe", "और": "and", "कोई": "koi", "लिए": "liye", "रुपये": "rupaye", "रुपए": "rupaye",
   "एक": "ek", "दो": "do", "तीन": "teen", "चार": "char", "पांच": "paanch", "पाँच": "paanch", "छह": "chhe", "सात": "saat", "आठ": "aath",

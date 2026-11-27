@@ -15,7 +15,7 @@ export function AssessShowcase() {
           <p className="mt-4 max-w-xl text-lg text-[#c9d4e3]">Speak on your phone or type it the way you&apos;d explain it to your CA — loan amount, business age, turnover. Our AI builds your credit assessment, then verifies it against your balance sheets and bank statements.</p>
           <ol className="mt-8 grid gap-4">
             {[
-              [Mic, "Speak or write", "English or Hinglish — “mujhe 50 lakh ka loan chahiye, business 6 saal purana hai…”"],
+              [Mic, "Speak or write", "English or Hindi — “I need a ₹50 lakh loan for a machine, my business is 6 years old…”"],
               [Sparkles, "Instant preliminary assessment", "Score, eligibility, matched lenders and what's holding you back."],
               [ShieldCheck, "Verify with documents", "2 years of balance sheets + bank statements confirm what you said and add points."],
             ].map(([Icon, t, d], i) => {
@@ -44,10 +44,10 @@ export function AssessShowcase() {
                   <i key={i} className="w-1.5 animate-[wave_1s_ease-in-out_infinite] rounded-full bg-gold/80" style={{ height: `${h}%`, animationDelay: `${i * 0.08}s` }} />
                 ))}
               </div>
-              <span className="ml-auto text-xs text-[#9fb0d0]">Listening · Hinglish</span>
+              <span className="ml-auto text-xs text-[#9fb0d0]">Listening · English</span>
             </div>
             <p className="mt-4 rounded-2xl rounded-tl-sm bg-white p-4 text-[15px] leading-relaxed text-navy">
-              “Mujhe <mark className="rounded bg-gold-soft px-1 text-navy">50 lakh ka loan</mark> chahiye machine ke liye. Business <mark className="rounded bg-gold-soft px-1 text-navy">6 saal purana</mark> hai, <mark className="rounded bg-gold-soft px-1 text-navy">turnover 3 crore</mark>, profit 25 lakh…”
+              “I need a <mark className="rounded bg-gold-soft px-1 text-navy">50 lakh loan</mark> for a new machine. My business is <mark className="rounded bg-gold-soft px-1 text-navy">6 years old</mark>, <mark className="rounded bg-gold-soft px-1 text-navy">turnover 3 crore</mark>, profit 25 lakh…”
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {["Loan ₹50 L", "Machinery loan", "6 yrs vintage", "Turnover ₹3 Cr", "Profit ₹25 L"].map((c) => (

@@ -97,12 +97,11 @@ const REQUIRED: Record<ApplicantType, string[]> = { individual: ["name", "mobile
 
 const STEP_LABELS = [
   { t: "Applicant type", s: "Business or individual" },
-  { t: "Loan need", s: "Product, amount, tenure" },
+  { t: "Loan need", s: "Product & amount" },
   { t: "Your details", s: "Income & credit" },
   { t: "Documents", s: "AI auto-check" },
   { t: "Review & submit", s: "Get your score" },
 ]
-const TENURES = [6, 12, 24, 36, 48, 60, 84, 120, 180, 240, 300, 360]
 const maxTenure = (id: string) => ({ home: 360, lap: 180, commercial: 120, education: 180, od: 12, bill: 6, lc: 12, security: 36, auto: 84, machinery: 84, professional: 72, personal: 72 } as Record<string, number>)[id] ?? 60
 
 const num = (v?: string) => (v == null || v.trim() === "" ? null : Number(v.replace(/[,\s₹]/g, "")))
@@ -337,7 +336,7 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
           {w.step === 1 && w.type && (
             <div className="animate-in fade-in">
               <h2 className="text-2xl font-bold">What do you need?</h2>
-              <p className="mt-1 text-muted-foreground">Choose a product, then set the amount and tenure.</p>
+              <p className="mt-1 text-muted-foreground">Choose a product, then set the loan amount.</p>
               <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
                 {PRODUCTS.filter((p) => p.seg === w.type).map((p) => (
                   <button
@@ -354,8 +353,8 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
               </div>
 
               {product && (
-                <div className="mt-8 grid gap-6 rounded-2xl border bg-background p-5 md:grid-cols-2">
-                  <div className="md:col-span-2">
+                <div className="mt-8 grid gap-6 rounded-2xl border bg-background p-5">
+                  <div>
                     <div className="mb-2 flex items-baseline justify-between">
                       <Label className="text-sm font-semibold text-navy">Loan amount</Label>
                       <span className="ff-num font-heading text-2xl font-bold text-navy">{inr(w.loanAmount, { short: true })}</span>
@@ -364,14 +363,8 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
                     <div className="mt-1.5 flex justify-between text-xs text-muted-foreground"><span>₹50K</span><span>Max {product.max}</span></div>
                   </div>
                   <div>
-                    <Label className="mb-2 block text-sm font-semibold text-navy">Tenure</Label>
-                    <select className="h-11 w-full rounded-lg border border-input bg-white px-3 text-sm" value={w.tenureMonths} onChange={(e) => set({ tenureMonths: Number(e.target.value) })}>
-                      {TENURES.filter((t) => t <= maxTenure(product.id)).map((t) => <option key={t} value={t}>{t < 12 ? `${t} months` : `${t / 12} year${t > 12 ? "s" : ""} (${t} months)`}</option>)}
-                    </select>
-                  </div>
-                  <div>
                     <Label className="mb-2 block text-sm font-semibold text-navy">Purpose <span className="font-normal text-muted-foreground">(optional)</span></Label>
-                    <Input className="h-11" placeholder={w.type === "business" ? "e.g. New CNC machine" : "e.g. Home renovation"} value={w.purpose} onChange={(e) => set({ purpose: e.target.value })} />
+                    <Input className="h-11 bg-white" placeholder={w.type === "business" ? "e.g. New CNC machine" : "e.g. Home renovation"} value={w.purpose} onChange={(e) => set({ purpose: e.target.value })} />
                   </div>
                 </div>
               )}
@@ -434,7 +427,7 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
               <h2 className="text-2xl font-bold">Review & get your score</h2>
               <p className="mt-1 text-muted-foreground">Check your details. You can edit any section.</p>
               <div className="mt-6 grid gap-4 md:grid-cols-2">
-                <ReviewBlock title="Loan" onEdit={() => go(1)} rows={[["Product", product?.name ?? "—"], ["Amount", inr(w.loanAmount)], ["Tenure", `${w.tenureMonths} months`], ["Purpose", w.purpose || "—"]]} />
+                <ReviewBlock title="Loan" onEdit={() => go(1)} rows={[["Product", product?.name ?? "—"], ["Amount", inr(w.loanAmount)], ["Purpose", w.purpose || "—"]]} />
                 {GROUPS[w.type].map((g) => (
                   <ReviewBlock key={g.title} title={g.title} onEdit={() => go(2)} rows={g.fields.map((fd) => [fd.l, display(fd, w.f[fd.k])])} />
                 ))}
