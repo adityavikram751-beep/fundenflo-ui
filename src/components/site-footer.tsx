@@ -4,12 +4,12 @@ import { Mail } from "lucide-react"
 
 export function SiteFooter() {
   return (
-    <footer className="no-print mt-16 bg-navy text-sm text-[#a9b6cf]">
-      <div className="ff-container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="no-print mt-12 bg-navy text-sm text-[#a9b6cf] sm:mt-16">
+      <div className="ff-container grid gap-8 py-10 sm:grid-cols-2 sm:gap-10 sm:py-14 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Image src="/brand/logo-white.png" alt="FundenFlo" width={160} height={36} className="mb-4 h-9 w-[160px]" />
           <p className="max-w-xs leading-relaxed">A clearer path to capital. Loan advisory for MSMEs, businesses and individuals across a network of 50+ banks & NBFCs.</p>
-          <a href="mailto:grow@fundenflo.com" className="mt-4 inline-flex items-center gap-2 text-white hover:text-gold"><Mail className="size-4" /> grow@fundenflo.com</a>
+          <a href="mailto:grow@fundenflo.com" className="mt-4 inline-flex items-center gap-2 normal-case text-white hover:text-gold"><Mail className="size-4" /> grow@fundenflo.com</a>
         </div>
         <div>
           <h4 className="mb-3 text-white">Business / MSME</h4>
@@ -24,11 +24,11 @@ export function SiteFooter() {
           ))}
         </div>
         <div>
-          <h4 className="mb-3 text-white">Company & tools</h4>
-          <Link href="/apply" className="block py-1 hover:text-white">Check my score</Link>
+          <h4 className="mb-3 text-white">Company & Tools</h4>
+          <Link href="/apply" className="block py-1 hover:text-white">Check My Score</Link>
           <Link href="/assess" className="block py-1 hover:text-white">Smart Credit Assessment</Link>
-          <Link href="/loans" className="block py-1 hover:text-white">Compare loans</Link>
-          <Link href="/about" className="block py-1 hover:text-white">About us</Link>
+          <Link href="/loans" className="block py-1 hover:text-white">Compare Loans</Link>
+          <Link href="/about" className="block py-1 hover:text-white">About Us</Link>
           <Link href="/contact" className="block py-1 hover:text-white">Contact</Link>
           <Link href="/tools" className="block py-1 hover:text-white">EMI Calculator</Link>
           <Link href="/tools#eligibility" className="block py-1 hover:text-white">Eligibility Calculator</Link>

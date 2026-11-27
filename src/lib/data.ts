@@ -24,17 +24,17 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
   { id: "business", name: "Business Loan", seg: "business", icon: Briefcase, rate: "11.5%", max: "₹2 Cr", tenure: "1–5 yrs", desc: "Unsecured working capital & expansion funds for MSMEs.", minRate: 11.5, maxAmount: 2e7 },
-  { id: "lap", name: "Loan Against Property", seg: "business", icon: Building, rate: "9.25%", max: "₹10 Cr", tenure: "up to 15 yrs", desc: "Unlock the value of residential or commercial property.", minRate: 9.25, maxAmount: 1e8 },
-  { id: "od", name: "OD / CC Limit", seg: "business", icon: Layers, rate: "10.5%", max: "₹5 Cr", tenure: "Renewable yearly", desc: "Secured or unsecured overdraft — pay interest only on what you use.", minRate: 10.5, maxAmount: 5e7 },
+  { id: "lap", name: "Loan Against Property", seg: "business", icon: Building, rate: "9.25%", max: "₹10 Cr", tenure: "Up to 15 yrs", desc: "Unlock the value of residential or commercial property.", minRate: 9.25, maxAmount: 1e8 },
+  { id: "od", name: "OD / CC Limit", seg: "business", icon: Layers, rate: "10.5%", max: "₹5 Cr", tenure: "Renewable Yearly", desc: "Secured or unsecured overdraft — pay interest only on what you use.", minRate: 10.5, maxAmount: 5e7 },
   { id: "machinery", name: "Machinery Loan", seg: "business", icon: Factory, rate: "10.75%", max: "₹3 Cr", tenure: "1–7 yrs", desc: "Finance new plant, machinery and hospital equipment.", minRate: 10.75, maxAmount: 3e7 },
-  { id: "commercial", name: "Commercial Loan", seg: "business", icon: Store, rate: "10.25%", max: "₹5 Cr", tenure: "up to 10 yrs", desc: "Buy or build shops, offices and commercial premises.", minRate: 10.25, maxAmount: 5e7 },
+  { id: "commercial", name: "Commercial Loan", seg: "business", icon: Store, rate: "10.25%", max: "₹5 Cr", tenure: "Up to 10 yrs", desc: "Buy or build shops, offices and commercial premises.", minRate: 10.25, maxAmount: 5e7 },
   { id: "bill", name: "Bill Discounting", seg: "business", icon: Receipt, rate: "9.75%", max: "₹1 Cr", tenure: "30–180 days", desc: "Get paid today on invoices raised to your buyers.", minRate: 9.75, maxAmount: 1e7 },
-  { id: "lc", name: "Letter of Credit", seg: "business", icon: Landmark, rate: "Fee based", max: "As per limit", tenure: "Trade cycle", desc: "Import / domestic LC support for traders and manufacturers.", minRate: 9.5, maxAmount: 5e7 },
+  { id: "lc", name: "Letter of Credit", seg: "business", icon: Landmark, rate: "Fee Based", max: "As Per Limit", tenure: "Trade Cycle", desc: "Import / domestic LC support for traders and manufacturers.", minRate: 9.5, maxAmount: 5e7 },
   { id: "professional", name: "Professional Loan", seg: "individual", icon: Stethoscope, rate: "10.5%", max: "₹75 L", tenure: "1–6 yrs", desc: "For doctors, CAs, architects — set up or grow your practice.", minRate: 10.5, maxAmount: 7.5e6 },
   { id: "personal", name: "Personal Loan", seg: "individual", icon: Wallet, rate: "10.75%", max: "₹40 L", tenure: "1–6 yrs", desc: "Instant funds for any need — wedding, travel, medical.", minRate: 10.75, maxAmount: 4e6 },
-  { id: "home", name: "Home Loan", seg: "individual", icon: House, rate: "8.4%", max: "₹5 Cr", tenure: "up to 30 yrs", desc: "Buy, build or renovate your home at low rates.", minRate: 8.4, maxAmount: 5e7 },
+  { id: "home", name: "Home Loan", seg: "individual", icon: House, rate: "8.4%", max: "₹5 Cr", tenure: "Up to 30 yrs", desc: "Buy, build or renovate your home at low rates.", minRate: 8.4, maxAmount: 5e7 },
   { id: "auto", name: "Auto Loan", seg: "individual", icon: Car, rate: "8.9%", max: "₹1 Cr", tenure: "1–7 yrs", desc: "New & used car loans with up to 100% on-road funding.", minRate: 8.9, maxAmount: 1e7 },
-  { id: "education", name: "Education Loan", seg: "individual", icon: GraduationCap, rate: "9.5%", max: "₹1.5 Cr", tenure: "up to 15 yrs", desc: "Study in India or abroad — tuition, living & travel.", minRate: 9.5, maxAmount: 1.5e7 },
+  { id: "education", name: "Education Loan", seg: "individual", icon: GraduationCap, rate: "9.5%", max: "₹1.5 Cr", tenure: "Up to 15 yrs", desc: "Study in India or abroad — tuition, living & travel.", minRate: 9.5, maxAmount: 1.5e7 },
   { id: "security", name: "Loan Against Securities", seg: "individual", icon: TrendingUp, rate: "9.0%", max: "₹5 Cr", tenure: "1–3 yrs", desc: "Pledge shares, MFs or bonds without selling them.", minRate: 9.0, maxAmount: 5e7 },
 ]
 
@@ -43,11 +43,11 @@ export const productById = (id?: string | null): Product => PRODUCTS.find((p) =>
 /* Demo lenders — generic labels, not real partners */
 export interface Lender { code: string; name: string; type: string; color: string; rateAdj: number; fee: string; speed: string; minScore: number }
 export const LENDERS: Lender[] = [
-  { code: "PB", name: "Private Bank A", type: "Private sector bank", color: "#1d4e9e", rateAdj: 0, fee: "1.0%", speed: "3–5 days", minScore: 700 },
-  { code: "PS", name: "PSU Bank B", type: "Public sector bank", color: "#0a192f", rateAdj: -0.6, fee: "0.5%", speed: "7–10 days", minScore: 720 },
-  { code: "NM", name: "NBFC C — MSME", type: "MSME-focused NBFC", color: "#866608", rateAdj: 1.75, fee: "1.5%", speed: "48 hrs", minScore: 640 },
-  { code: "FT", name: "Fintech NBFC D", type: "Digital lender", color: "#3f5f90", rateAdj: 3.0, fee: "2.0%", speed: "Same day", minScore: 600 },
-  { code: "SF", name: "Small Finance Bank E", type: "Small finance bank", color: "#1f7a43", rateAdj: 1.2, fee: "1.25%", speed: "4–6 days", minScore: 650 },
+  { code: "PB", name: "Private Bank A", type: "Private Sector Bank", color: "#1d4e9e", rateAdj: 0, fee: "1.0%", speed: "3–5 days", minScore: 700 },
+  { code: "PS", name: "PSU Bank B", type: "Public Sector Bank", color: "#0a192f", rateAdj: -0.6, fee: "0.5%", speed: "7–10 days", minScore: 720 },
+  { code: "NM", name: "NBFC C — MSME", type: "MSME-Focused NBFC", color: "#866608", rateAdj: 1.75, fee: "1.5%", speed: "48 hrs", minScore: 640 },
+  { code: "FT", name: "Fintech NBFC D", type: "Digital Lender", color: "#3f5f90", rateAdj: 3.0, fee: "2.0%", speed: "Same Day", minScore: 600 },
+  { code: "SF", name: "Small Finance Bank E", type: "Small Finance Bank", color: "#1f7a43", rateAdj: 1.2, fee: "1.25%", speed: "4–6 days", minScore: 650 },
 ]
 
 export interface DocItem { id: string; name: string; note: string; req: boolean }
@@ -81,10 +81,10 @@ export const FEATURES: { icon: LucideIcon; t: string; d: string }[] = [
 ]
 
 export const STEPS = [
-  { t: "Tell us your need", d: "Pick business or personal, choose a loan and amount. 2 minutes." },
-  { t: "AI assessment", d: "Our engine scores your profile and flags issues instantly." },
-  { t: "Compare offers", d: "See matched lenders with rate, fee and approval chance." },
-  { t: "Upload & disburse", d: "Upload docs once; our team handles the lender process." },
+  { t: "Tell Us Your Need", d: "Pick business or personal, choose a loan and amount. 2 minutes." },
+  { t: "AI Assessment", d: "Our engine scores your profile and flags issues instantly." },
+  { t: "Compare Offers", d: "See matched lenders with rate, fee and approval chance." },
+  { t: "Upload & Disburse", d: "Upload docs once; our team handles the lender process." },
 ]
 
 export const SERVE: { icon: LucideIcon; t: string }[] = [

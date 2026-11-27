@@ -115,10 +115,13 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply font-sans scroll-smooth;
+    @apply font-sans scroll-smooth overflow-x-clip;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased overflow-x-clip capitalize;
+  }
+  input, textarea, select {
+    text-transform: none;
   }
   h1, h2, h3, h4 {
     @apply font-heading tracking-tight text-navy;

@@ -10,7 +10,7 @@ export default function LoginPage({ searchParams }: PageProps<"/login">) {
       <div className="ff-container">
         <div className="mx-auto grid max-w-5xl overflow-hidden rounded-3xl border bg-white shadow-[0_24px_60px_rgb(10_25_47/0.12)] lg:grid-cols-[1fr_1fr]">
           <LoginSide className="hidden min-h-[620px] lg:flex" />
-          <div className="flex items-center p-7 sm:p-12">
+          <div className="flex items-center p-5 sm:p-10 lg:p-12">
             <Suspense fallback={<div className="h-96 w-full animate-pulse rounded-xl bg-subtle" />}>
               <NextFromParams searchParams={searchParams} />
             </Suspense>

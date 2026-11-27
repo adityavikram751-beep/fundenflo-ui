@@ -3,18 +3,18 @@ import { PageHero } from "@/components/page-hero"
 import { ApplyWizard } from "@/components/apply/apply-wizard"
 import { Card } from "@/components/ui/card"
 
-export const metadata = { title: "Apply for a loan | FundenFlo" }
+export const metadata = { title: "Apply For A Loan | FundenFlo" }
 
 export default function ApplyPage({ searchParams }: PageProps<"/apply">) {
   return (
     <>
       <PageHero
-        crumb="Apply for loan"
-        eyebrow="2-minute application"
-        title="Check eligibility & get your FundenFlo Score"
+        crumb="Apply For Loan"
+        eyebrow="2-Minute Application"
+        title="Check Eligibility & Get Your FundenFlo Score"
         sub="Four quick steps. Soft check only — no impact on your CIBIL. Use “Fill demo data” to try it instantly."
       />
-      <div className="ff-container relative -mt-16 pb-10">
+      <div className="ff-container relative -mt-12 pb-10 sm:-mt-16">
         {/* searchParams are request-time data: stream the wizard so the page shell stays prerendered */}
         <Suspense fallback={<Card className="h-[520px] animate-pulse" />}>
           <WizardFromParams searchParams={searchParams} />

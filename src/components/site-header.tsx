@@ -38,21 +38,21 @@ export function SiteHeader() {
           <div className="flex min-w-0 items-center gap-x-5">
             <span className="inline-flex items-center gap-1.5 truncate">
               <ShieldCheck className="size-3.5 shrink-0 text-gold" />
-              <span className="hidden sm:inline">RBI-regulated lending partners</span>
-              <span className="sm:hidden">RBI-regulated partners</span>
+              <span className="hidden sm:inline">RBI-Regulated Lending Partners</span>
+              <span className="sm:hidden">RBI-Regulated Partners</span>
             </span>
-            <span className="hidden items-center gap-1.5 md:inline-flex"><Lock className="size-3.5 shrink-0 text-gold" /> 256-bit encrypted</span>
-            <span className="hidden items-center gap-1.5 lg:inline-flex"><Sparkles className="size-3.5 shrink-0 text-gold" /> Zero hidden fees</span>
+            <span className="hidden items-center gap-1.5 md:inline-flex"><Lock className="size-3.5 shrink-0 text-gold" /> 256-Bit Encrypted</span>
+            <span className="hidden items-center gap-1.5 lg:inline-flex"><Sparkles className="size-3.5 shrink-0 text-gold" /> Zero Hidden Fees</span>
           </div>
           <span className="shrink-0 font-semibold text-gold">
-            Demo mode<span className="hidden sm:inline"> · sample data only</span>
+            Demo Mode<span className="hidden sm:inline"> · Sample Data Only</span>
           </span>
         </div>
       </div>
-      <header className="no-print sticky top-0 z-40 border-b bg-white/90 backdrop-blur-md">
-        <div className="ff-container flex h-16 items-center gap-3 sm:h-[72px] sm:gap-6">
+      <header className="no-print sticky top-0 z-40 border-b border-border/80 bg-white/92 shadow-[0_1px_12px_rgb(10_25_47/0.06)] backdrop-blur-md">
+        <div className="ff-container flex h-16 items-center gap-2.5 sm:h-[72px] sm:gap-6">
           <Link href="/" className="shrink-0" aria-label="FundenFlo home">
-            <Image src="/brand/logo.png" alt="FundenFlo — The Right Funding, At the Right Time" width={178} height={40} priority className="h-10 w-[178px]" />
+            <Image src="/brand/logo.png" alt="FundenFlo — The Right Funding, At the Right Time" width={178} height={40} priority className="h-9 w-[160px] sm:h-10 sm:w-[178px]" />
           </Link>
           <NavigationMenu viewport={false} className="ml-auto hidden xl:flex" aria-label="Main">
             <NavigationMenuList className="gap-0.5">
@@ -82,51 +82,56 @@ export function SiteHeader() {
               </Button>
             ))}
             <Button asChild className="h-10 rounded-xl bg-gold px-4 font-bold text-navy shadow-[0_6px_16px_rgb(253_185_1/0.3)] hover:bg-[#ffc727]">
-              <Link href="/apply"><Gauge /> Check my score</Link>
+              <Link href="/apply"><Gauge /> Check My Score</Link>
             </Button>
           </div>
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon-lg" className="ml-auto xl:hidden" aria-label="Open menu"><Menu className="size-6" /></Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-72 overflow-y-auto pb-6">
-              <SheetHeader>
-                <SheetTitle>
-                  <Image src="/brand/logo.png" alt="FundenFlo" width={143} height={32} className="h-8 w-[143px]" />
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="grid gap-1 px-4" aria-label="Mobile">
-                {NAV.map((n) => (
-                  <Link
-                    key={n.href}
-                    href={n.href}
-                    onClick={() => setOpen(false)}
-                    className={cn("flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-navy hover:bg-subtle", isActive(n.href) && "bg-navy text-white hover:bg-navy")}
-                  >
-                    <n.icon className="size-4" /> {n.label}
-                    {n.badge && <span className="ml-auto rounded bg-gold px-1.5 py-px text-[9px] font-extrabold text-navy">{n.badge}</span>}
-                  </Link>
-                ))}
-              </nav>
-              <div className="px-4">
-                <Button asChild className="h-11 w-full rounded-xl bg-gold font-bold text-navy hover:bg-[#ffc727]"><Link href="/apply" onClick={() => setOpen(false)}><Gauge /> Check my score</Link></Button>
-              </div>
-              <div className="mt-2 border-t px-4 pt-4">
-                {user ? (
-                  <div className="grid gap-3">
-                    <div className="flex items-center gap-3">
-                      <span className="grid size-9 place-items-center rounded-full bg-navy text-xs font-bold text-gold">{initials(user.name)}</span>
-                      <div><div className="text-sm font-semibold text-navy">{user.name}</div><div className="ff-num text-xs text-muted-foreground">{maskPhone(user.phone)}</div></div>
+          <div className="ml-auto flex items-center gap-2 xl:hidden">
+            <Button asChild size="sm" className="h-9 rounded-lg bg-gold px-3 text-xs font-bold text-navy shadow-xs hover:bg-[#ffc727]">
+              <Link href="/apply">Check Score</Link>
+            </Button>
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon-lg" aria-label="Open Menu"><Menu className="size-6" /></Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-72 overflow-y-auto pb-6">
+                <SheetHeader>
+                  <SheetTitle>
+                    <Image src="/brand/logo.png" alt="FundenFlo" width={143} height={32} className="h-8 w-[143px]" />
+                  </SheetTitle>
+                </SheetHeader>
+                <nav className="grid gap-1 px-4" aria-label="Mobile">
+                  {NAV.map((n) => (
+                    <Link
+                      key={n.href}
+                      href={n.href}
+                      onClick={() => setOpen(false)}
+                      className={cn("flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-navy hover:bg-subtle", isActive(n.href) && "bg-navy text-white hover:bg-navy")}
+                    >
+                      <n.icon className="size-4" /> {n.label}
+                      {n.badge && <span className="ml-auto rounded bg-gold px-1.5 py-px text-[9px] font-extrabold text-navy">{n.badge}</span>}
+                    </Link>
+                  ))}
+                </nav>
+                <div className="px-4">
+                  <Button asChild className="h-11 w-full rounded-xl bg-gold font-bold text-navy hover:bg-[#ffc727]"><Link href="/apply" onClick={() => setOpen(false)}><Gauge /> Check My Score</Link></Button>
+                </div>
+                <div className="mt-2 border-t px-4 pt-4">
+                  {user ? (
+                    <div className="grid gap-3">
+                      <div className="flex items-center gap-3">
+                        <span className="grid size-9 place-items-center rounded-full bg-navy text-xs font-bold text-gold">{initials(user.name)}</span>
+                        <div><div className="text-sm font-semibold text-navy">{user.name}</div><div className="ff-num text-xs text-muted-foreground">{maskPhone(user.phone)}</div></div>
+                      </div>
+                      <Button asChild className="rounded-xl"><Link href="/dashboard" onClick={() => setOpen(false)}><LayoutDashboard /> My Dashboard</Link></Button>
+                      <Button variant="outline" className="rounded-xl" onClick={() => { logout(); setOpen(false) }}><LogOut /> Logout</Button>
                     </div>
-                    <Button asChild className="rounded-xl"><Link href="/dashboard" onClick={() => setOpen(false)}><LayoutDashboard /> My dashboard</Link></Button>
-                    <Button variant="outline" className="rounded-xl" onClick={() => { logout(); setOpen(false) }}><LogOut /> Logout</Button>
-                  </div>
-                ) : (
-                  <Button asChild variant="outline" className="h-11 w-full rounded-xl font-semibold text-navy"><Link href={loginHref} onClick={() => setOpen(false)}><LogIn /> Login with mobile</Link></Button>
-                )}
-              </div>
-            </SheetContent>
-          </Sheet>
+                  ) : (
+                    <Button asChild variant="outline" className="h-11 w-full rounded-xl font-semibold text-navy"><Link href={loginHref} onClick={() => setOpen(false)}><LogIn /> Login With Mobile</Link></Button>
+                  )}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </header>
     </>
@@ -149,9 +154,9 @@ function UserMenu({ name, phone, onLogout }: { name: string; phone: string; onLo
           <div className="ff-num text-xs font-normal text-muted-foreground">{maskPhone(phone)}</div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild><Link href="/dashboard"><LayoutDashboard /> My dashboard</Link></DropdownMenuItem>
-        <DropdownMenuItem asChild><Link href="/result"><Gauge /> My score report</Link></DropdownMenuItem>
-        <DropdownMenuItem asChild><Link href="/apply"><FileText /> Apply for a loan</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link href="/dashboard"><LayoutDashboard /> My Dashboard</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link href="/result"><Gauge /> My Score Report</Link></DropdownMenuItem>
+        <DropdownMenuItem asChild><Link href="/apply"><FileText /> Apply For A Loan</Link></DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={onLogout} className="text-destructive focus:text-destructive"><LogOut /> Logout</DropdownMenuItem>
       </DropdownMenuContent>
@@ -178,13 +183,13 @@ function LoansMega() {
       ))}
       <div className="ff-navy-grad flex flex-col rounded-xl p-4 text-white">
         <Mic className="size-6 text-gold" />
-        <div className="mt-3 font-heading text-base font-semibold">Not sure which loan?</div>
+        <div className="mt-3 font-heading text-base font-semibold">Not Sure Which Loan?</div>
         <p className="mt-1 text-xs text-[#c9d4e3]">Just tell us about your business — get a credit assessment in a minute.</p>
         <NavigationMenuLink asChild>
-          <Link href="/assess" className="mt-auto inline-flex items-center gap-1 rounded-lg bg-gold px-3 py-2 text-xs font-bold text-navy hover:bg-[#ffc727]">Speak or write <ArrowRight className="size-3.5" /></Link>
+          <Link href="/assess" className="mt-auto inline-flex items-center gap-1 rounded-lg bg-gold px-3 py-2 text-xs font-bold text-navy hover:bg-[#ffc727]">Speak Or Write <ArrowRight className="size-3.5" /></Link>
         </NavigationMenuLink>
         <NavigationMenuLink asChild>
-          <Link href="/loans" className="mt-2 text-xs font-semibold text-gold hover:underline">View & compare all loans →</Link>
+          <Link href="/loans" className="mt-2 text-xs font-semibold text-gold hover:underline">View & Compare All Loans →</Link>
         </NavigationMenuLink>
       </div>
     </div>

@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils"
 
 const BENEFITS = [
   { icon: Gauge, t: "Free FundenFlo Score", d: "See your loan-readiness score and exactly why" },
-  { icon: ShieldCheck, t: "No impact on CIBIL", d: "Soft check only — your credit score stays safe" },
-  { icon: BadgeCheck, t: "Offers from 50+ lenders", d: "Compare rates, fees and approval chances" },
-  { icon: LayoutDashboard, t: "Track everything", d: "Applications, documents and score in one place" },
+  { icon: ShieldCheck, t: "No Impact On CIBIL", d: "Soft check only — your credit score stays safe" },
+  { icon: BadgeCheck, t: "Offers From 50+ Lenders", d: "Compare rates, fees and approval chances" },
+  { icon: LayoutDashboard, t: "Track Everything", d: "Applications, documents and score in one place" },
 ]
 
 /** Navy brand panel shown beside the login form */
@@ -39,7 +39,7 @@ export function LoginSide({ compact = false, className }: { compact?: boolean; c
         </figure>
       )}
       <div className={cn("relative flex flex-wrap gap-x-5 gap-y-1 text-xs text-[#9fb0d0]", compact ? "mt-auto pt-8" : "mt-6")}>
-        <span>🔒 256-bit encrypted</span><span>RBI-regulated partners</span><span>5,000+ funded</span>
+        <span>🔒 256-Bit Encrypted</span><span>RBI-Regulated Partners</span><span>5,000+ Funded</span>
       </div>
     </div>
   )

@@ -5,30 +5,30 @@ import { Button } from "@/components/ui/button"
 /** Home-page section introducing the voice/text Smart Credit Assessment */
 export function AssessShowcase() {
   return (
-    <section className="relative overflow-hidden bg-navy py-20 text-white">
+    <section className="relative overflow-hidden bg-navy py-14 text-white sm:py-20">
       <div className="pointer-events-none absolute -top-40 -left-40 size-[560px] rounded-full border border-white/5" />
       <div className="pointer-events-none absolute -right-32 -bottom-48 size-[520px] rounded-full bg-trust-blue/20 blur-3xl" />
       <div className="ff-container relative grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-gold px-3 py-1 text-xs font-extrabold tracking-wider text-navy uppercase"><Sparkles className="size-3.5" /> New · Smart Credit Assessment</span>
-          <h2 className="mt-5 text-3xl font-bold text-white md:text-5xl">Don&apos;t fill forms. <span className="text-gold">Just tell us.</span></h2>
+          <h2 className="mt-5 text-3xl font-bold text-white md:text-5xl">Don&apos;t Fill Forms. <span className="text-gold">Just Tell Us.</span></h2>
           <p className="mt-4 max-w-xl text-lg text-[#c9d4e3]">Speak on your phone or type it the way you&apos;d explain it to your CA — loan amount, business age, turnover. Our AI builds your credit assessment, then verifies it against your balance sheets and bank statements.</p>
-          <ol className="mt-8 grid gap-4">
+          <ol className="mt-8 grid gap-3">
             {[
-              [Mic, "Speak or write", "English or Hindi — “I need a ₹50 lakh loan for a machine, my business is 6 years old…”"],
-              [Sparkles, "Instant preliminary assessment", "Score, eligibility, matched lenders and what's holding you back."],
-              [ShieldCheck, "Verify with documents", "2 years of balance sheets + bank statements confirm what you said and add points."],
+              [Mic, "Speak Or Write", "English or Hindi — “I need a ₹50 lakh loan for a machine, my business is 6 years old…”"],
+              [Sparkles, "Instant Preliminary Assessment", "Score, eligibility, matched lenders and what's holding you back."],
+              [ShieldCheck, "Verify With Documents", "2 years of balance sheets + bank statements confirm what you said and add points."],
             ].map(([Icon, t, d], i) => {
               const I = Icon as React.ElementType
               return (
-                <li key={i} className="flex gap-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white/10 text-gold"><I className="size-5" /></span>
+                <li key={i} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-3.5 transition-colors hover:bg-white/[0.07]">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white/10 text-gold ring-1 ring-white/10"><I className="size-5" /></span>
                   <div><div className="font-semibold">{t as string}</div><div className="text-sm text-[#b8c6e3]">{d as string}</div></div>
                 </li>
               )
             })}
           </ol>
-          <Button asChild className="mt-8 h-12 rounded-xl bg-gold px-6 text-base font-bold text-navy hover:bg-[#ffc727]"><Link href="/assess"><Mic className="size-5" /> Try it now — it&apos;s free</Link></Button>
+          <Button asChild className="mt-8 h-12 rounded-xl bg-gold px-6 text-base font-bold text-navy shadow-[0_10px_24px_rgb(253_185_1/0.28)] transition-all hover:-translate-y-0.5 hover:bg-[#ffc727]"><Link href="/assess"><Mic className="size-5" /> Try It Now — It&apos;s Free</Link></Button>
         </div>
 
         {/* mock product UI */}
@@ -56,13 +56,13 @@ export function AssessShowcase() {
             </div>
           </div>
 
-          <div className="relative -mt-4 ml-auto w-[88%] rounded-3xl bg-white p-5 text-navy shadow-2xl">
+          <div className="relative -mt-4 ml-auto w-[92%] rounded-3xl bg-white p-4 text-navy shadow-2xl sm:w-[88%] sm:p-5">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold">Credit assessment</span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-success-soft px-2 py-0.5 text-[11px] font-bold text-success"><ShieldCheck className="size-3" /> Document-verified</span>
+              <span className="text-sm font-semibold">Credit Assessment</span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-success-soft px-2 py-0.5 text-[11px] font-bold text-success"><ShieldCheck className="size-3" /> Document-Verified</span>
             </div>
             <div className="mt-3 flex items-end gap-4">
-              <div><div className="text-[11px] text-muted-foreground">Self-declared</div><div className="ff-num font-heading text-3xl font-bold text-slate-400">795</div></div>
+              <div><div className="text-[11px] text-muted-foreground">Self-Declared</div><div className="ff-num font-heading text-3xl font-bold text-slate-400">795</div></div>
               <ArrowRight className="mb-2 size-5 text-gold-deep" />
               <div><div className="text-[11px] text-muted-foreground">Verified</div><div className="ff-num font-heading text-4xl font-bold">852</div></div>
               <span className="ff-num mb-2 rounded-full bg-gold px-2 py-0.5 text-sm font-bold">+57</span>

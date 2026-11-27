@@ -21,10 +21,10 @@ export function QuickEligibility() {
   const home = Math.floor(principalFromEmi(maxEmi, 8.75, 240) / 10000) * 10000
 
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+    <div className="rounded-3xl border border-slate-200/90 bg-white p-6 shadow-[0_18px_44px_-14px_rgb(10_25_47/0.12)] sm:p-7">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold">Quick eligibility check</h3>
-        <div className="inline-flex rounded-lg border bg-subtle p-0.5 text-sm">
+        <h3 className="text-lg font-semibold">Quick Eligibility Check</h3>
+        <div className="inline-flex rounded-xl border bg-subtle p-1 text-sm">
           {([["individual", "Individual", User], ["business", "Business", Briefcase]] as const).map(([id, label, Icon]) => (
             <button key={id} onClick={() => setType(id)} className={cn("inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 font-semibold text-muted-foreground", type === id && "bg-white text-navy shadow-sm")}>
               <Icon className="size-3.5" /> {label}
@@ -36,14 +36,14 @@ export function QuickEligibility() {
       <div className="grid gap-6">
         <div>
           <div className="mb-2 flex items-baseline justify-between text-sm">
-            <span className="font-medium text-muted-foreground">{isBiz ? "Monthly cash profit" : "Monthly in-hand income"}</span>
+            <span className="font-medium text-muted-foreground">{isBiz ? "Monthly Cash Profit" : "Monthly In-Hand Income"}</span>
             <b className="ff-num text-lg text-navy">{inr(income)}</b>
           </div>
           <Slider value={[income]} min={15000} max={isBiz ? 2000000 : 500000} step={5000} onValueChange={(v) => setIncome(v[0])} aria-label="Monthly income" />
         </div>
         <div>
           <div className="mb-2 flex items-baseline justify-between text-sm">
-            <span className="font-medium text-muted-foreground">Existing EMIs per month</span>
+            <span className="font-medium text-muted-foreground">Existing EMIs Per Month</span>
             <b className="ff-num text-lg text-navy">{inr(emiNow)}</b>
           </div>
           <Slider value={[emiNow]} min={0} max={Math.max(50000, income)} step={1000} onValueChange={(v) => setEmiNow(v[0])} aria-label="Existing EMIs" />
@@ -51,18 +51,18 @@ export function QuickEligibility() {
       </div>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <div className="rounded-xl bg-subtle p-4">
-          <div className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">{isBiz ? "Business loan" : "Personal loan"} · 5 yrs</div>
+        <div className="rounded-2xl border border-trust-blue/10 bg-[linear-gradient(145deg,#f0f4f8,#ffffff)] p-4">
+          <div className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">{isBiz ? "Business Loan" : "Personal Loan"} · 5 Yrs</div>
           <div className="ff-num mt-1 font-heading text-2xl font-bold text-navy">{inr(isBiz ? amount : Math.min(amount, income * 30), { short: true })}</div>
         </div>
-        <div className="rounded-xl bg-subtle p-4">
-          <div className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">{isBiz ? "LAP / secured" : "Home loan"} · 20 yrs</div>
+        <div className="rounded-2xl border border-trust-blue/10 bg-[linear-gradient(145deg,#f0f4f8,#ffffff)] p-4">
+          <div className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">{isBiz ? "LAP / Secured" : "Home Loan"} · 20 Yrs</div>
           <div className="ff-num mt-1 font-heading text-2xl font-bold text-navy">{inr(home, { short: true })}</div>
         </div>
       </div>
       <p className="mt-3 text-xs text-muted-foreground">Indicative, assuming a good credit score. Your exact eligibility depends on your FundenFlo Score.</p>
       <Button asChild className="mt-4 h-11 w-full rounded-xl text-sm font-semibold">
-        <Link href={`/apply?type=${type}`}>Get my exact score & offers <ArrowRight /></Link>
+        <Link href={`/apply?type=${type}`}>Get My Exact Score & Offers <ArrowRight /></Link>
       </Button>
     </div>
   )

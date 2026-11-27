@@ -90,10 +90,10 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
       {step === "phone" && (
         <form onSubmit={(e) => { e.preventDefault(); sendOtp() }} className="animate-in fade-in">
           <span className="mb-4 grid size-12 place-items-center rounded-2xl bg-info-soft/60 text-navy-pressed"><Smartphone className="size-6" /></span>
-          <h2 className="text-2xl font-bold">Login or sign up</h2>
+          <h2 className="text-2xl font-bold">Login Or Sign Up</h2>
           <p className="mt-1 text-sm text-muted-foreground">{reason ?? "Enter your mobile number — we'll send you a one-time password."}</p>
 
-          <label htmlFor="login-phone" className="mt-6 mb-1.5 block text-sm font-semibold text-navy">Mobile number</label>
+          <label htmlFor="login-phone" className="mt-6 mb-1.5 block text-sm font-semibold text-navy">Mobile Number</label>
           <div className={cn("flex h-12 overflow-hidden rounded-xl border-[1.5px] border-input bg-white focus-within:border-trust-blue focus-within:ring-3 focus-within:ring-trust-blue/15", shake && "animate-[shake_.4s]", err && "border-destructive")}>
             <span className="flex items-center gap-1.5 border-r bg-subtle px-3 text-sm font-semibold text-navy">+91</span>
             <input
@@ -106,7 +106,7 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
               placeholder="98765 43210"
               value={phone}
               onChange={(e) => { setPhone(e.target.value.replace(/\D/g, "").slice(0, 10)); setErr(null) }}
-              className="ff-num flex-1 bg-transparent px-3 text-base font-semibold tracking-wider text-navy outline-none placeholder:font-normal placeholder:tracking-normal placeholder:text-slate-400"
+              className="ff-num min-w-0 flex-1 bg-transparent px-3 text-base font-semibold tracking-wider text-navy outline-none placeholder:font-normal placeholder:tracking-normal placeholder:text-slate-400"
             />
             {isValidMobile(phone) && <CircleCheck className="mr-3 size-5 self-center text-success" />}
           </div>
@@ -131,7 +131,7 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
           <button type="button" onClick={() => { setStep("phone"); setErr(null); setSms(false) }} className="mb-4 inline-flex items-center gap-1 text-sm font-semibold text-muted-foreground hover:text-navy">
             <ArrowLeft className="size-4" /> Back
           </button>
-          <h2 className="text-2xl font-bold">Verify your number</h2>
+          <h2 className="text-2xl font-bold">Verify Your Number</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             Enter the 6-digit OTP sent to <b className="ff-num text-navy">{maskPhone(phone)}</b>
             <button type="button" onClick={() => { setStep("phone"); setSms(false) }} className="ml-1.5 inline-flex items-center gap-0.5 font-semibold text-trust-blue hover:underline"><PencilLine className="size-3.5" /> Edit</button>
@@ -142,11 +142,11 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
             <div className="flex items-start gap-3 rounded-xl border border-[#c9dbf7] bg-info-soft/40 p-3.5">
               <span className="grid size-9 shrink-0 place-items-center rounded-full bg-navy text-gold"><MessageSquareText className="size-4" /></span>
               <div className="min-w-0 flex-1 text-sm">
-                <div className="flex justify-between text-xs text-muted-foreground"><b className="text-navy">VM-FUNDFL</b><span>now · demo SMS</span></div>
+                <div className="flex justify-between text-xs text-muted-foreground"><b className="text-navy">VM-FUNDFL</b><span>Now · Demo SMS</span></div>
                 <p className="mt-0.5 text-navy"><b className="ff-num tracking-wider">{code}</b> is your FundenFlo login OTP. Valid for 10 minutes. Do not share it with anyone.</p>
               </div>
             </div>
-            <button type="button" onClick={() => { setOtp(code); verify(code) }} className="mt-2 text-xs font-semibold text-trust-blue hover:underline">Auto-fill from SMS</button>
+            <button type="button" onClick={() => { setOtp(code); verify(code) }} className="mt-2 text-xs font-semibold text-trust-blue hover:underline">Auto-Fill From SMS</button>
           </div>
 
           <div className={cn("mt-5 flex justify-center sm:justify-start", shake && "animate-[shake_.4s]")}>
@@ -161,7 +161,7 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
           {err && <p role="alert" className="mt-3 text-sm text-destructive">{err}</p>}
 
           <Button type="submit" disabled={busy || otp.length < 6 || tries >= MAX_TRIES} className="mt-6 h-12 w-full rounded-xl text-base font-semibold">
-            {busy ? <><LoaderCircle className="animate-spin" /> Verifying…</> : <>Verify & continue <ArrowRight /></>}
+            {busy ? <><LoaderCircle className="animate-spin" /> Verifying…</> : <>Verify & Continue <ArrowRight /></>}
           </Button>
           <div className="mt-4 text-center text-sm text-muted-foreground">
             {left > 0 ? (
@@ -169,7 +169,7 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
             ) : (
               <span className="inline-flex gap-4">
                 <button type="button" onClick={() => sendOtp(true)} className="font-semibold text-trust-blue hover:underline">Resend OTP</button>
-                <button type="button" onClick={() => sendOtp(true)} className="font-semibold text-[#128c4b] hover:underline">Get OTP on WhatsApp</button>
+                <button type="button" onClick={() => sendOtp(true)} className="font-semibold text-[#128c4b] hover:underline">Get OTP On WhatsApp</button>
               </span>
             )}
           </div>
@@ -179,15 +179,15 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
       {step === "profile" && (
         <form onSubmit={(e) => { e.preventDefault(); finish() }} className="animate-in fade-in">
           <span className="mb-4 grid size-12 place-items-center rounded-2xl bg-success-soft text-success"><UserRound className="size-6" /></span>
-          <h2 className="text-2xl font-bold">Almost done!</h2>
+          <h2 className="text-2xl font-bold">Almost Done!</h2>
           <p className="mt-1 text-sm text-muted-foreground"><CircleCheck className="mr-1 inline size-4 text-success" />{maskPhone(phone)} verified. Tell us your name to set up your account.</p>
           <div className="mt-6 grid gap-4">
             <div>
-              <label htmlFor="login-name" className="mb-1.5 block text-sm font-semibold text-navy">Full name (as per PAN)</label>
-              <Input id="login-name" autoFocus value={name} onChange={(e) => { setName(e.target.value); setErr(null) }} placeholder="e.g. Priya Nair" className="h-12 rounded-xl bg-white text-base" />
+              <label htmlFor="login-name" className="mb-1.5 block text-sm font-semibold text-navy">Full Name (As Per PAN)</label>
+              <Input id="login-name" autoFocus value={name} onChange={(e) => { setName(e.target.value); setErr(null) }} placeholder="E.g. Priya Nair" className="h-12 rounded-xl bg-white text-base" />
             </div>
             <div>
-              <label htmlFor="login-email" className="mb-1.5 block text-sm font-semibold text-navy">Email <span className="font-normal text-muted-foreground">(optional)</span></label>
+              <label htmlFor="login-email" className="mb-1.5 block text-sm font-semibold text-navy">Email <span className="font-normal text-muted-foreground">(Optional)</span></label>
               <Input id="login-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" className="h-12 rounded-xl bg-white text-base" />
             </div>
             <label className="flex cursor-pointer items-start gap-2.5 rounded-xl border bg-background p-3.5 text-xs leading-relaxed text-muted-foreground">
@@ -196,7 +196,7 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
             </label>
           </div>
           {err && <p role="alert" className="mt-3 text-sm text-destructive">{err}</p>}
-          <Button type="submit" className="mt-6 h-12 w-full rounded-xl bg-gold text-base font-bold text-navy hover:bg-[#ffc727]">Create account & continue <ArrowRight /></Button>
+          <Button type="submit" className="mt-6 h-12 w-full rounded-xl bg-gold text-base font-bold text-navy hover:bg-[#ffc727]">Create Account & Continue <ArrowRight /></Button>
         </form>
       )}
     </div>

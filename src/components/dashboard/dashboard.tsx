@@ -27,7 +27,7 @@ const DEMO_PROFILE: Profile = {
 const SIDE = [
   { id: "overview", label: "Overview", icon: LayoutDashboard },
   { id: "application", label: "Application", icon: FileText },
-  { id: "plan", label: "Improvement plan", icon: ListChecks },
+  { id: "plan", label: "Improvement Plan", icon: ListChecks },
   { id: "documents", label: "Documents", icon: FileCheck },
   { id: "offers", label: "Offers", icon: IndianRupee },
 ]
@@ -69,11 +69,11 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
   }
 
   const timeline = [
-    { t: "Profile created", s: saved ? new Date(saved.at).toLocaleDateString("en-IN", { day: "numeric", month: "short" }) : "Demo", done: true },
-    { t: "AI assessment complete", s: `FundenFlo Score ${r.score}`, done: true },
-    { t: offer ? `Offer selected — ${offer.name}` : "Choose a lender offer", s: offer ? `${offer.rate}% · ${inr(offer.amount, { short: true })}` : "Compare matched offers below", done: !!offer, current: !offer },
-    { t: "Document verification", s: `${docsReady}/${reqDocs.length} key documents verified`, done: !!offer && docsReady === reqDocs.length, current: !!offer && docsReady < reqDocs.length },
-    { t: "Lender sanction", s: offer ? `Expected in ${offer.speed}` : "After documents", done: false, current: !!offer && docsReady === reqDocs.length },
+    { t: "Profile Created", s: saved ? new Date(saved.at).toLocaleDateString("en-IN", { day: "numeric", month: "short" }) : "Demo", done: true },
+    { t: "AI Assessment Complete", s: `FundenFlo Score ${r.score}`, done: true },
+    { t: offer ? `Offer Selected — ${offer.name}` : "Choose A Lender Offer", s: offer ? `${offer.rate}% · ${inr(offer.amount, { short: true })}` : "Compare matched offers below", done: !!offer, current: !offer },
+    { t: "Document Verification", s: `${docsReady}/${reqDocs.length} key documents verified`, done: !!offer && docsReady === reqDocs.length, current: !!offer && docsReady < reqDocs.length },
+    { t: "Lender Sanction", s: offer ? `Expected in ${offer.speed}` : "After documents", done: false, current: !!offer && docsReady === reqDocs.length },
     { t: "Disbursal", s: "Funds credited to your account", done: false },
   ]
 
@@ -96,10 +96,10 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
                   <s.icon className="size-4 text-trust-blue" /> {s.label}
                 </a>
               ))}
-              <Link href="/tools" className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-navy hover:bg-subtle"><Calculator className="size-4 text-trust-blue" /> EMI tools</Link>
+              <Link href="/tools" className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-navy hover:bg-subtle"><Calculator className="size-4 text-trust-blue" /> EMI Tools</Link>
             </nav>
             <button onClick={() => openChat()} className="mt-4 flex w-full items-center gap-2 rounded-xl bg-gold-soft p-3 text-left text-xs text-[#5a4200]">
-              <Bot className="size-5 shrink-0 text-gold-deep" /> <span><b className="text-navy">Need help?</b><br />Ask Flo, 24×7</span>
+              <Bot className="size-5 shrink-0 text-gold-deep" /> <span><b className="text-navy">Need Help?</b><br />Ask Flo, 24×7</span>
             </button>
           </CardContent>
         </Card>
@@ -118,44 +118,44 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#f3d98a] bg-gold-soft/70 px-4 py-3 text-sm text-[#5a4200]">
             <span><b className="text-navy">No assessment yet.</b> Showing a sample profile below — run your own to see your real numbers.</span>
             <div className="flex gap-2">
-              <Button asChild size="sm"><Link href="/apply">Check my score</Link></Button>
+              <Button asChild size="sm"><Link href="/apply">Check My Score</Link></Button>
             </div>
           </div>
         )}
 
-        <section id="overview" className="ff-navy-grad relative scroll-mt-24 overflow-hidden rounded-2xl p-7 text-white">
+        <section id="overview" className="ff-navy-grad relative scroll-mt-24 overflow-hidden rounded-2xl p-5 text-white sm:p-7">
           <div className="pointer-events-none absolute -top-24 -right-16 size-72 rounded-full border border-white/10" />
           <div className="relative flex flex-wrap items-center justify-between gap-6">
             <div>
               <div className="text-sm text-[#b8c6e3]">Welcome back,</div>
-              <h1 className="text-3xl font-bold text-white">{name} 👋</h1>
-              <p className="mt-1 max-w-lg text-[#c9d4e3]">
+              <h1 className="text-2xl font-bold text-white sm:text-3xl">{name} 👋</h1>
+              <p className="mt-1 max-w-lg text-sm text-[#c9d4e3] sm:text-base">
                 {offer ? <>Your application with <b className="text-white">{offer.name}</b> is moving. Complete your documents to speed up sanction.</> : <>You&apos;re eligible for up to <b className="text-gold">{inr(r.eligible, { short: true })}</b>. Pick an offer to start your application.</>}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <Button asChild className="h-10 rounded-xl bg-gold px-4 font-bold text-navy hover:bg-[#ffc727]"><Link href="/result"><Gauge /> Full score report</Link></Button>
+                <Button asChild className="h-10 rounded-xl bg-gold px-4 font-bold text-navy hover:bg-[#ffc727]"><Link href="/result"><Gauge /> Full Score Report</Link></Button>
                 <Button className="h-10 rounded-xl border border-white/25 bg-white/10 px-4 text-white hover:bg-white/20" onClick={() => openChat("Why is my score low?")}><Bot /> Ask Flo</Button>
               </div>
             </div>
-            <div className="rounded-2xl bg-white/10 px-7 py-5 text-center backdrop-blur">
+            <div className="w-full rounded-2xl bg-white/10 px-6 py-4 text-center backdrop-blur sm:w-auto sm:px-7 sm:py-5">
               <div className="text-xs font-semibold tracking-wider text-[#b8c6e3] uppercase">FundenFlo Score</div>
-              <div className="ff-num font-heading text-5xl font-bold">{r.score}</div>
-              <div className="mt-1 inline-flex items-center gap-1 rounded-full bg-white/15 px-2.5 py-0.5 text-xs font-semibold"><TrendingUp className="size-3.5 text-gold" /> +14 this month · {r.grade.label}</div>
+              <div className="ff-num font-heading text-4xl font-bold sm:text-5xl">{r.score}</div>
+              <div className="mt-1 inline-flex items-center gap-1 rounded-full bg-white/15 px-2.5 py-0.5 text-xs font-semibold"><TrendingUp className="size-3.5 text-gold" /> +14 This Month · {r.grade.label}</div>
             </div>
           </div>
         </section>
 
-        <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
-          <Stat icon={IndianRupee} label="Eligible amount" value={inr(r.eligible, { short: true })} sub={productById(p.product).name} />
-          <Stat icon={Percent} label="Best rate" value={`${r.offers[0]?.rate ?? r.rate}%`} sub={r.offers[0]?.name} />
-          <Stat icon={Sparkles} label="Approval chance" value={`${Math.round(r.approval * 100)}%`} sub="with best-match lender" />
-          <Stat icon={FileCheck} label="Documents ready" value={`${docsReady}/${reqDocs.length}`} sub={docsReady === reqDocs.length ? "All key docs in" : "Upload the rest"} />
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
+          <Stat icon={IndianRupee} label="Eligible Amount" value={inr(r.eligible, { short: true })} sub={productById(p.product).name} />
+          <Stat icon={Percent} label="Best Rate" value={`${r.offers[0]?.rate ?? r.rate}%`} sub={r.offers[0]?.name} />
+          <Stat icon={Sparkles} label="Approval Chance" value={`${Math.round(r.approval * 100)}%`} sub="With Best-Match Lender" />
+          <Stat icon={FileCheck} label="Documents Ready" value={`${docsReady}/${reqDocs.length}`} sub={docsReady === reqDocs.length ? "All Key Docs In" : "Upload The Rest"} />
         </div>
 
         <div className="grid gap-6 xl:grid-cols-[1fr_1.2fr]">
           <Card id="application" className="scroll-mt-24">
             <CardHeader>
-              <CardTitle className="font-heading text-lg font-semibold text-navy">Application tracker</CardTitle>
+              <CardTitle className="font-heading text-lg font-semibold text-navy">Application Tracker</CardTitle>
               <CardDescription>{productById(p.product).name} · {inr(p.loanAmount, { short: true })} · {p.tenureMonths} months</CardDescription>
             </CardHeader>
             <CardContent>
@@ -179,7 +179,7 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
 
           <Card>
             <CardHeader>
-              <CardTitle className="font-heading text-lg font-semibold text-navy">Score trend</CardTitle>
+              <CardTitle className="font-heading text-lg font-semibold text-navy">Score Trend</CardTitle>
               <CardDescription>Last 6 months{projected ? ` · projected ${projected} after your completed tasks` : " · tick tasks in your plan to see the projection"}</CardDescription>
             </CardHeader>
             <CardContent><ScoreTrend points={history} projected={projected} /></CardContent>
@@ -189,7 +189,7 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
         <div className="grid items-start gap-6 xl:grid-cols-2">
           <Card id="plan" className="scroll-mt-24">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><ListChecks className="size-5 text-gold-deep" /> Your improvement plan</CardTitle>
+              <CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><ListChecks className="size-5 text-gold-deep" /> Your Improvement Plan</CardTitle>
               <CardDescription>AI-picked actions, biggest gain first. Mark them done as you go.</CardDescription>
             </CardHeader>
             <CardContent>
@@ -231,7 +231,7 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
                   return (
                     <li key={d.id} className="flex items-center gap-3 rounded-lg border px-3 py-2.5 text-sm">
                       <span className={cn("grid size-7 place-items-center rounded-md", ok ? "bg-success-soft text-success" : "bg-subtle text-muted-foreground")}>{ok ? <Check className="size-4" /> : <FileText className="size-4" />}</span>
-                      <span className="flex-1 font-medium text-navy">{d.name}{!d.req && <span className="ml-1 text-xs font-normal text-muted-foreground">(optional)</span>}</span>
+                      <span className="flex-1 font-medium text-navy">{d.name}{!d.req && <span className="ml-1 text-xs font-normal text-muted-foreground">(Optional)</span>}</span>
                       {ok ? <span className="text-xs font-semibold text-success">Verified</span> : (
                         <Button asChild size="xs" variant="outline"><Link href={`/apply?type=${p.type}`}><Upload /> Upload</Link></Button>
                       )}
@@ -245,7 +245,7 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
 
         <Card id="offers" className="scroll-mt-24">
           <CardHeader>
-            <CardTitle className="font-heading text-lg font-semibold text-navy">Top offers for you</CardTitle>
+            <CardTitle className="font-heading text-lg font-semibold text-navy">Top Offers For You</CardTitle>
             <CardDescription>Demo lenders · terms based on your FundenFlo Score</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-3">
@@ -272,7 +272,7 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
                     disabled={o.chance < 10}
                     onClick={() => { setOffer({ code: o.code, name: o.name, rate: o.rate, amount: o.amount, speed: o.speed, at: new Date().toISOString() }); toast(`Offer from ${o.name} selected`) }}
                   >
-                    {sel ? <><CircleCheck className="text-success" /> Selected</> : <>Select offer <ArrowRight /></>}
+                    {sel ? <><CircleCheck className="text-success" /> Selected</> : <>Select Offer <ArrowRight /></>}
                   </Button>
                 </div>
               )
@@ -281,7 +281,7 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
         </Card>
 
         <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><Bell className="size-5 text-trust-blue" /> Recent activity</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><Bell className="size-5 text-trust-blue" /> Recent Activity</CardTitle></CardHeader>
           <CardContent className="grid gap-3 text-sm">
             {[
               [ScanText, `AI assessment completed — score ${r.score} (${r.grade.label})`, "Just now"],

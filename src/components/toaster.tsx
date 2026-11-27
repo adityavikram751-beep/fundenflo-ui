@@ -19,10 +19,10 @@ export function Toaster() {
     return () => window.removeEventListener("ff-toast", on)
   }, [])
   return (
-    <div className="no-print pointer-events-none fixed top-20 left-1/2 z-[100] grid -translate-x-1/2 gap-2" aria-live="polite">
+    <div className="no-print pointer-events-none fixed top-16 left-1/2 z-[100] grid w-[calc(100%-2rem)] max-w-md -translate-x-1/2 justify-items-center gap-2 sm:top-20" aria-live="polite">
       {items.map((i) => (
         <div key={i.id} className="flex animate-in items-center gap-2 rounded-xl bg-navy px-4 py-2.5 text-sm text-white shadow-xl fade-in slide-in-from-top-2">
-          <CircleCheck className="size-4 text-gold" /> {i.msg}
+          <CircleCheck className="size-4 shrink-0 text-gold" /> <span>{i.msg}</span>
         </div>
       ))}
     </div>

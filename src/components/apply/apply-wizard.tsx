@@ -37,53 +37,53 @@ const range = (n: number, label = "") => Array.from({ length: n + 1 }, (_, i) =>
 
 const GROUPS: Record<ApplicantType, { title: string; fields: FieldDef[] }[]> = {
   individual: [
-    { title: "Personal details", fields: [
-      { k: "name", l: "Full name (as per PAN)", ph: "e.g. Priya Nair" },
-      { k: "mobile", l: "Mobile number", kind: "tel", ph: "10-digit mobile" },
+    { title: "Personal Details", fields: [
+      { k: "name", l: "Full Name (As Per PAN)", ph: "E.g. Priya Nair" },
+      { k: "mobile", l: "Mobile Number", kind: "tel", ph: "10-digit mobile" },
       { k: "email", l: "Email", kind: "email", ph: "you@example.com", optional: true },
-      { k: "city", l: "City", ph: "e.g. Bengaluru" },
-      { k: "age", l: "Age", kind: "number", ph: "e.g. 31" },
+      { k: "city", l: "City", ph: "E.g. Bengaluru" },
+      { k: "age", l: "Age", kind: "number", ph: "E.g. 31" },
       { k: "pan", l: "PAN", ph: "ABCDE1234F", action: "pan", optional: true },
     ] },
-    { title: "Work & income", fields: [
-      { k: "employment", l: "Employment type", kind: "select", opts: [["salaried", "Salaried"], ["self-employed", "Self-employed"], ["professional", "Professional (Doctor / CA / Architect)"]] },
-      { k: "employer", l: "Employer / practice name", ph: "Company name", optional: true },
-      { k: "monthlyIncome", l: "Net monthly income (in-hand)", kind: "money", ph: "e.g. 95000" },
-      { k: "experienceYears", l: "Total work experience (years)", kind: "number", ph: "e.g. 5" },
+    { title: "Work & Income", fields: [
+      { k: "employment", l: "Employment Type", kind: "select", opts: [["salaried", "Salaried"], ["self-employed", "Self-Employed"], ["professional", "Professional (Doctor / CA / Architect)"]] },
+      { k: "employer", l: "Employer / Practice Name", ph: "Company Name", optional: true },
+      { k: "monthlyIncome", l: "Net Monthly Income (In-Hand)", kind: "money", ph: "E.g. 95000" },
+      { k: "experienceYears", l: "Total Work Experience (Years)", kind: "number", ph: "E.g. 5" },
     ] },
-    { title: "Credit profile", fields: [
-      { k: "creditScore", l: "CIBIL / credit score", kind: "number", ph: "300–900", hint: "Don't know? Leave blank — we'll estimate it.", optional: true },
-      { k: "existingEmi", l: "Existing EMIs per month", kind: "money", ph: "0 if none" },
-      { k: "latePayments", l: "Late / missed EMIs (last 12 months)", kind: "select", opts: range(5) },
-      { k: "enquiries", l: "Loan applications (last 6 months)", kind: "select", opts: range(10) },
+    { title: "Credit Profile", fields: [
+      { k: "creditScore", l: "CIBIL / Credit Score", kind: "number", ph: "300–900", hint: "Don't know? Leave blank — we'll estimate it.", optional: true },
+      { k: "existingEmi", l: "Existing EMIs Per Month", kind: "money", ph: "0 If None" },
+      { k: "latePayments", l: "Late / Missed EMIs (Last 12 Months)", kind: "select", opts: range(5) },
+      { k: "enquiries", l: "Loan Applications (Last 6 Months)", kind: "select", opts: range(10) },
     ] },
   ],
   business: [
-    { title: "Promoter & contact", fields: [
-      { k: "name", l: "Promoter / director name", ph: "e.g. Rajesh Sharma" },
-      { k: "mobile", l: "Mobile number", kind: "tel", ph: "10-digit mobile" },
-      { k: "email", l: "Business email", kind: "email", ph: "you@company.com", optional: true },
-      { k: "city", l: "City", ph: "e.g. Pune" },
+    { title: "Promoter & Contact", fields: [
+      { k: "name", l: "Promoter / Director Name", ph: "E.g. Rajesh Sharma" },
+      { k: "mobile", l: "Mobile Number", kind: "tel", ph: "10-digit mobile" },
+      { k: "email", l: "Business Email", kind: "email", ph: "you@company.com", optional: true },
+      { k: "city", l: "City", ph: "E.g. Pune" },
     ] },
-    { title: "Business details", fields: [
-      { k: "gstin", l: "GSTIN", ph: "15-character GSTIN", action: "gstin", optional: true, hint: "Fetch auto-fills business details (demo)" },
-      { k: "businessName", l: "Business name", ph: "Registered name" },
+    { title: "Business Details", fields: [
+      { k: "gstin", l: "GSTIN", ph: "15-Character GSTIN", action: "gstin", optional: true, hint: "Fetch auto-fills business details (demo)" },
+      { k: "businessName", l: "Business Name", ph: "Registered Name" },
       { k: "constitution", l: "Constitution", kind: "select", opts: [["Proprietorship", "Proprietorship"], ["Partnership", "Partnership"], ["LLP", "LLP"], ["Private Limited", "Private Limited"], ["Public Limited", "Public Limited"]] },
       { k: "industry", l: "Industry", kind: "select", opts: [["Manufacturing", "Manufacturing"], ["Trading / Distribution", "Trading / Distribution"], ["Retail & D2C", "Retail & D2C"], ["Services", "Services"], ["Healthcare", "Healthcare"], ["Construction", "Construction"], ["Startup / Tech", "Startup / Tech"]] },
-      { k: "vintageYears", l: "Years in business", kind: "number", ph: "e.g. 5" },
+      { k: "vintageYears", l: "Years In Business", kind: "number", ph: "E.g. 5" },
     ] },
     { title: "Financials", fields: [
-      { k: "annualTurnover", l: "Annual turnover (last FY)", kind: "money", ph: "e.g. 42000000" },
-      { k: "netProfit", l: "Net profit (last FY)", kind: "money", ph: "e.g. 3800000" },
-      { k: "itrYears", l: "Years of ITR filed", kind: "select", opts: range(5, " yrs") },
-      { k: "existingEmi", l: "Existing EMIs per month", kind: "money", ph: "0 if none" },
-      { k: "collateral", l: "Property / collateral value", kind: "money", ph: "Optional", optional: true },
+      { k: "annualTurnover", l: "Annual Turnover (Last FY)", kind: "money", ph: "E.g. 42000000" },
+      { k: "netProfit", l: "Net Profit (Last FY)", kind: "money", ph: "E.g. 3800000" },
+      { k: "itrYears", l: "Years Of ITR Filed", kind: "select", opts: range(5, " Yrs") },
+      { k: "existingEmi", l: "Existing EMIs Per Month", kind: "money", ph: "0 If None" },
+      { k: "collateral", l: "Property / Collateral Value", kind: "money", ph: "Optional", optional: true },
     ] },
-    { title: "Credit profile", fields: [
-      { k: "creditScore", l: "Promoter CIBIL score", kind: "number", ph: "300–900", hint: "Don't know? Leave blank — we'll estimate it.", optional: true },
-      { k: "chequeBounces", l: "Cheque / EMI bounces (12 months)", kind: "select", opts: range(5) },
-      { k: "latePayments", l: "Late / missed EMIs (12 months)", kind: "select", opts: range(5) },
-      { k: "enquiries", l: "Loan applications (last 6 months)", kind: "select", opts: range(10) },
+    { title: "Credit Profile", fields: [
+      { k: "creditScore", l: "Promoter CIBIL Score", kind: "number", ph: "300–900", hint: "Don't know? Leave blank — we'll estimate it.", optional: true },
+      { k: "chequeBounces", l: "Cheque / EMI Bounces (12 Months)", kind: "select", opts: range(5) },
+      { k: "latePayments", l: "Late / Missed EMIs (12 Months)", kind: "select", opts: range(5) },
+      { k: "enquiries", l: "Loan Applications (Last 6 Months)", kind: "select", opts: range(10) },
     ] },
   ],
 }
@@ -96,11 +96,11 @@ const DEFAULTS: Form = { latePayments: "0", enquiries: "0", chequeBounces: "0", 
 const REQUIRED: Record<ApplicantType, string[]> = { individual: ["name", "mobile", "monthlyIncome"], business: ["name", "mobile", "businessName", "annualTurnover"] }
 
 const STEP_LABELS = [
-  { t: "Applicant type", s: "Business or individual" },
-  { t: "Loan need", s: "Product & amount" },
-  { t: "Your details", s: "Income & credit" },
-  { t: "Documents", s: "AI auto-check" },
-  { t: "Review & submit", s: "Get your score" },
+  { t: "Applicant Type", s: "Business Or Individual" },
+  { t: "Loan Need", s: "Product & Amount" },
+  { t: "Your Details", s: "Income & Credit" },
+  { t: "Documents", s: "AI Auto-Check" },
+  { t: "Review & Submit", s: "Get Your Score" },
 ]
 const maxTenure = (id: string) => ({ home: 360, lap: 180, commercial: 120, education: 180, od: 12, bill: 6, lc: 12, security: 36, auto: 84, machinery: 84, professional: 72, personal: 72 } as Record<string, number>)[id] ?? 60
 
@@ -236,7 +236,7 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
   }, [analyzing, w, router])
 
   return (
-    <div ref={topRef} className="grid scroll-mt-24 items-start gap-6 lg:grid-cols-[280px_1fr]">
+    <div ref={topRef} className="grid min-w-0 scroll-mt-24 items-start gap-6 lg:grid-cols-[280px_1fr] [&>*]:min-w-0">
       {/* ---------- side ---------- */}
       <aside className="hidden gap-4 lg:sticky lg:top-24 lg:grid">
         <Card className="py-5">
@@ -270,15 +270,15 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
         {preview ? (
           <Card className="py-5">
             <CardContent>
-              <div className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-muted-foreground uppercase"><Sparkles className="size-3.5 text-gold-deep" /> Live AI score preview</div>
+              <div className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-muted-foreground uppercase"><Sparkles className="size-3.5 text-gold-deep" /> Live AI Score Preview</div>
               <div className="mt-2 flex items-end gap-2">
                 <span className="ff-num font-heading text-4xl font-bold text-navy">{preview.score}</span>
                 <span className="mb-1.5 text-sm font-semibold" style={{ color: { good: "#1f7a43", warn: "#9a5b00", bad: "#ba1a1a" }[gradeFor(preview.score).cls] }}>{preview.grade.label}</span>
               </div>
               <div className="mt-2 h-2 overflow-hidden rounded-full bg-track"><div className="h-full rounded-full bg-chart-1 transition-all" style={{ width: `${((preview.score - 300) / 600) * 100}%` }} /></div>
               <div className="mt-3 grid gap-1 text-xs text-muted-foreground">
-                <div className="flex justify-between"><span>Eligible up to</span><b className="ff-num text-navy">{inr(preview.eligible, { short: true })}</b></div>
-                <div className="flex justify-between"><span>Est. rate</span><b className="ff-num text-navy">{preview.rate}%</b></div>
+                <div className="flex justify-between"><span>Eligible Up To</span><b className="ff-num text-navy">{inr(preview.eligible, { short: true })}</b></div>
+                <div className="flex justify-between"><span>Est. Rate</span><b className="ff-num text-navy">{preview.rate}%</b></div>
               </div>
               {preview.issues[0] && preview.issues[0].sev !== "good" && (
                 <p className="mt-3 rounded-lg bg-gold-soft/70 p-2.5 text-xs text-[#5a4200]"><b>Tip:</b> {preview.issues[0].title}</p>
@@ -298,7 +298,7 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
 
       {/* ---------- main ---------- */}
       <Card className="relative py-0">
-        <CardContent className="p-6 md:p-8">
+        <CardContent className="p-4 sm:p-6 md:p-8">
           <div className="mb-6 lg:hidden">
             <div className="mb-2 flex justify-between text-xs font-semibold text-muted-foreground"><span>Step {w.step + 1} of 5 · {STEP_LABELS[w.step].t}</span><span>{Math.round(((w.step + 1) / 5) * 100)}%</span></div>
             <div className="h-2 overflow-hidden rounded-full bg-track"><div className="h-full rounded-full bg-navy-pressed transition-all" style={{ width: `${((w.step + 1) / 5) * 100}%` }} /></div>
@@ -307,11 +307,11 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
           {/* STEP 0 */}
           {w.step === 0 && (
             <div className="animate-in fade-in">
-              <h2 className="text-2xl font-bold">Who is this loan for?</h2>
+              <h2 className="text-2xl font-bold">Who Is This Loan For?</h2>
               <p className="mt-1 text-muted-foreground">We&apos;ll tailor the questions, documents and lenders.</p>
               <div className="mt-6 grid gap-4 md:grid-cols-2">
                 {([
-                  ["business", Briefcase, "Business / MSME", "Proprietorship, partnership, LLP, company or startup", ["Business loan", "OD / CC", "LAP", "Machinery"]],
+                  ["business", Briefcase, "Business / MSME", "Proprietorship, partnership, LLP, company or startup", ["Business Loan", "OD / CC", "LAP", "Machinery"]],
                   ["individual", User, "Individual", "Salaried, self-employed or professional", ["Home", "Personal", "Auto", "Education"]],
                 ] as const).map(([id, Icon, t, s, tags]) => (
                   <button
@@ -335,7 +335,7 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
           {/* STEP 1 */}
           {w.step === 1 && w.type && (
             <div className="animate-in fade-in">
-              <h2 className="text-2xl font-bold">What do you need?</h2>
+              <h2 className="text-2xl font-bold">What Do You Need?</h2>
               <p className="mt-1 text-muted-foreground">Choose a product, then set the loan amount.</p>
               <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
                 {PRODUCTS.filter((p) => p.seg === w.type).map((p) => (
@@ -347,7 +347,7 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
                   >
                     <p.icon className="size-5 text-trust-blue" />
                     <span className="text-sm font-semibold text-navy">{p.name}</span>
-                    <span className="text-xs text-muted-foreground">from {p.rate}</span>
+                    <span className="text-xs text-muted-foreground">From {p.rate}</span>
                   </button>
                 ))}
               </div>
@@ -356,15 +356,15 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
                 <div className="mt-8 grid gap-6 rounded-2xl border bg-background p-5">
                   <div>
                     <div className="mb-2 flex items-baseline justify-between">
-                      <Label className="text-sm font-semibold text-navy">Loan amount</Label>
+                      <Label className="text-sm font-semibold text-navy">Loan Amount</Label>
                       <span className="ff-num font-heading text-2xl font-bold text-navy">{inr(w.loanAmount, { short: true })}</span>
                     </div>
                     <Slider value={[w.loanAmount]} min={50000} max={Math.min(product.maxAmount, w.type === "business" ? 5e7 : 2e7)} step={w.type === "business" ? 100000 : 50000} onValueChange={(v) => set({ loanAmount: v[0] })} aria-label="Loan amount" />
                     <div className="mt-1.5 flex justify-between text-xs text-muted-foreground"><span>₹50K</span><span>Max {product.max}</span></div>
                   </div>
                   <div>
-                    <Label className="mb-2 block text-sm font-semibold text-navy">Purpose <span className="font-normal text-muted-foreground">(optional)</span></Label>
-                    <Input className="h-11 bg-white" placeholder={w.type === "business" ? "e.g. New CNC machine" : "e.g. Home renovation"} value={w.purpose} onChange={(e) => set({ purpose: e.target.value })} />
+                    <Label className="mb-2 block text-sm font-semibold text-navy">Purpose <span className="font-normal text-muted-foreground">(Optional)</span></Label>
+                    <Input className="h-11 bg-white" placeholder={w.type === "business" ? "E.g. New CNC machine" : "E.g. Home renovation"} value={w.purpose} onChange={(e) => set({ purpose: e.target.value })} />
                   </div>
                 </div>
               )}
@@ -376,11 +376,11 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
             <div className="animate-in fade-in">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-2xl font-bold">Tell us about {w.type === "business" ? "your business" : "yourself"}</h2>
+                  <h2 className="text-2xl font-bold">Tell Us About {w.type === "business" ? "Your Business" : "Yourself"}</h2>
                   <p className="mt-1 text-muted-foreground">Rough numbers are fine — the score updates live as you type.</p>
                 </div>
                 <Button variant="outline" className="h-10 rounded-xl border-gold bg-gold-soft px-4 font-semibold text-gold-ink hover:bg-gold-soft/70" onClick={fillDemo}>
-                  <WandSparkles /> Fill demo data
+                  <WandSparkles /> Fill Demo Data
                 </Button>
               </div>
               <div className="mt-6 grid gap-7">
@@ -403,11 +403,11 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
             <div className="animate-in fade-in">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-2xl font-bold">Upload documents</h2>
+                  <h2 className="text-2xl font-bold">Upload Documents</h2>
                   <p className="mt-1 text-muted-foreground">Our AI checks each file for clarity, name match and validity. Optional for the score.</p>
                 </div>
                 <Button variant="outline" className="h-10 rounded-xl border-gold bg-gold-soft px-4 font-semibold text-gold-ink hover:bg-gold-soft/70" onClick={uploadAllDemo}>
-                  <Upload /> Upload demo documents
+                  <Upload /> Upload Demo Documents
                 </Button>
               </div>
               <DocProgress w={w} />
@@ -424,14 +424,14 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
           {/* STEP 4 */}
           {w.step === 4 && w.type && (
             <div className="animate-in fade-in">
-              <h2 className="text-2xl font-bold">Review & get your score</h2>
+              <h2 className="text-2xl font-bold">Review & Get Your Score</h2>
               <p className="mt-1 text-muted-foreground">Check your details. You can edit any section.</p>
               <div className="mt-6 grid gap-4 md:grid-cols-2">
                 <ReviewBlock title="Loan" onEdit={() => go(1)} rows={[["Product", product?.name ?? "—"], ["Amount", inr(w.loanAmount)], ["Purpose", w.purpose || "—"]]} />
                 {GROUPS[w.type].map((g) => (
                   <ReviewBlock key={g.title} title={g.title} onEdit={() => go(2)} rows={g.fields.map((fd) => [fd.l, display(fd, w.f[fd.k])])} />
                 ))}
-                <ReviewBlock title="Documents" onEdit={() => go(3)} rows={DOCS[w.type].map((d) => [d.name, w.docs[d.id]?.status === "done" ? "✓ Verified" : "Not uploaded"])} />
+                <ReviewBlock title="Documents" onEdit={() => go(3)} rows={DOCS[w.type].map((d) => [d.name, w.docs[d.id]?.status === "done" ? "✓ Verified" : "Not Uploaded"])} />
               </div>
               <label className="mt-6 flex cursor-pointer items-start gap-3 rounded-xl border bg-background p-4 text-sm">
                 <Checkbox checked={w.consent} onCheckedChange={(v) => set({ consent: v === true })} className="mt-0.5" />
@@ -447,7 +447,7 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
             {w.step < 4 ? (
               <Button className="h-11 rounded-xl px-6" onClick={next}>Continue <ArrowRight /></Button>
             ) : (
-              <Button className="h-11 rounded-xl bg-gold px-6 font-bold text-navy hover:bg-[#ffc727]" onClick={() => withLogin(user, submit, "Verify your mobile number to see your FundenFlo Score and matched offers.")}>{user ? <Sparkles /> : <Lock />} Run AI assessment</Button>
+              <Button className="h-11 rounded-xl bg-gold px-6 font-bold text-navy hover:bg-[#ffc727]" onClick={() => withLogin(user, submit, "Verify your mobile number to see your FundenFlo Score and matched offers.")}>{user ? <Sparkles /> : <Lock />} Run AI Assessment</Button>
             )}
           </div>
         </CardContent>
@@ -458,9 +458,9 @@ export function ApplyWizard({ initialType, initialProduct }: { initialType?: App
   )
 }
 
-const ANALYSIS_STEPS = ["Reading your profile", "Checking credit signals", "Calculating repayment capacity (FOIR)", "Matching 50+ lenders", "Preparing your report"]
+const ANALYSIS_STEPS = ["Reading Your Profile", "Checking Credit Signals", "Calculating Repayment Capacity (FOIR)", "Matching 50+ Lenders", "Preparing Your Report"]
 
-export function AnalyzingOverlay({ step, steps = ANALYSIS_STEPS, title = "AI is assessing your profile" }: { step: number; steps?: string[]; title?: string }) {
+export function AnalyzingOverlay({ step, steps = ANALYSIS_STEPS, title = "AI Is Assessing Your Profile" }: { step: number; steps?: string[]; title?: string }) {
   return (
     <div className="absolute inset-0 z-20 grid place-items-center rounded-xl bg-white/95 p-6 backdrop-blur-sm">
       <div className="w-full max-w-sm text-center">
@@ -492,7 +492,7 @@ function Field({ fd, value, onChange, busy, onAction }: { fd: FieldDef; value: s
   return (
     <div>
       <Label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-navy">
-        {fd.l} {fd.optional && <span className="font-normal text-muted-foreground">(optional)</span>}
+        {fd.l} {fd.optional && <span className="font-normal text-muted-foreground">(Optional)</span>}
       </Label>
       {fd.kind === "select" ? (
         <select id={id} value={value} onChange={(e) => onChange(e.target.value)} className="h-11 w-full rounded-lg border border-input bg-white px-3 text-sm outline-none focus:border-trust-blue focus:ring-3 focus:ring-trust-blue/15">
@@ -530,7 +530,7 @@ function DocProgress({ w }: { w: W }) {
   const done = req.filter((d) => w.docs[d.id]?.status === "done").length
   return (
     <div className="mt-5 rounded-xl border bg-background p-4">
-      <div className="mb-2 flex justify-between text-sm"><span className="font-semibold text-navy">Key documents verified</span><b className="ff-num text-navy">{done}/{req.length}</b></div>
+      <div className="mb-2 flex justify-between text-sm"><span className="font-semibold text-navy">Key Documents Verified</span><b className="ff-num text-navy">{done}/{req.length}</b></div>
       <div className="h-2 overflow-hidden rounded-full bg-track"><div className="h-full rounded-full bg-success transition-all" style={{ width: `${(done / req.length) * 100}%` }} /></div>
     </div>
   )
@@ -545,7 +545,7 @@ function DocRow({ d, st, onFile }: { d: (typeof DOCS)["business"][number]; st?: 
         {st?.status === "done" ? <FileCheck className="size-5" /> : <FileText className="size-5" />}
       </span>
       <div className="min-w-0 flex-1">
-        <div className="text-sm font-semibold text-navy">{d.name} {d.req ? <span className="text-destructive">*</span> : <span className="text-xs font-normal text-muted-foreground">(optional)</span>}</div>
+        <div className="text-sm font-semibold text-navy">{d.name} {d.req ? <span className="text-destructive">*</span> : <span className="text-xs font-normal text-muted-foreground">(Optional)</span>}</div>
         <div className="truncate text-xs text-muted-foreground">
           {st?.status === "verifying" ? "AI checking clarity & name match…" : st?.status === "done" ? `${st.name} · AI verified: clear scan, details match` : d.note}
         </div>

@@ -24,7 +24,7 @@ type Stage = "tell" | "assessed" | "verified"
 interface SavedAssessment { text: string; stage: Stage; uploaded: Record<string, string>; scenario: Scenario | null; reading: Reading | null; at: string }
 const EMPTY: SavedAssessment = { text: "", stage: "tell", uploaded: {}, scenario: null, reading: null, at: "" }
 
-const PRELIM_STEPS = ["Understanding what you said", "Structuring your financial details", "Checking lender eligibility rules", "Scoring 6 credit factors", "Preparing your assessment"]
+const PRELIM_STEPS = ["Understanding What You Said", "Structuring Your Financial Details", "Checking Lender Eligibility Rules", "Scoring 6 Credit Factors", "Preparing Your Assessment"]
 const STARTERS: Record<string, string> = {
   loanAmount: "I need a loan of ", product: "The loan is for ", vintageYears: "My business is  years old. ", annualTurnover: "Our yearly turnover is ",
   netProfit: "Our net profit is about ", gst: "We are GST registered. ", itrYears: "We have filed ITR for  years. ", monthlyIncome: "My monthly in-hand salary is ",
@@ -91,7 +91,7 @@ function SmartAssessmentBody() {
   const canGenerate = !!declared.loanAmount && !!(declared.annualTurnover || declared.monthlyIncome)
 
   const generate = () => withLogin(user, () => setAnim({
-    steps: PRELIM_STEPS, step: 0, title: "AI is building your credit assessment",
+    steps: PRELIM_STEPS, step: 0, title: "AI Is Building Your Credit Assessment",
     done: () => update((s) => ({ ...s, stage: "assessed", at: new Date().toISOString(), uploaded: {}, reading: null, scenario: null })),
   }), "Verify your mobile number to get your free credit assessment.")
 
@@ -114,9 +114,9 @@ function SmartAssessmentBody() {
 
   const runVerification = () => setAnim({
     steps: isBiz
-      ? ["Reading balance sheets", "Extracting P&L figures for 2 years", "Scanning 12 months of bank transactions", "Detecting EMIs, bounces & cash flow", "Cross-checking with what you told us"]
-      : ["Reading salary slips", "Scanning bank transactions", "Detecting EMIs & bounces", "Cross-checking with what you told us"],
-    step: 0, title: "AI is verifying your documents",
+      ? ["Reading Balance Sheets", "Extracting P&L Figures For 2 Years", "Scanning 12 Months Of Bank Transactions", "Detecting EMIs, Bounces & Cash Flow", "Cross-Checking With What You Told Us"]
+      : ["Reading Salary Slips", "Scanning Bank Transactions", "Detecting EMIs & Bounces", "Cross-Checking With What You Told Us"],
+    step: 0, title: "AI Is Verifying Your Documents",
     done: () => update((s) => ({ ...s, stage: "verified", reading: readDocuments(declared, s.uploaded, s.scenario ?? "upload") })),
   })
 
@@ -131,7 +131,7 @@ function SmartAssessmentBody() {
         <div className="grid items-start gap-6 lg:grid-cols-[1.25fr_0.75fr]">
           <Card>
             <CardHeader>
-              <CardTitle className="font-heading text-xl font-semibold text-navy">Tell us about your {isBiz ? "business" : "loan need"}</CardTitle>
+              <CardTitle className="font-heading text-xl font-semibold text-navy">Tell Us About Your {isBiz ? "Business" : "Loan Need"}</CardTitle>
               <CardDescription>No forms. Just speak or write it the way you&apos;d explain it to your CA.</CardDescription>
             </CardHeader>
             <CardContent><VoiceComposer text={a.text} onText={setText} textRef={textRef} /></CardContent>
@@ -140,12 +140,12 @@ function SmartAssessmentBody() {
           <div className="grid gap-4 lg:sticky lg:top-24">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 font-heading text-base font-semibold text-navy"><Sparkles className="size-4 text-gold-deep" /> What we understood</CardTitle>
+                <CardTitle className="flex items-center gap-2 font-heading text-base font-semibold text-navy"><Sparkles className="size-4 text-gold-deep" /> What We Understood</CardTitle>
                 <CardDescription>Updates live as you speak or type</CardDescription>
               </CardHeader>
               <CardContent className="grid gap-4">
                 <div>
-                  <div className="mb-1.5 flex justify-between text-xs font-semibold"><span className="text-muted-foreground">Assessment readiness</span><span className="ff-num text-navy">{haveImportant}/{important.length} key facts</span></div>
+                  <div className="mb-1.5 flex justify-between text-xs font-semibold"><span className="text-muted-foreground">Assessment Readiness</span><span className="ff-num text-navy">{haveImportant}/{important.length} Key Facts</span></div>
                   <div className="h-2 overflow-hidden rounded-full bg-track"><div className="h-full rounded-full bg-success transition-all duration-500" style={{ width: `${(haveImportant / important.length) * 100}%` }} /></div>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
@@ -169,14 +169,14 @@ function SmartAssessmentBody() {
                   <p className="rounded-lg bg-gold-soft/70 p-2.5 text-xs text-[#5a4200]">Tell us at least <b>how much loan you need</b> and your <b>{isBiz ? "turnover" : "income"}</b> to generate an assessment.</p>
                 )}
                 <Button disabled={!canGenerate} onClick={generate} className="h-12 rounded-xl bg-gold text-base font-bold text-navy hover:bg-[#ffc727]">
-                  {user ? <Sparkles className="size-5" /> : <Lock className="size-5" />} Generate credit assessment
+                  {user ? <Sparkles className="size-5" /> : <Lock className="size-5" />} Generate Credit Assessment
                 </Button>
-                {!user && <p className="-mt-2 text-center text-xs text-muted-foreground">Free · quick mobile OTP login</p>}
+                {!user && <p className="-mt-2 text-center text-xs text-muted-foreground">Free · Quick Mobile OTP Login</p>}
               </CardContent>
             </Card>
             <Card className="bg-navy text-white ring-0">
               <CardContent className="grid gap-2 text-sm text-[#c9d4e3]">
-                <div className="flex items-center gap-2 font-semibold text-gold"><ShieldCheck className="size-4" /> How it works</div>
+                <div className="flex items-center gap-2 font-semibold text-gold"><ShieldCheck className="size-4" /> How It Works</div>
                 <p><b className="text-white">1.</b> We turn your words into a preliminary credit assessment.</p>
                 <p><b className="text-white">2.</b> Upload balance sheets & bank statements — we verify what you said.</p>
                 <p><b className="text-white">3.</b> Verified details add points and unlock better offers.</p>
@@ -195,7 +195,7 @@ function SmartAssessmentBody() {
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-warning-soft px-3 py-1 text-xs font-bold text-warning"><MessageSquareText className="size-3.5" /> Self-declared · Confidence: {haveImportant >= important.length - 1 ? "Medium" : "Low"}</span>
                 <span className="text-muted-foreground">Based on what you told us — not yet verified</span>
               </div>
-              <Button variant="outline" size="sm" onClick={() => update((s) => ({ ...s, stage: "tell" }))}><PencilLine /> Edit what I said</Button>
+              <Button variant="outline" size="sm" onClick={() => update((s) => ({ ...s, stage: "tell" }))}><PencilLine /> Edit What I Said</Button>
             </CardContent>
           </Card>
 
@@ -204,7 +204,7 @@ function SmartAssessmentBody() {
             onFile={uploadFile} onSamples={loadSamples} canVerify={requiredUploaded} onVerify={runVerification}
           />
 
-          <SectionTitle n={2} title="Your preliminary credit assessment" sub="Built only from what you said — upload documents above to verify it" />
+          <SectionTitle n={2} title="Your Preliminary Credit Assessment" sub="Built only from what you said — upload documents above to verify it" />
           <ScoreReport result={prelim} />
         </>
       )}
@@ -218,7 +218,7 @@ function SmartAssessmentBody() {
             <ReadingEditor reading={a.reading} isBiz={isBiz} uploaded={a.uploaded} onChange={(k, val) => update((s) => ({ ...s, reading: { ...(s.reading ?? {}), [k]: val } }))} />
           </div>
           {verification.metrics.length > 0 && <MetricsGrid metrics={verification.metrics} />}
-          <SectionTitle n={4} title="Your verified credit assessment" sub="Scores, eligibility and offers now use the figures from your documents" />
+          <SectionTitle n={4} title="Your Verified Credit Assessment" sub="Scores, eligibility and offers now use the figures from your documents" />
           <ScoreReport result={verified} />
         </>
       )}
@@ -237,17 +237,17 @@ function SmartAssessmentBody() {
 /* ---------------------------------------------------------------- */
 
 function Stepper({ idx }: { idx: number }) {
-  const steps = ["Speak or write", "Preliminary assessment", "Upload documents", "Verified assessment"]
+  const steps = ["Speak Or Write", "Preliminary Assessment", "Upload Documents", "Verified Assessment"]
   return (
-    <Card className="py-4">
+    <Card className="py-3.5 sm:py-4">
       <CardContent>
-        <ol className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        <ol className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4">
           {steps.map((s, i) => (
-            <li key={s} className="flex items-center gap-2.5">
-              <span className={cn("grid size-8 shrink-0 place-items-center rounded-full border-2 text-xs font-bold", i < idx ? "border-success bg-success text-white" : i === idx ? "border-navy-pressed text-navy-pressed ring-4 ring-info-soft" : "border-border text-muted-foreground")}>
-                {i < idx ? <Check className="size-4" /> : i + 1}
+            <li key={s} className="flex min-w-0 items-center gap-2 sm:gap-2.5">
+              <span className={cn("grid size-7 shrink-0 place-items-center rounded-full border-2 text-xs font-bold sm:size-8", i < idx ? "border-success bg-success text-white" : i === idx ? "border-navy-pressed text-navy-pressed ring-4 ring-info-soft" : "border-border text-muted-foreground")}>
+                {i < idx ? <Check className="size-3.5 sm:size-4" /> : i + 1}
               </span>
-              <span className={cn("text-sm font-semibold", i <= idx ? "text-navy" : "text-muted-foreground")}>{s}</span>
+              <span className={cn("text-xs leading-tight font-semibold sm:text-sm", i <= idx ? "text-navy" : "text-muted-foreground")}>{s}</span>
             </li>
           ))}
         </ol>
@@ -275,33 +275,33 @@ function VerifyPanel({ slots, uploaded, reading, potential, isBiz, score, onFile
   return (
     <Card className="overflow-hidden border-[#f3d98a] py-0 ring-1 ring-gold/40">
       <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="ff-navy-grad relative overflow-hidden p-7 text-white">
+        <div className="ff-navy-grad relative overflow-hidden p-5 text-white sm:p-7">
           <div className="pointer-events-none absolute -right-16 -bottom-16 size-56 rounded-full border border-white/10" />
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-gold"><ShieldCheck className="size-3.5" /> Step 3 · Verify & boost</span>
-          <h3 className="mt-4 text-2xl font-bold text-white">Prove it with documents — add up to <span className="text-gold">+{Math.max(potential, 10)} points</span></h3>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-gold"><ShieldCheck className="size-3.5" /> Step 3 · Verify & Boost</span>
+          <h3 className="mt-4 text-xl font-bold text-white sm:text-2xl">Prove It With Documents — Add Up To <span className="text-gold">+{Math.max(potential, 10)} Points</span></h3>
           <p className="mt-2 text-sm text-[#c9d4e3]">
             Upload {isBiz ? "your last 2 years' balance sheets and 12 months of bank statements" : "your salary slips and bank statement"}. We check them against what you told us and add new data points lenders trust{isBiz ? " — growth, DSCR, leverage, banking conduct" : ""}.
           </p>
           <div className="mt-5 flex items-end gap-3">
             <div><div className="text-xs text-[#9fb0d0]">Now</div><div className="ff-num font-heading text-3xl font-bold">{score}</div></div>
             <ArrowRight className="mb-2 size-5 text-gold" />
-            <div><div className="text-xs text-[#9fb0d0]">If documents match</div><div className="ff-num font-heading text-3xl font-bold text-gold">~{Math.min(900, score + Math.max(potential, 10))}</div></div>
+            <div><div className="text-xs text-[#9fb0d0]">If Documents Match</div><div className="ff-num font-heading text-3xl font-bold text-gold">~{Math.min(900, score + Math.max(potential, 10))}</div></div>
           </div>
           <p className="mt-4 text-[11px] text-[#9fb0d0]">Mismatches can also reduce the score — lenders value honesty and consistency.</p>
         </div>
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           <div className="grid gap-2.5">
             {slots.map((s) => <SlotRow key={s.id} slot={s} file={uploaded[s.id]} reading={!!reading[s.id]} onFile={(n) => onFile(s.id, n)} />)}
           </div>
           <div className="mt-4 rounded-xl border border-dashed bg-background p-3.5">
-            <div className="mb-2 text-xs font-bold tracking-wider text-muted-foreground uppercase">No documents handy? Try the demo</div>
+            <div className="mb-2 text-xs font-bold tracking-wider text-muted-foreground uppercase">No Documents Handy? Try The Demo</div>
             <div className="flex flex-wrap gap-2">
-              <Button variant="outline" size="sm" onClick={() => onSamples("match")}><FileCheck /> Sample docs — figures match</Button>
-              <Button variant="outline" size="sm" onClick={() => onSamples("mismatch")}><TriangleExclamationPoint /> Sample docs — with gaps</Button>
+              <Button variant="outline" size="sm" onClick={() => onSamples("match")}><FileCheck /> Sample Docs — Figures Match</Button>
+              <Button variant="outline" size="sm" onClick={() => onSamples("mismatch")}><TriangleExclamationPoint /> Sample Docs — With Gaps</Button>
             </div>
           </div>
           <Button disabled={!canVerify} onClick={onVerify} className="mt-5 h-12 w-full rounded-xl bg-gold text-base font-bold text-navy hover:bg-[#ffc727]">
-            <ShieldCheck className="size-5" /> Verify documents & update assessment
+            <ShieldCheck className="size-5" /> Verify Documents & Update Assessment
           </Button>
           {!canVerify && <p className="mt-2 text-center text-xs text-muted-foreground">Upload the required documents (*) to continue</p>}
         </div>
@@ -318,7 +318,7 @@ function SlotRow({ slot, file, reading, onFile }: { slot: { id: string; name: st
         {file && !reading ? <FileCheck className="size-5" /> : <FileText className="size-5" />}
       </span>
       <div className="min-w-0 flex-1">
-        <div className="text-sm font-semibold text-navy">{slot.name} {slot.req ? <span className="text-destructive">*</span> : <span className="text-xs font-normal text-muted-foreground">(optional)</span>}</div>
+        <div className="text-sm font-semibold text-navy">{slot.name} {slot.req ? <span className="text-destructive">*</span> : <span className="text-xs font-normal text-muted-foreground">(Optional)</span>}</div>
         <div className="truncate text-xs text-muted-foreground">{reading ? "Reading document…" : file ? `${file} · ready to verify` : slot.note}</div>
       </div>
       <input ref={ref} type="file" accept=".pdf,.jpg,.jpeg,.png,.xlsx,.xls,.csv" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) onFile(f.name); e.target.value = "" }} />
@@ -333,17 +333,17 @@ function VerifiedHero({ prelim, verified, matched, flagged, onRestart, onReuploa
   const delta = verified.score - prelim.score
   const up = delta >= 0
   return (
-    <div className="ff-navy-grad relative overflow-hidden rounded-2xl p-7 text-white">
+    <div className="ff-navy-grad relative overflow-hidden rounded-2xl p-5 text-white sm:p-7">
       <div className="pointer-events-none absolute -top-24 -right-16 size-80 rounded-full border border-white/10" />
       <div className="relative flex flex-wrap items-center justify-between gap-8">
         <div className="max-w-xl">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-success px-3 py-1 text-xs font-bold text-white"><ShieldCheck className="size-3.5" /> Document-verified · Confidence: High</span>
-          <h2 className="mt-3 text-2xl font-bold text-white md:text-3xl">{up ? "Your documents strengthened your assessment" : "Your documents changed your assessment"}</h2>
+          <h2 className="mt-3 text-2xl font-bold text-white md:text-3xl">{up ? "Your Documents Strengthened Your Assessment" : "Your Documents Changed Your Assessment"}</h2>
           <p className="mt-1 text-[#c9d4e3]"><b className="text-white">{matched}</b> details matched · <b className="text-white">{flagged}</b> flagged for review. Lenders see this as a verified file.</p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button variant="outline" size="sm" className="border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white" onClick={onReupload}><FileUp /> Change documents</Button>
-            <Button variant="outline" size="sm" className="border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white" onClick={onRestart}><RotateCcw /> New assessment</Button>
-            <Button asChild size="sm" className="bg-gold font-bold text-navy hover:bg-[#ffc727]"><Link href="/dashboard">Go to dashboard <ArrowRight /></Link></Button>
+            <Button variant="outline" size="sm" className="border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white" onClick={onReupload}><FileUp /> Change Documents</Button>
+            <Button variant="outline" size="sm" className="border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white" onClick={onRestart}><RotateCcw /> New Assessment</Button>
+            <Button asChild size="sm" className="bg-gold font-bold text-navy hover:bg-[#ffc727]"><Link href="/dashboard">Go To Dashboard <ArrowRight /></Link></Button>
           </div>
         </div>
         <div className="flex w-full items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-4 backdrop-blur sm:w-auto sm:justify-start sm:gap-5 sm:px-6 sm:py-5">
@@ -371,14 +371,44 @@ function ChecksTable({ checks }: { checks: VCheck[] }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-heading text-lg font-semibold text-navy">What you said vs what your documents show</CardTitle>
+        <CardTitle className="font-heading text-lg font-semibold text-navy">What You Said Vs What Your Documents Show</CardTitle>
         <CardDescription>Every point added or removed, and why</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto rounded-xl border">
+        {/* mobile cards */}
+        <div className="grid gap-3 md:hidden">
+          {checks.map((c) => {
+            const s = STATUS[c.status]
+            return (
+              <div key={c.key} className="rounded-xl border bg-background p-3.5">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <div className="font-semibold text-navy">{c.label}</div>
+                    <div className="text-xs text-muted-foreground">{c.note}</div>
+                  </div>
+                  <span className={cn("ff-num shrink-0 text-sm font-bold", c.points > 0 ? "text-success" : c.points < 0 ? "text-destructive" : "text-muted-foreground")}>{c.points > 0 ? "+" : ""}{c.points} Pts</span>
+                </div>
+                <div className="mt-2.5 grid grid-cols-2 gap-2 rounded-lg bg-white p-2.5 text-xs">
+                  <div><div className="text-muted-foreground">You Said</div><div className="ff-num mt-0.5 font-medium text-navy">{c.declared}</div></div>
+                  <div><div className="text-muted-foreground">Documents Show</div><div className="ff-num mt-0.5 font-semibold text-navy">{c.found}</div><div className="text-[10px] text-muted-foreground">{c.source}</div></div>
+                </div>
+                <div className="mt-2.5">
+                  <span className={cn("inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold whitespace-nowrap", s.cls)}><s.Icon className="size-3.5" /> {s.label}</span>
+                </div>
+              </div>
+            )
+          })}
+          <div className="flex items-center justify-between rounded-xl bg-subtle px-3.5 py-3 text-sm">
+            <span className="font-semibold text-navy">Net Verification Impact</span>
+            <span className={cn("ff-num text-base font-bold", total >= 0 ? "text-success" : "text-destructive")}>{total > 0 ? "+" : ""}{Math.max(-50, Math.min(60, total))} Pts</span>
+          </div>
+        </div>
+
+        {/* desktop table */}
+        <div className="hidden overflow-x-auto rounded-xl border md:block">
           <table className="w-full min-w-[680px] text-sm">
             <thead className="bg-subtle text-left text-[11px] font-bold tracking-wider text-muted-foreground uppercase">
-              <tr><th className="px-4 py-3">Check</th><th className="px-4 py-3">You said</th><th className="px-4 py-3">Documents show</th><th className="px-4 py-3">Status</th><th className="px-4 py-3 text-right">Points</th></tr>
+              <tr><th className="px-4 py-3">Check</th><th className="px-4 py-3">You Said</th><th className="px-4 py-3">Documents Show</th><th className="px-4 py-3">Status</th><th className="px-4 py-3 text-right">Points</th></tr>
             </thead>
             <tbody className="divide-y">
               {checks.map((c) => {
@@ -412,7 +442,7 @@ function ReadingEditor({ reading, isBiz, uploaded, onChange }: { reading: Readin
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-heading text-lg font-semibold text-navy">What the AI read</CardTitle>
+        <CardTitle className="font-heading text-lg font-semibold text-navy">What The AI Read</CardTitle>
         <CardDescription>Spot something wrong? Correct it — the assessment updates instantly.</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-3">
@@ -440,7 +470,7 @@ function MetricsGrid({ metrics }: { metrics: Metric[] }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-heading text-lg font-semibold text-navy">New data points from your documents</CardTitle>
+        <CardTitle className="font-heading text-lg font-semibold text-navy">New Data Points From Your Documents</CardTitle>
         <CardDescription>Things lenders check that a conversation alone can&apos;t prove</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">

@@ -24,12 +24,12 @@ export function LoginDialog() {
 
   return (
     <Dialog open={open} onOpenChange={(o) => { setOpen(o); if (!o) takePendingLoginAction() }}>
-      <DialogContent className="max-h-[95vh] gap-0 overflow-y-auto p-0 sm:max-w-3xl">
+      <DialogContent className="max-h-[92dvh] gap-0 overflow-y-auto p-0 sm:max-w-3xl">
         <DialogTitle className="sr-only">Login to FundenFlo</DialogTitle>
         <DialogDescription className="sr-only">Login with your mobile number and OTP</DialogDescription>
         <div className="grid md:grid-cols-[0.9fr_1.1fr]">
           <LoginSide compact className="hidden md:flex" />
-          <div className="p-7 sm:p-9">
+          <div className="p-5 sm:p-9">
             <LoginForm
               key={key}
               reason={reason}

@@ -63,25 +63,25 @@ export function ScoreReport({ result: r, compactHeader = false }: { result: Scor
         <Card className="py-6">
           <CardContent className="grid gap-5">
             <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
-              <Kpi icon={IndianRupee} label="Eligible amount" value={inr(r.eligible, { short: true })} sub={`You asked ${inr(p.loanAmount, { short: true })}`} />
-              <Kpi icon={Percent} label="Est. interest rate" value={`${r.rate}%`} sub={`${product.name} · p.a.`} />
-              <Kpi icon={Clock} label="Monthly EMI" value={inr(r.emi)} sub={`${p.tenureMonths} months`} />
-              <Kpi icon={Target} label="Approval chance" value={`${Math.round(r.approval * 100)}%`} bar={r.approval} />
+              <Kpi icon={IndianRupee} label="Eligible Amount" value={inr(r.eligible, { short: true })} sub={`You asked ${inr(p.loanAmount, { short: true })}`} />
+              <Kpi icon={Percent} label="Est. Interest Rate" value={`${r.rate}%`} sub={`${product.name} · p.a.`} />
+              <Kpi icon={Clock} label="Monthly EMI" value={inr(r.emi)} sub={`${p.tenureMonths} Months`} />
+              <Kpi icon={Target} label="Approval Chance" value={`${Math.round(r.approval * 100)}%`} bar={r.approval} />
             </div>
             <div className="flex gap-3 rounded-xl border border-[#f3d98a] bg-gold-soft/70 p-4 text-sm text-[#5a4200]">
               <Sparkles className="mt-0.5 size-5 shrink-0 text-gold-deep" />
-              <div><b className="text-navy">Flo&apos;s verdict: </b>{verdict(r)}</div>
+              <div><b className="text-navy">Flo&apos;s Verdict: </b>{verdict(r)}</div>
             </div>
             {!compactHeader && (
-              <div className="no-print flex flex-wrap gap-2">
+              <div className="no-print grid grid-cols-1 gap-2 sm:flex sm:flex-wrap">
                 <Button className="h-10 rounded-xl px-4" onClick={() => document.getElementById("improve")?.scrollIntoView({ behavior: "smooth" })}>
-                  <TrendingUp /> Improve my score
+                  <TrendingUp /> Improve My Score
                 </Button>
                 <Button variant="outline" className="h-10 rounded-xl px-4" onClick={() => openChat("Why is my score low?")}>
-                  <Bot /> Ask Flo about my score
+                  <Bot /> Ask Flo About My Score
                 </Button>
                 <Button variant="outline" className="h-10 rounded-xl px-4" onClick={() => window.print()}>
-                  <Printer /> Download report
+                  <Printer /> Download Report
                 </Button>
               </div>
             )}
@@ -93,7 +93,7 @@ export function ScoreReport({ result: r, compactHeader = false }: { result: Scor
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="font-heading text-lg font-semibold text-navy">Score breakdown</CardTitle>
+            <CardTitle className="font-heading text-lg font-semibold text-navy">Score Breakdown</CardTitle>
             <CardDescription>6 factors lenders look at — each scored out of 100</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-5">
@@ -134,14 +134,14 @@ export function ScoreReport({ result: r, compactHeader = false }: { result: Scor
 
         <Card>
           <CardHeader>
-            <CardTitle className="font-heading text-lg font-semibold text-navy">Why your score is {r.score}, not 900</CardTitle>
+            <CardTitle className="font-heading text-lg font-semibold text-navy">Why Your Score Is {r.score}, Not 900</CardTitle>
             <CardDescription>{bad.length ? `${bad.length} issue${bad.length > 1 ? "s" : ""} found — biggest impact first` : "No major issues found"}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-2.5">
             {bad.map((i, k) => <IssueRow key={k} i={i} />)}
             {good.length > 0 && (
               <>
-                <div className="mt-2 text-xs font-bold tracking-wider text-muted-foreground uppercase">What&apos;s working</div>
+                <div className="mt-2 text-xs font-bold tracking-wider text-muted-foreground uppercase">What&apos;s Working</div>
                 {good.map((i, k) => <IssueRow key={`g${k}`} i={i} />)}
               </>
             )}
@@ -205,7 +205,7 @@ function Simulator({ r }: { r: ScoreResult }) {
   return (
     <Card id="improve" className="scroll-mt-24">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><TrendingUp className="size-5 text-gold-deep" /> Score improvement simulator</CardTitle>
+        <CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><TrendingUp className="size-5 text-gold-deep" /> Score Improvement Simulator</CardTitle>
         <CardDescription>Tick the fixes you can do — see your new score, rate and eligibility instantly</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6 lg:grid-cols-[1fr_320px]">
@@ -217,27 +217,27 @@ function Simulator({ r }: { r: ScoreResult }) {
                 <div className="text-sm font-semibold text-navy">{imp.t}</div>
                 <div className="text-xs text-muted-foreground">{imp.d}</div>
               </div>
-              <span className="ff-num text-sm font-bold text-success">+{imp.gain} pts</span>
+              <span className="ff-num text-sm font-bold text-success">+{imp.gain} Pts</span>
             </label>
           ))}
           <div className="flex gap-2 pt-3">
-            <Button size="sm" variant="outline" onClick={() => setSel(r.improvements.map((i) => i.id))}>Select all</Button>
+            <Button size="sm" variant="outline" onClick={() => setSel(r.improvements.map((i) => i.id))}>Select All</Button>
             <Button size="sm" variant="ghost" onClick={() => setSel([])}>Clear</Button>
           </div>
         </div>
         <div className="ff-navy-grad rounded-2xl p-5 text-white">
-          <div className="text-xs font-semibold tracking-wider text-[#b8c6e3] uppercase">Potential score</div>
+          <div className="text-xs font-semibold tracking-wider text-[#b8c6e3] uppercase">Potential Score</div>
           <div className="mt-1 flex items-end gap-3">
             <span className="ff-num font-heading text-5xl font-bold">{newScore}</span>
             <span className={cn("ff-num mb-2 rounded-full px-2 py-0.5 text-sm font-bold", delta > 0 ? "bg-gold text-navy" : "bg-white/10 text-white")}>
               {delta > 0 ? `+${delta}` : "±0"}
             </span>
           </div>
-          <div className="mt-1 text-sm text-[#b8c6e3]">from {r.score} today</div>
+          <div className="mt-1 text-sm text-[#b8c6e3]">From {r.score} Today</div>
           <div className="mt-5 grid gap-2.5 text-sm">
-            <Row k="Interest rate" a={`${r.rate}%`} b={sim ? `${sim.rate}%` : null} />
-            <Row k="Eligible amount" a={inr(r.eligible, { short: true })} b={sim ? inr(sim.eligible, { short: true }) : null} />
-            <Row k="Approval chance" a={`${Math.round(r.approval * 100)}%`} b={sim ? `${Math.round(sim.approval * 100)}%` : null} />
+            <Row k="Interest Rate" a={`${r.rate}%`} b={sim ? `${sim.rate}%` : null} />
+            <Row k="Eligible Amount" a={inr(r.eligible, { short: true })} b={sim ? inr(sim.eligible, { short: true }) : null} />
+            <Row k="Approval Chance" a={`${Math.round(r.approval * 100)}%`} b={sim ? `${Math.round(sim.approval * 100)}%` : null} />
           </div>
           {sel.length > 0 && sim && (
             <p className="mt-4 rounded-lg bg-white/10 p-3 text-xs leading-relaxed text-[#d8e2ea]">
@@ -271,7 +271,7 @@ function Offers({ r }: { r: ScoreResult }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><BadgeCheck className="size-5 text-trust-blue" /> Matched lender offers</CardTitle>
+        <CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><BadgeCheck className="size-5 text-trust-blue" /> Matched Lender Offers</CardTitle>
         <CardDescription>Ranked by your approval chance · demo lenders, indicative terms</CardDescription>
       </CardHeader>
       <CardContent>

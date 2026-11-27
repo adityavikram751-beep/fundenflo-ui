@@ -16,13 +16,13 @@ export function AuthGate({ children, title, sub, preview, lockedClassName }: { c
 
   return (
     <div className={lockedClassName}>
-      <div className="relative min-h-[640px] overflow-hidden rounded-2xl">
-        <div aria-hidden className="pointer-events-none select-none blur-[6px] saturate-50">{preview ?? <FakePreview />}</div>
+      <div className="relative min-h-[600px] overflow-hidden rounded-2xl sm:min-h-[640px]">
+        <div aria-hidden className="pointer-events-none absolute inset-0 select-none blur-[6px] saturate-50">{preview ?? <FakePreview />}</div>
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background/90" />
-        <div className="absolute inset-0 flex items-start justify-center p-4 pt-8 sm:pt-12">
-          <Card className="w-full max-w-md px-7 py-7 shadow-2xl sm:px-9">
+        <div className="relative z-10 flex min-h-[600px] items-center justify-center p-3 py-6 sm:min-h-[640px] sm:items-start sm:p-6 sm:pt-12">
+          <Card className="w-full max-w-md px-5 py-6 shadow-2xl sm:px-9 sm:py-7">
             <div className="-mt-1 mb-5 flex items-center gap-2 rounded-lg bg-gold-soft px-3 py-2 text-xs font-semibold text-gold-ink">
-              <Lock className="size-3.5" /> {title}
+              <Lock className="size-3.5 shrink-0" /> {title}
             </div>
             <LoginForm reason={sub} onDone={(u, isNew) => toast(isNew ? `Welcome to FundenFlo, ${u.name.split(" ")[0]}!` : `Welcome back, ${u.name.split(" ")[0]}!`)} />
           </Card>

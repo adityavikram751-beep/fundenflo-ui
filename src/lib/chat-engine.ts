@@ -172,7 +172,7 @@ export function reply(raw: string, ctx: ChatContext): BotReply {
   if (has(/callback/)) return { html: "✅ Callback requested (demo). An advisor will reach out within 2 working hours." }
   if (has(/human|advisor|adviser|agent|call|talk|contact|baat|phone|whatsapp|email/))
     return {
-      html: `${hi ? "हमारे लोन सलाहकार आपको कॉल करेंगे।" : "A FundenFlo loan advisor can call you back."}${card("📧 grow@fundenflo.com<br/>🕘 Mon–Sat, 9:30 AM – 7 PM")}`,
+      html: `${hi ? "हमारे लोन सलाहकार आपको कॉल करेंगे।" : "A FundenFlo loan advisor can call you back."}${card('📧 <span class="normal-case">grow@fundenflo.com</span><br/>🕘 Mon–Sat, 9:30 AM – 7 PM')}`,
       chips: ["Request a callback", "Check my eligibility", "Documents needed"],
     }
   if (has(/apply|start|shuru|begin/)) return { html: (hi ? "आइए शुरू करते हैं — केवल 4 आसान चरण।" : "Let's start — just 4 quick steps.") + btn("Start application", "/apply") }

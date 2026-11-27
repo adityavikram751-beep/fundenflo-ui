@@ -13,7 +13,7 @@ export function MiniEmi({ rate, months: m0, maxAmount }: { rate: number; months:
   const e = emi(amount, rate, months)
   return (
     <Card>
-      <CardHeader><CardTitle className="flex items-center gap-2 font-heading text-base font-semibold text-navy"><Calculator className="size-4 text-trust-blue" /> EMI estimate</CardTitle></CardHeader>
+      <CardHeader><CardTitle className="flex items-center gap-2 font-heading text-base font-semibold text-navy"><Calculator className="size-4 text-trust-blue" /> EMI Estimate</CardTitle></CardHeader>
       <CardContent className="grid gap-5">
         <SliderRow label="Amount" value={inr(amount, { short: true })} v={amount} min={50000} max={cap} step={50000} onChange={setAmount} />
         <SliderRow label="Tenure" value={months < 12 ? `${months} mo` : `${+(months / 12).toFixed(1)} yrs`} v={months} min={6} max={Math.max(m0, 360)} step={6} onChange={setMonths} />

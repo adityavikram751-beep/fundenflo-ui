@@ -19,11 +19,11 @@ export function ResultView() {
       <Card className="py-14">
         <CardContent className="mx-auto max-w-lg text-center">
           <span className="mx-auto mb-4 grid size-14 place-items-center rounded-2xl bg-subtle text-navy"><Gauge className="size-7" /></span>
-          <h2 className="text-2xl font-bold">No score yet</h2>
+          <h2 className="text-2xl font-bold">No Score Yet</h2>
           <p className="mt-2 text-muted-foreground">Fill the 2-minute application — your report will appear here.</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Button asChild className="h-11 rounded-xl px-5"><Link href="/apply">Start application</Link></Button>
-            <Button asChild variant="outline" className="h-11 rounded-xl px-5"><Link href="/tools">EMI calculator</Link></Button>
+            <Button asChild className="h-11 rounded-xl px-5"><Link href="/apply">Start Application</Link></Button>
+            <Button asChild variant="outline" className="h-11 rounded-xl px-5"><Link href="/tools">EMI Calculator</Link></Button>
           </div>
         </CardContent>
       </Card>
@@ -40,11 +40,11 @@ export function ResultView() {
             <span className="inline-flex items-center gap-2 text-muted-foreground"><FileText className="size-4" /> {productById(p.product).name}</span>
             <span className="inline-flex items-center gap-2 text-muted-foreground"><CalendarDays className="size-4" /> {new Date(saved.at).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}</span>
             <span className="rounded-full bg-subtle px-2.5 py-0.5 text-xs font-semibold text-navy">
-              From application form
+              From Application Form
             </span>
           </div>
           <Button asChild variant="outline" size="sm" className="no-print">
-            <Link href="/apply"><PencilLine /> Edit details</Link>
+            <Link href="/apply"><PencilLine /> Edit Details</Link>
           </Button>
         </CardContent>
       </Card>

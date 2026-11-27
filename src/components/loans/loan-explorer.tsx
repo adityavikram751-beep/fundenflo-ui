@@ -43,8 +43,8 @@ export function LoanExplorer() {
           </div>
           <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="h-11 w-full rounded-xl border border-input bg-white px-3 text-sm font-medium text-navy sm:w-auto" aria-label="Sort">
             <option value="popular">Sort: Popular</option>
-            <option value="rate">Sort: Lowest rate</option>
-            <option value="amount">Sort: Highest amount</option>
+            <option value="rate">Sort: Lowest Rate</option>
+            <option value="amount">Sort: Highest Amount</option>
           </select>
         </CardContent>
       </Card>
@@ -78,7 +78,7 @@ export function LoanExplorer() {
                   <Checkbox checked={on} onCheckedChange={() => toggle(p.id)} disabled={!on && compare.length >= 3} aria-label={`Compare ${p.name}`} /> Compare
                 </label>
                 <Button asChild variant="outline" size="sm"><Link href={`/loans/${p.id}`}>Details</Link></Button>
-                <Button asChild size="sm"><Link href={`/apply?type=${p.seg}&product=${p.id}`}>Check eligibility <ArrowRight /></Link></Button>
+                <Button asChild size="sm"><Link href={`/apply?type=${p.seg}&product=${p.id}`}>Check Eligibility <ArrowRight /></Link></Button>
               </div>
             </div>
           )
@@ -89,7 +89,7 @@ export function LoanExplorer() {
       {cmp.length >= 2 && (
         <Card className="animate-in fade-in slide-in-from-bottom-2">
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><Columns3 className="size-5 text-trust-blue" /> Side-by-side comparison</CardTitle>
+            <CardTitle className="flex items-center gap-2 font-heading text-lg font-semibold text-navy"><Columns3 className="size-5 text-trust-blue" /> Side-By-Side Comparison</CardTitle>
             <Button variant="ghost" size="sm" onClick={() => setCompare([])}><X /> Clear</Button>
           </CardHeader>
           <CardContent>
@@ -100,12 +100,12 @@ export function LoanExplorer() {
                 </thead>
                 <tbody className="divide-y">
                   {[
-                    ["Interest rate", (p: (typeof cmp)[number]) => `From ${p.rate}`],
-                    ["Maximum amount", (p: (typeof cmp)[number]) => p.max],
+                    ["Interest Rate", (p: (typeof cmp)[number]) => `From ${p.rate}`],
+                    ["Maximum Amount", (p: (typeof cmp)[number]) => p.max],
                     ["Tenure", (p: (typeof cmp)[number]) => p.tenure],
                     ["Collateral", (p: (typeof cmp)[number]) => PRODUCT_CONTENT[p.id].collateral],
-                    ["Processing fee", (p: (typeof cmp)[number]) => PRODUCT_CONTENT[p.id].processing],
-                    ["Best for", (p: (typeof cmp)[number]) => PRODUCT_CONTENT[p.id].idealFor.slice(0, 2).join(", ")],
+                    ["Processing Fee", (p: (typeof cmp)[number]) => PRODUCT_CONTENT[p.id].processing],
+                    ["Best For", (p: (typeof cmp)[number]) => PRODUCT_CONTENT[p.id].idealFor.slice(0, 2).join(", ")],
                   ].map(([label, fn]) => (
                     <tr key={label as string}>
                       <td className="px-4 py-3 font-semibold text-muted-foreground">{label as string}</td>

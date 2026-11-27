@@ -84,7 +84,7 @@ export function ChatWidget() {
         <button
           onClick={() => setOpen(true)}
           aria-label="Open Flo AI assistant"
-          className="fixed right-5 bottom-5 z-50 flex items-center gap-2.5 rounded-full bg-navy py-2.5 pr-5 pl-2.5 font-semibold text-white shadow-[0_12px_30px_rgb(10_25_47/0.35)] transition-transform hover:-translate-y-0.5"
+          className="fixed right-4 bottom-4 z-50 flex items-center gap-2 rounded-full bg-navy py-2 pr-4 pl-2 text-sm font-semibold text-white shadow-[0_12px_30px_rgb(10_25_47/0.35)] transition-transform hover:-translate-y-0.5 sm:right-5 sm:bottom-5 sm:gap-2.5 sm:py-2.5 sm:pr-5 sm:pl-2.5 sm:text-base"
         >
           <span className="relative grid size-10 place-items-center rounded-full bg-gold text-navy">
             <Bot className="size-5" />
@@ -149,7 +149,7 @@ export function ChatWidget() {
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type in English or Hindi…"
+            placeholder="Type In English Or Hindi…"
             aria-label="Message"
             className="h-11 flex-1 rounded-xl border border-input px-3 text-sm outline-none focus:border-trust-blue focus:ring-3 focus:ring-trust-blue/15"
           />

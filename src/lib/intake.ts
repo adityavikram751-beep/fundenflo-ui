@@ -295,27 +295,27 @@ export function understoodFacts(parsed: Parsed, fmt: (n: number) => string): Fac
   const isBiz = (p.type as ApplicantType) === "business"
   const yrs = (n?: number | null) => (n == null ? null : `${n} year${n === 1 ? "" : "s"}`)
   const facts: Fact[] = [
-    { key: "loanAmount", label: "Loan needed", value: p.loanAmount ? fmt(p.loanAmount) : null, ask: "How much loan do you need?", important: true },
-    { key: "product", label: "Loan type", value: p.product ? productById(p.product).name : null, ask: "What is the loan for? (machinery, working capital, home…)", important: false },
+    { key: "loanAmount", label: "Loan Needed", value: p.loanAmount ? fmt(p.loanAmount) : null, ask: "How much loan do you need?", important: true },
+    { key: "product", label: "Loan Type", value: p.product ? productById(p.product).name : null, ask: "What is the loan for? (machinery, working capital, home…)", important: false },
   ]
   if (isBiz) {
     facts.push(
-      { key: "vintageYears", label: "Business age", value: yrs(p.vintageYears), ask: "How many years old is your business?", important: true },
-      { key: "annualTurnover", label: "Yearly turnover", value: p.annualTurnover ? fmt(p.annualTurnover) : null, ask: "What is your yearly turnover?", important: true },
-      { key: "netProfit", label: "Net profit", value: p.netProfit ? fmt(p.netProfit) : null, ask: "Roughly how much profit do you make in a year?", important: true },
-      { key: "gst", label: "GST", value: p.gst == null ? null : p.gst ? "Registered" : "Not registered", ask: "Is your business GST registered?", important: false },
-      { key: "itrYears", label: "ITR filed", value: p.itrYears == null ? null : `${p.itrYears} years`, ask: "For how many years have you filed ITR?", important: false },
+      { key: "vintageYears", label: "Business Age", value: yrs(p.vintageYears), ask: "How many years old is your business?", important: true },
+      { key: "annualTurnover", label: "Yearly Turnover", value: p.annualTurnover ? fmt(p.annualTurnover) : null, ask: "What is your yearly turnover?", important: true },
+      { key: "netProfit", label: "Net Profit", value: p.netProfit ? fmt(p.netProfit) : null, ask: "Roughly how much profit do you make in a year?", important: true },
+      { key: "gst", label: "GST", value: p.gst == null ? null : p.gst ? "Registered" : "Not Registered", ask: "Is your business GST registered?", important: false },
+      { key: "itrYears", label: "ITR Filed", value: p.itrYears == null ? null : `${p.itrYears} Years`, ask: "For how many years have you filed ITR?", important: false },
     )
   } else {
     facts.push(
-      { key: "monthlyIncome", label: "Monthly income", value: p.monthlyIncome ? fmt(p.monthlyIncome) : null, ask: "What is your monthly in-hand income?", important: true },
-      { key: "experienceYears", label: "Work experience", value: yrs(p.experienceYears), ask: "How many years have you been working?", important: true },
+      { key: "monthlyIncome", label: "Monthly Income", value: p.monthlyIncome ? fmt(p.monthlyIncome) : null, ask: "What is your monthly in-hand income?", important: true },
+      { key: "experienceYears", label: "Work Experience", value: yrs(p.experienceYears), ask: "How many years have you been working?", important: true },
     )
   }
   facts.push(
     { key: "existingEmi", label: "Existing EMIs", value: p.existingEmi == null ? null : p.existingEmi === 0 ? "None" : `${fmt(p.existingEmi)}/month`, ask: "Do you pay any EMIs right now? How much per month?", important: true },
-    { key: "creditScore", label: "Credit score", value: p.newToCredit ? "New to credit" : p.creditScore ? String(p.creditScore) : null, ask: "Do you know your CIBIL score?", important: false },
-    { key: "tenureMonths", label: "Tenure", value: p.tenureMonths ? `${p.tenureMonths} months` : null, ask: "In how many years do you want to repay?", important: false },
+    { key: "creditScore", label: "Credit Score", value: p.newToCredit ? "New To Credit" : p.creditScore ? String(p.creditScore) : null, ask: "Do you know your CIBIL score?", important: false },
+    { key: "tenureMonths", label: "Tenure", value: p.tenureMonths ? `${p.tenureMonths} Months` : null, ask: "In how many years do you want to repay?", important: false },
   )
   return facts
 }

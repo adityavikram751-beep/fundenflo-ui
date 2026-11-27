@@ -19,11 +19,11 @@ export function LoginPageClient({ next }: { next: string }) {
     return (
       <div className="w-full text-center">
         <span className="mx-auto mb-4 grid size-14 place-items-center rounded-2xl bg-success-soft text-success"><CircleCheck className="size-7" /></span>
-        <h2 className="text-2xl font-bold">You&apos;re logged in</h2>
+        <h2 className="text-2xl font-bold">You&apos;re Logged In</h2>
         <p className="mt-1 text-muted-foreground">{user.name} · <span className="ff-num">{maskPhone(user.phone)}</span></p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Button asChild className="h-11 rounded-xl px-5"><Link href={next}><LayoutDashboard /> Continue</Link></Button>
-          <Button variant="outline" className="h-11 rounded-xl px-5" onClick={() => { signOut(); toast("Logged out") }}><LogOut /> Use another number</Button>
+          <Button variant="outline" className="h-11 rounded-xl px-5" onClick={() => { signOut(); toast("Logged out") }}><LogOut /> Use Another Number</Button>
         </div>
       </div>
     )

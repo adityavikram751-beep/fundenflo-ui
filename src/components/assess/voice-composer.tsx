@@ -8,9 +8,9 @@ import { devanagariToHinglish, useSpeech } from "@/lib/use-speech"
 import { cn } from "@/lib/utils"
 
 export const EXAMPLES = [
-  { id: "en", label: "Business owner · English", text: "Hi, my name is Rajesh Sharma from Pune. I run an auto parts manufacturing business which is 6 years old. Our annual turnover is 3 crore and net profit is around 25 lakh. I need a loan of 50 lakh for a new CNC machine, for 5 years. We currently pay EMI of 40,000 per month. My CIBIL score is 752 and we are GST registered." },
+  { id: "en", label: "Business Owner · English", text: "Hi, my name is Rajesh Sharma from Pune. I run an auto parts manufacturing business which is 6 years old. Our annual turnover is 3 crore and net profit is around 25 lakh. I need a loan of 50 lakh for a new CNC machine, for 5 years. We currently pay EMI of 40,000 per month. My CIBIL score is 752 and we are GST registered." },
   { id: "hi", label: "व्यापार / दुकान · हिंदी", text: "मेरा नाम सुनील है, इंदौर में किराना होलसेल का बिज़नेस है जो 4 साल पुराना है। साल का टर्नओवर डेढ़ करोड़ है और मुनाफा 12 लाख। मुझे स्टॉक के लिए 25 लाख का लोन चाहिए, 3 साल के लिए। अभी 15 हज़ार की ईएमआई चल रही है। जीएसटी रजिस्टर्ड है, सिबिल 718 है।" },
-  { id: "sal", label: "Salaried · Home loan", text: "I am Priya, 31 years old, working at an IT company in Bengaluru for 7 years. My in-hand salary is 1.2 lakh per month. I want a home loan of 60 lakh for 20 years. I have a car loan EMI of 14,000. My credit score is 781." },
+  { id: "sal", label: "Salaried · Home Loan", text: "I am Priya, 31 years old, working at an IT company in Bengaluru for 7 years. My in-hand salary is 1.2 lakh per month. I want a home loan of 60 lakh for 20 years. I have a car loan EMI of 14,000. My credit score is 781." },
 ]
 
 const LANGS = [
@@ -55,7 +55,7 @@ export function VoiceComposer({ text, onText, textRef }: { text: string; onText:
           </button>
           <div className="min-w-0 flex-1 text-center sm:text-left">
             <div className="font-heading text-xl font-semibold text-white">
-              {speech.listening ? "Listening… speak naturally" : "Tap the mic and tell us about your loan"}
+              {speech.listening ? "Listening… Speak Naturally" : "Tap The Mic And Tell Us About Your Loan"}
             </div>
             {speech.listening ? (
               <div className="mt-2 flex min-h-6 items-center gap-3">
@@ -83,20 +83,20 @@ export function VoiceComposer({ text, onText, textRef }: { text: string; onText:
       {/* text */}
       <div>
         <div className="mb-2 flex items-center justify-between">
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-muted-foreground uppercase"><Keyboard className="size-3.5" /> Or type — your words appear here</span>
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-muted-foreground uppercase"><Keyboard className="size-3.5" /> Or Type — Your Words Appear Here</span>
           {text && <button onClick={() => onText("")} className="inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-destructive"><X className="size-3.5" /> Clear</button>}
         </div>
         <Textarea
           ref={textRef}
           value={text}
           onChange={(e) => onText(e.target.value)}
-          placeholder={"e.g. I need a loan of 50 lakh. My business is 6 years old, turnover 3 crore, profit 25 lakh. EMI 40,000 per month. CIBIL 752."}
+          placeholder={"E.g. I need a loan of 50 lakh. My business is 6 years old, turnover 3 crore, profit 25 lakh. EMI 40,000 per month. CIBIL 752."}
           className="min-h-[170px] bg-white text-[15px] leading-relaxed"
         />
       </div>
 
       <div>
-        <div className="mb-2 flex items-center gap-1.5 text-xs font-bold tracking-wider text-muted-foreground uppercase"><Sparkles className="size-3.5 text-gold-deep" /> Try an example</div>
+        <div className="mb-2 flex items-center gap-1.5 text-xs font-bold tracking-wider text-muted-foreground uppercase"><Sparkles className="size-3.5 text-gold-deep" /> Try An Example</div>
         <div className="grid gap-2 sm:grid-cols-3">
           {EXAMPLES.map((e) => (
             <button key={e.id} onClick={() => playExample(e.text)} className="flex items-center gap-2 rounded-xl border-[1.5px] border-input bg-white p-3 text-left text-sm font-semibold text-navy transition-colors hover:border-trust-blue">
@@ -108,7 +108,7 @@ export function VoiceComposer({ text, onText, textRef }: { text: string; onText:
 
       <div className="flex items-center justify-between gap-3 rounded-xl border bg-background px-4 py-3 text-sm">
         <span className="text-muted-foreground">Prefer to just talk to a person?</span>
-        <Button variant="outline" size="sm" onClick={() => toast("Callback requested (demo) — an advisor will call within 2 working hours")}><PhoneCall /> Request a call</Button>
+        <Button variant="outline" size="sm" onClick={() => toast("Callback requested (demo) — an advisor will call within 2 working hours")}><PhoneCall /> Request A Call</Button>
       </div>
     </div>
   )

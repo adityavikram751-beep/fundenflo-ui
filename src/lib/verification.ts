@@ -24,15 +24,15 @@ export function docSlots(type: ApplicantType): DocSlot[] {
   const fy = fyLabels()
   return type === "business"
     ? [
-        { id: "bs_cur", name: `Balance sheet & P&L — ${fy.cur}`, note: "Audited / CA-certified, PDF", req: true },
-        { id: "bs_prev", name: `Balance sheet & P&L — ${fy.prev}`, note: "Previous year, for growth trend", req: true },
-        { id: "bank", name: "Bank statement — last 12 months", note: "Main current account, PDF", req: true },
-        { id: "gst", name: "GST returns (GSTR-3B)", note: "Optional — cross-checks turnover", req: false },
+        { id: "bs_cur", name: `Balance Sheet & P&L — ${fy.cur}`, note: "Audited / CA-certified, PDF", req: true },
+        { id: "bs_prev", name: `Balance Sheet & P&L — ${fy.prev}`, note: "Previous year, for growth trend", req: true },
+        { id: "bank", name: "Bank Statement — Last 12 Months", note: "Main current account, PDF", req: true },
+        { id: "gst", name: "GST Returns (GSTR-3B)", note: "Optional — cross-checks turnover", req: false },
       ]
     : [
-        { id: "salary", name: "Salary slips — last 3 months", note: "PDF or photo", req: true },
-        { id: "bank", name: "Bank statement — last 6 months", note: "Salary account, PDF", req: true },
-        { id: "itr", name: "ITR / Form 16 — last 2 years", note: "Optional — confirms income", req: false },
+        { id: "salary", name: "Salary Slips — Last 3 Months", note: "PDF or photo", req: true },
+        { id: "bank", name: "Bank Statement — Last 6 Months", note: "Salary account, PDF", req: true },
+        { id: "itr", name: "ITR / Form 16 — Last 2 Years", note: "Optional — confirms income", req: false },
       ]
 }
 
@@ -45,18 +45,18 @@ export interface Reading {
 }
 
 export const READING_FIELDS: { k: keyof Reading; l: string; src: string; money: boolean; type: ApplicantType | "both"; needs: string[] }[] = [
-  { k: "revenueCur", l: "Revenue (latest FY)", src: "Balance sheet", money: true, type: "business", needs: ["bs_cur"] },
-  { k: "revenuePrev", l: "Revenue (previous FY)", src: "Balance sheet", money: true, type: "business", needs: ["bs_prev"] },
-  { k: "profitCur", l: "Net profit (latest FY)", src: "P&L", money: true, type: "business", needs: ["bs_cur"] },
-  { k: "profitPrev", l: "Net profit (previous FY)", src: "P&L", money: true, type: "business", needs: ["bs_prev"] },
-  { k: "totalDebt", l: "Total borrowings", src: "Balance sheet", money: true, type: "business", needs: ["bs_cur"] },
-  { k: "netWorth", l: "Net worth", src: "Balance sheet", money: true, type: "business", needs: ["bs_cur"] },
-  { k: "gstTurnover", l: "GST turnover (12 months)", src: "GST returns", money: true, type: "business", needs: ["gst"] },
-  { k: "salaryCredit", l: "Net salary credited / month", src: "Salary slips", money: true, type: "individual", needs: ["salary"] },
-  { k: "avgMonthlyCredits", l: "Avg monthly credits", src: "Bank statement", money: true, type: "both", needs: ["bank"] },
-  { k: "avgBalance", l: "Avg monthly balance", src: "Bank statement", money: true, type: "both", needs: ["bank"] },
-  { k: "emiDebits", l: "EMI debits found / month", src: "Bank statement", money: true, type: "both", needs: ["bank"] },
-  { k: "bounces", l: "Cheque / EMI bounces", src: "Bank statement", money: false, type: "both", needs: ["bank"] },
+  { k: "revenueCur", l: "Revenue (Latest FY)", src: "Balance Sheet", money: true, type: "business", needs: ["bs_cur"] },
+  { k: "revenuePrev", l: "Revenue (Previous FY)", src: "Balance Sheet", money: true, type: "business", needs: ["bs_prev"] },
+  { k: "profitCur", l: "Net Profit (Latest FY)", src: "P&L", money: true, type: "business", needs: ["bs_cur"] },
+  { k: "profitPrev", l: "Net Profit (Previous FY)", src: "P&L", money: true, type: "business", needs: ["bs_prev"] },
+  { k: "totalDebt", l: "Total Borrowings", src: "Balance Sheet", money: true, type: "business", needs: ["bs_cur"] },
+  { k: "netWorth", l: "Net Worth", src: "Balance Sheet", money: true, type: "business", needs: ["bs_cur"] },
+  { k: "gstTurnover", l: "GST Turnover (12 Months)", src: "GST Returns", money: true, type: "business", needs: ["gst"] },
+  { k: "salaryCredit", l: "Net Salary Credited / Month", src: "Salary Slips", money: true, type: "individual", needs: ["salary"] },
+  { k: "avgMonthlyCredits", l: "Avg Monthly Credits", src: "Bank Statement", money: true, type: "both", needs: ["bank"] },
+  { k: "avgBalance", l: "Avg Monthly Balance", src: "Bank Statement", money: true, type: "both", needs: ["bank"] },
+  { k: "emiDebits", l: "EMI Debits Found / Month", src: "Bank Statement", money: true, type: "both", needs: ["bank"] },
+  { k: "bounces", l: "Cheque / EMI Bounces", src: "Bank Statement", money: false, type: "both", needs: ["bank"] },
 ]
 
 export type Scenario = "match" | "mismatch" | "upload"
