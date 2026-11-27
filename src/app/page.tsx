@@ -188,7 +188,7 @@ export default function HomePage() {
                 </li>
               ))}
             </ol>
-            <div className="mt-8 grid grid-cols-3 gap-3">
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
               {SERVE.map((s) => (
                 <div key={s.t} className="flex flex-col items-center gap-2 rounded-xl border bg-background p-3 text-center text-xs font-semibold text-navy">
                   <s.icon className="size-5 text-trust-blue" /> {s.t}
@@ -242,7 +242,7 @@ export default function HomePage() {
           </Accordion>
         </div>
         <div className="ff-container mt-16">
-          <div className="ff-navy-grad flex flex-col items-start justify-between gap-6 rounded-3xl p-10 text-white md:flex-row md:items-center">
+          <div className="ff-navy-grad flex flex-col items-start justify-between gap-6 rounded-3xl p-6 text-white sm:p-10 md:flex-row md:items-center">
             <div>
               <h2 className="text-3xl font-bold text-white">Looking to strengthen your finances?</h2>
               <p className="mt-2 text-[#c9d4e3]">Get your FundenFlo Score and matched offers in under 2 minutes.</p>

@@ -507,7 +507,7 @@ function Field({ fd, value, onChange, busy, onAction }: { fd: FieldDef; value: s
         </select>
       ) : (
         <div className="flex gap-2">
-          <div className="relative flex-1">
+          <div className="relative min-w-0 flex-1">
             {fd.kind === "money" && <span className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-sm font-semibold text-muted-foreground">₹</span>}
             <Input
               id={id}
@@ -578,7 +578,7 @@ function ReviewBlock({ title, rows, onEdit }: { title: string; rows: [string, st
       </div>
       <dl className="grid gap-1 text-sm">
         {rows.map(([k, v]) => (
-          <div key={k} className="flex justify-between gap-3"><dt className="text-muted-foreground">{k}</dt><dd className="text-right font-medium text-navy">{v}</dd></div>
+          <div key={k} className="flex justify-between gap-3"><dt className="shrink-0 text-muted-foreground">{k}</dt><dd className="min-w-0 break-words text-right font-medium text-navy">{v}</dd></div>
         ))}
       </dl>
     </div>

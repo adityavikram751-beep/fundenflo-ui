@@ -98,7 +98,7 @@ export function ChatWidget() {
         role="dialog"
         aria-label="Flo AI assistant"
         className={cn(
-          "fixed right-0 bottom-0 z-50 flex h-full w-full origin-bottom-right flex-col overflow-hidden bg-white shadow-2xl transition-all duration-200 sm:right-5 sm:bottom-5 sm:h-[min(640px,calc(100vh-40px))] sm:w-[400px] sm:rounded-2xl sm:border",
+          "fixed right-0 bottom-0 z-50 flex h-dvh w-full origin-bottom-right flex-col overflow-hidden bg-white shadow-2xl transition-all duration-200 sm:right-5 sm:bottom-5 sm:h-[min(640px,calc(100dvh-40px))] sm:w-[400px] sm:rounded-2xl sm:border",
           open ? "scale-100 opacity-100" : "pointer-events-none scale-90 opacity-0",
         )}
       >

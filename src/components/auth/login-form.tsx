@@ -151,9 +151,9 @@ export function LoginForm({ onDone, reason, className }: { onDone: (u: User, isN
 
           <div className={cn("mt-5 flex justify-center sm:justify-start", shake && "animate-[shake_.4s]")}>
             <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS} value={otp} ref={otpRef} onChange={(v) => { if (busy) return; setOtp(v); setErr(null); if (v.length === 6 && tries < MAX_TRIES) verify(v) }} autoFocus disabled={tries >= MAX_TRIES} aria-label="One-time password">
-              <InputOTPGroup className="gap-2">
+              <InputOTPGroup className="gap-1.5 sm:gap-2">
                 {Array.from({ length: 6 }).map((_, i) => (
-                  <InputOTPSlot key={i} index={i} aria-invalid={!!err} className="ff-num size-12 rounded-xl border-[1.5px] font-heading text-xl font-bold text-navy first:rounded-xl last:rounded-xl data-[active=true]:border-trust-blue data-[active=true]:ring-trust-blue/20 sm:size-13" />
+                  <InputOTPSlot key={i} index={i} aria-invalid={!!err} className="ff-num size-10 rounded-xl border-[1.5px] font-heading text-lg font-bold text-navy first:rounded-xl last:rounded-xl data-[active=true]:border-trust-blue data-[active=true]:ring-trust-blue/20 sm:size-12 sm:text-xl" />
                 ))}
               </InputOTPGroup>
             </InputOTP>

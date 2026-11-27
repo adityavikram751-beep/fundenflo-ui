@@ -48,7 +48,7 @@ export function ScoreReport({ result: r, compactHeader = false }: { result: Scor
   const good = r.issues.filter((i) => i.sev === "good")
 
   return (
-    <div className="grid gap-6">
+    <div className="grid min-w-0 gap-6 [&>*]:min-w-0">
       {/* ---------- top: gauge + KPIs ---------- */}
       <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
         <Card className="py-6">
@@ -101,7 +101,7 @@ export function ScoreReport({ result: r, compactHeader = false }: { result: Scor
               const Icon = SEV_ICON[f.status]
               return (
                 <div key={f.key}>
-                  <div className="mb-1.5 flex items-baseline justify-between gap-3">
+                  <div className="mb-1.5 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                     <div className="text-sm font-semibold text-navy">
                       {f.name} <span className="text-xs font-medium text-muted-foreground">· {f.weight}% weight</span>
                     </div>
@@ -109,7 +109,7 @@ export function ScoreReport({ result: r, compactHeader = false }: { result: Scor
                       <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: SEV_COLOR[f.status] }}>
                         <Icon className="size-3.5" /> {SEV_LABEL[f.status]}
                       </span>
-                      <b className="ff-num w-14 text-right text-navy">{Math.round(f.value)}/100</b>
+                      <b className="ff-num text-right text-navy sm:w-14">{Math.round(f.value)}/100</b>
                     </div>
                   </div>
                   <Tooltip>
@@ -157,9 +157,9 @@ export function ScoreReport({ result: r, compactHeader = false }: { result: Scor
 
 function Kpi({ icon: Icon, label, value, sub, bar }: { icon: React.ElementType; label: string; value: string; sub?: string; bar?: number }) {
   return (
-    <div className="rounded-xl border bg-subtle/60 p-3.5">
-      <div className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider text-muted-foreground uppercase"><Icon className="size-3.5" /> {label}</div>
-      <div className="ff-num mt-1 font-heading text-2xl font-bold text-navy">{value}</div>
+    <div className="rounded-xl border bg-subtle/60 p-3 sm:p-3.5">
+      <div className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider text-muted-foreground uppercase"><Icon className="size-3.5 shrink-0" /> {label}</div>
+      <div className="ff-num mt-1 font-heading text-xl font-bold text-navy sm:text-2xl">{value}</div>
       {sub && <div className="text-xs text-muted-foreground">{sub}</div>}
       {bar != null && (
         <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-track">
@@ -173,13 +173,16 @@ function Kpi({ icon: Icon, label, value, sub, bar }: { icon: React.ElementType; 
 function IssueRow({ i }: { i: Issue }) {
   const Icon = SEV_ICON[i.sev]
   return (
-    <div className={cn("grid grid-cols-[auto_1fr_auto] items-start gap-3 rounded-xl border border-l-4 bg-white p-3.5")} style={{ borderLeftColor: SEV_COLOR[i.sev] }}>
-      <div className={cn("grid size-8 place-items-center rounded-lg", SEV_BG[i.sev])} style={{ color: SEV_COLOR[i.sev] }}>
+    <div className="flex items-start gap-3 rounded-xl border border-l-4 bg-white p-3.5" style={{ borderLeftColor: SEV_COLOR[i.sev] }}>
+      <div className={cn("grid size-8 shrink-0 place-items-center rounded-lg", SEV_BG[i.sev])} style={{ color: SEV_COLOR[i.sev] }}>
         <Icon className="size-4" />
       </div>
-      <div className="min-w-0">
-        <div className="text-sm font-semibold text-navy">{i.title}</div>
-        <p className="text-[13px] text-muted-foreground">{i.why}</p>
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+          <div className="text-sm font-semibold text-navy">{i.title}</div>
+          {i.impact ? <span className="ff-num text-xs font-bold whitespace-nowrap sm:text-sm" style={{ color: SEV_COLOR[i.sev] }}>−{i.impact} pts</span> : null}
+        </div>
+        <p className="mt-0.5 text-[13px] text-muted-foreground">{i.why}</p>
         {i.sev !== "good" && (
           <div className="mt-2 flex gap-2 rounded-lg bg-subtle px-2.5 py-2 text-[13px] text-navy">
             <Lightbulb className="mt-0.5 size-3.5 shrink-0 text-gold-deep" />
@@ -187,7 +190,6 @@ function IssueRow({ i }: { i: Issue }) {
           </div>
         )}
       </div>
-      {i.impact ? <span className="ff-num text-sm font-bold whitespace-nowrap" style={{ color: SEV_COLOR[i.sev] }}>−{i.impact} pts</span> : <span />}
     </div>
   )
 }
@@ -273,7 +275,42 @@ function Offers({ r }: { r: ScoreResult }) {
         <CardDescription>Ranked by your approval chance · demo lenders, indicative terms</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto rounded-xl border">
+        {/* mobile cards */}
+        <div className="grid gap-3 md:hidden">
+          {r.offers.map((o, i) => (
+            <div key={o.code} className={cn("rounded-xl border p-4", i === 0 && "border-gold bg-gold-soft/30")}>
+              <div className="flex items-center gap-3">
+                <span className="grid size-9 shrink-0 place-items-center rounded-lg text-xs font-extrabold text-white" style={{ background: o.color }}>{o.code}</span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-1.5 font-semibold text-navy">
+                    <span>{o.name}</span>
+                    {i === 0 && <span className="rounded bg-gold px-1.5 py-px text-[10px] font-extrabold text-navy">BEST MATCH</span>}
+                  </div>
+                  <div className="text-xs text-muted-foreground">{o.type} · {o.fee} · {o.speed}</div>
+                </div>
+              </div>
+              <div className="mt-3 grid grid-cols-3 gap-2 rounded-lg bg-white/80 p-2.5 text-center">
+                <div><div className="text-[10px] text-muted-foreground uppercase">Rate</div><div className="ff-num font-bold text-navy">{o.rate}%</div></div>
+                <div><div className="text-[10px] text-muted-foreground uppercase">Amount</div><div className="ff-num font-bold text-navy">{inr(o.amount, { short: true })}</div></div>
+                <div><div className="text-[10px] text-muted-foreground uppercase">EMI</div><div className="ff-num font-bold text-navy">{inr(o.emi)}</div></div>
+              </div>
+              <div className="mt-3 flex items-center gap-3">
+                <div className="flex flex-1 items-center gap-2">
+                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-track"><div className="h-full rounded-full bg-chart-1" style={{ width: `${o.chance}%` }} /></div>
+                  <span className="ff-num text-xs font-bold text-navy">{o.chance}%</span>
+                </div>
+                {chosen?.code === o.code ? (
+                  <Button size="sm" variant="outline" asChild><Link href="/dashboard"><CircleCheck className="text-success" /> Selected</Link></Button>
+                ) : (
+                  <Button size="sm" disabled={o.chance < 10} onClick={() => select(o)}>Select <ArrowRight /></Button>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* desktop table */}
+        <div className="hidden overflow-x-auto rounded-xl border md:block">
           <table className="w-full min-w-[760px] text-sm">
             <thead className="bg-subtle text-left text-[11px] font-bold tracking-wider text-muted-foreground uppercase">
               <tr>

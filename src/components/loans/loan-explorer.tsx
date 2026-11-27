@@ -29,19 +29,19 @@ export function LoanExplorer() {
   const cmp = PRODUCTS.filter((p) => compare.includes(p.id))
 
   return (
-    <div className="grid gap-6">
+    <div className="grid min-w-0 gap-6 [&>*]:min-w-0">
       <Card className="py-4">
-        <CardContent className="flex flex-wrap items-center gap-3">
-          <div className="relative min-w-56 flex-1">
+        <CardContent className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <div className="relative w-full sm:min-w-56 sm:flex-1">
             <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search loans — e.g. machinery, home, OD" className="h-11 bg-white pl-9" aria-label="Search loans" />
           </div>
-          <div role="tablist" className="inline-flex rounded-xl border bg-subtle p-1">
+          <div role="tablist" className="grid w-full grid-cols-3 rounded-xl border bg-subtle p-1 sm:inline-flex sm:w-auto">
             {([["all", "All"], ["business", "Business / MSME"], ["individual", "Individual"]] as const).map(([id, l]) => (
-              <button key={id} role="tab" aria-selected={seg === id} onClick={() => setSeg(id)} className={cn("rounded-lg px-3.5 py-2 text-sm font-semibold text-muted-foreground", seg === id && "bg-white text-navy shadow-sm")}>{l}</button>
+              <button key={id} role="tab" aria-selected={seg === id} onClick={() => setSeg(id)} className={cn("truncate rounded-lg px-2 py-2 text-xs font-semibold text-muted-foreground sm:px-3.5 sm:text-sm", seg === id && "bg-white text-navy shadow-sm")}>{l}</button>
             ))}
           </div>
-          <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="h-11 rounded-xl border border-input bg-white px-3 text-sm font-medium text-navy" aria-label="Sort">
+          <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="h-11 w-full rounded-xl border border-input bg-white px-3 text-sm font-medium text-navy sm:w-auto" aria-label="Sort">
             <option value="popular">Sort: Popular</option>
             <option value="rate">Sort: Lowest rate</option>
             <option value="amount">Sort: Highest amount</option>
@@ -73,7 +73,7 @@ export function LoanExplorer() {
               <ul className="mt-4 grid gap-1.5 text-sm text-muted-foreground">
                 {c.highlights.slice(0, 2).map((h) => <li key={h} className="flex gap-2"><span className="mt-2 size-1.5 shrink-0 rounded-full bg-gold-deep" />{h}</li>)}
               </ul>
-              <div className="mt-auto flex items-center gap-2 pt-5">
+              <div className="mt-auto flex flex-wrap items-center gap-2 pt-5">
                 <label className="mr-auto flex cursor-pointer items-center gap-2 text-xs font-semibold text-muted-foreground">
                   <Checkbox checked={on} onCheckedChange={() => toggle(p.id)} disabled={!on && compare.length >= 3} aria-label={`Compare ${p.name}`} /> Compare
                 </label>

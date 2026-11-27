@@ -111,7 +111,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <div className="ff-navy-grad flex flex-col items-start justify-between gap-6 rounded-3xl p-10 text-white md:flex-row md:items-center">
+        <div className="ff-navy-grad flex flex-col items-start justify-between gap-6 rounded-3xl p-6 text-white sm:p-10 md:flex-row md:items-center">
           <div>
             <h2 className="text-3xl font-bold text-white">Let&apos;s find your right funding</h2>
             <p className="mt-2 text-[#c9d4e3]">Tell us what you need — in your own words.</p>

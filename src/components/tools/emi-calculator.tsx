@@ -73,13 +73,13 @@ export function EmiCalculator() {
           </div>
         </div>
 
-        <div className="lg:col-span-2">
+        <div className="min-w-0 lg:col-span-2">
           <button onClick={() => setShowTable((s) => !s)} className="inline-flex items-center gap-1 text-sm font-semibold text-trust-blue hover:underline">
             <ChevronRight className={cn("size-4 transition-transform", showTable && "rotate-90")} /> {showTable ? "Hide" : "Show"} year-wise repayment schedule
           </button>
           {showTable && (
             <div className="mt-3 max-h-80 overflow-auto rounded-xl border">
-              <table className="w-full text-sm">
+              <table className="w-full min-w-[460px] text-sm">
                 <thead className="sticky top-0 bg-subtle text-left text-[11px] font-bold tracking-wider text-muted-foreground uppercase">
                   <tr><th className="px-4 py-2.5">Year</th><th className="px-4 py-2.5 text-right">Principal paid</th><th className="px-4 py-2.5 text-right">Interest paid</th><th className="px-4 py-2.5 text-right">Balance</th></tr>
                 </thead>
@@ -116,7 +116,7 @@ export function SliderRow({ label, value, v, min, max, step, onChange }: { label
 
 function LegendRow({ color, label, value }: { color?: string; label: string; value: string }) {
   return (
-    <div className="flex min-w-48 items-center gap-2.5">
+    <div className="flex w-full items-center gap-2.5 sm:min-w-48">
       {color ? <i className="size-3 rounded-sm" style={{ background: color }} /> : <i className="size-3" />}
       <span className="text-muted-foreground">{label}</span>
       <b className="ff-num ml-auto pl-4 text-navy">{value}</b>

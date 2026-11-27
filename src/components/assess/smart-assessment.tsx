@@ -123,7 +123,7 @@ function SmartAssessmentBody() {
   const stepIdx = a.stage === "tell" ? 0 : a.stage === "verified" ? 3 : Object.keys(a.uploaded).length ? 2 : 1
 
   return (
-    <div ref={topRef} className="relative grid scroll-mt-24 gap-6">
+    <div ref={topRef} className="relative grid min-w-0 scroll-mt-24 gap-6 [&>*]:min-w-0">
       <Stepper idx={stepIdx} />
 
       {/* ================= STAGE 1: TELL ================= */}
@@ -213,7 +213,7 @@ function SmartAssessmentBody() {
       {a.stage === "verified" && prelim && verified && verification && a.reading && (
         <>
           <VerifiedHero prelim={prelim} verified={verified} matched={verification.matched} flagged={verification.flagged} onRestart={() => { save(KEYS.assessment, EMPTY); toast("Started a new assessment") }} onReupload={() => update((s) => ({ ...s, stage: "assessed" }))} />
-          <div className="grid gap-6 xl:grid-cols-[1.35fr_0.65fr]">
+          <div className="grid min-w-0 gap-6 xl:grid-cols-[1.35fr_0.65fr] [&>*]:min-w-0">
             <ChecksTable checks={verification.checks} />
             <ReadingEditor reading={a.reading} isBiz={isBiz} uploaded={a.uploaded} onChange={(k, val) => update((s) => ({ ...s, reading: { ...(s.reading ?? {}), [k]: val } }))} />
           </div>
@@ -346,13 +346,13 @@ function VerifiedHero({ prelim, verified, matched, flagged, onRestart, onReuploa
             <Button asChild size="sm" className="bg-gold font-bold text-navy hover:bg-[#ffc727]"><Link href="/dashboard">Go to dashboard <ArrowRight /></Link></Button>
           </div>
         </div>
-        <div className="flex items-center gap-5 rounded-2xl bg-white/10 px-6 py-5 backdrop-blur">
-          <div className="text-center"><div className="text-xs text-[#9fb0d0]">Self-declared</div><div className="ff-num font-heading text-4xl font-bold text-[#c9d4e3]">{prelim.score}</div></div>
+        <div className="flex w-full items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-4 backdrop-blur sm:w-auto sm:justify-start sm:gap-5 sm:px-6 sm:py-5">
+          <div className="text-center"><div className="text-xs text-[#9fb0d0]">Self-declared</div><div className="ff-num font-heading text-3xl font-bold text-[#c9d4e3] sm:text-4xl">{prelim.score}</div></div>
           <div className="flex flex-col items-center">
-            {up ? <TrendingUp className="size-6 text-gold" /> : <TrendingDown className="size-6 text-[#ff9b8f]" />}
-            <span className={cn("ff-num mt-1 rounded-full px-2 py-0.5 text-sm font-bold", up ? "bg-gold text-navy" : "bg-[#ff9b8f] text-navy")}>{up ? "+" : ""}{delta}</span>
+            {up ? <TrendingUp className="size-5 text-gold sm:size-6" /> : <TrendingDown className="size-5 text-[#ff9b8f] sm:size-6" />}
+            <span className={cn("ff-num mt-1 rounded-full px-2 py-0.5 text-xs font-bold sm:text-sm", up ? "bg-gold text-navy" : "bg-[#ff9b8f] text-navy")}>{up ? "+" : ""}{delta}</span>
           </div>
-          <div className="text-center"><div className="text-xs text-[#9fb0d0]">Verified</div><div className="ff-num font-heading text-5xl font-bold text-white">{verified.score}</div><div className="text-xs font-semibold text-gold">{verified.grade.label}</div></div>
+          <div className="text-center"><div className="text-xs text-[#9fb0d0]">Verified</div><div className="ff-num font-heading text-4xl font-bold text-white sm:text-5xl">{verified.score}</div><div className="text-xs font-semibold text-gold">{verified.grade.label}</div></div>
         </div>
       </div>
     </div>
@@ -422,7 +422,7 @@ function ReadingEditor({ reading, isBiz, uploaded, onChange }: { reading: Readin
               <div className="truncate text-sm font-medium text-navy">{f.l}</div>
               <div className="text-[11px] text-muted-foreground">{f.src}{f.money && reading[f.k] ? ` · ${inr(reading[f.k], { short: true })}` : ""}</div>
             </div>
-            <div className="relative w-36">
+            <div className="relative w-28 sm:w-36">
               {f.money && <span className="pointer-events-none absolute top-1/2 left-2.5 -translate-y-1/2 text-xs text-muted-foreground">₹</span>}
               <Input inputMode="numeric" value={String(reading[f.k] ?? "")} onChange={(e) => onChange(f.k, Number(e.target.value.replace(/[^\d]/g, "")) || 0)} className={cn("ff-num h-9 bg-white text-right text-sm", f.money && "pl-6")} aria-label={f.l} />
             </div>

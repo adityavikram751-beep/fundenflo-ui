@@ -106,7 +106,14 @@ function DashboardBody({ saved }: { saved: SavedResult | null }) {
       </aside>
 
       {/* ---------- main ---------- */}
-      <div className="grid gap-6">
+      <div className="grid min-w-0 gap-6">
+        <nav aria-label="Dashboard sections" className="flex gap-2 overflow-x-auto pb-1 lg:hidden">
+          {SIDE.map((s) => (
+            <a key={s.id} href={`#${s.id}`} className="inline-flex shrink-0 items-center gap-1.5 rounded-full border bg-white px-3.5 py-1.5 text-xs font-semibold text-navy shadow-xs hover:bg-subtle">
+              <s.icon className="size-3.5 text-trust-blue" /> {s.label}
+            </a>
+          ))}
+        </nav>
         {isDemo && (
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#f3d98a] bg-gold-soft/70 px-4 py-3 text-sm text-[#5a4200]">
             <span><b className="text-navy">No assessment yet.</b> Showing a sample profile below — run your own to see your real numbers.</span>
@@ -303,7 +310,7 @@ function Stat({ icon: Icon, label, value, sub }: { icon: React.ElementType; labe
     <Card className="py-4">
       <CardContent>
         <div className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider text-muted-foreground uppercase"><Icon className="size-3.5 text-trust-blue" /> {label}</div>
-        <div className="ff-num mt-1 font-heading text-2xl font-bold text-navy">{value}</div>
+        <div className="ff-num mt-1 font-heading text-xl font-bold text-navy sm:text-2xl">{value}</div>
         {sub && <div className="truncate text-xs text-muted-foreground">{sub}</div>}
       </CardContent>
     </Card>

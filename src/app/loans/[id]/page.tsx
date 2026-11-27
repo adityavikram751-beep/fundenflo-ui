@@ -48,11 +48,11 @@ export default async function LoanDetailPage({ params }: PageProps<"/loans/[id]"
                 <Button asChild variant="outline" className="h-12 rounded-xl border-white/25 bg-white/10 px-6 font-semibold text-white hover:bg-white/20 hover:text-white"><Link href="/assess"><Mic /> Speak your requirement</Link></Button>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {[["Rate from", p.rate], ["Up to", p.max], ["Tenure", p.tenure]].map(([k, v]) => (
-                <div key={k} className="rounded-2xl border border-white/10 bg-white/10 p-4 text-center backdrop-blur">
-                  <div className="text-[11px] font-semibold tracking-wider text-[#9fb0d0] uppercase">{k}</div>
-                  <div className="ff-num mt-1 font-heading text-xl font-bold text-white">{v}</div>
+                <div key={k} className="rounded-2xl border border-white/10 bg-white/10 p-3 text-center backdrop-blur sm:p-4">
+                  <div className="text-[10px] font-semibold tracking-wider text-[#9fb0d0] uppercase sm:text-[11px]">{k}</div>
+                  <div className="ff-num mt-1 font-heading text-base font-bold text-white sm:text-xl">{v}</div>
                 </div>
               ))}
             </div>
@@ -89,7 +89,7 @@ export default async function LoanDetailPage({ params }: PageProps<"/loans/[id]"
                 <table className="w-full text-sm">
                   <tbody className="divide-y">
                     {[["Interest rate", `From ${p.rate} p.a. — final rate depends on your FundenFlo Score`], ["Processing fee", c.processing], ["Collateral", c.collateral], ["Prepayment", p.seg === "individual" ? "Nil on floating-rate loans for individuals" : "Usually 2–4% on the prepaid amount; nil at select lenders"], ["FundenFlo advisory fee", "Free eligibility check · no hidden charges"]].map(([k, v]) => (
-                      <tr key={k}><td className="w-48 bg-subtle/60 px-4 py-3 font-semibold text-muted-foreground">{k}</td><td className="px-4 py-3 text-navy">{v}</td></tr>
+                      <tr key={k}><td className="w-32 bg-subtle/60 px-3 py-3 font-semibold text-muted-foreground sm:w-48 sm:px-4">{k}</td><td className="px-3 py-3 text-navy sm:px-4">{v}</td></tr>
                     ))}
                   </tbody>
                 </table>
