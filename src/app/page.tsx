@@ -43,8 +43,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative mx-auto h-[540px] w-full max-w-[480px]">
-            <div className="absolute inset-x-4 top-0 rounded-3xl border bg-white p-6 shadow-[0_24px_60px_rgb(10_25_47/0.16)]">
+          <div className="relative mx-auto grid w-full max-w-[480px] gap-3 sm:block sm:h-[540px]">
+            <div className="rounded-3xl border bg-white p-6 shadow-[0_24px_60px_rgb(10_25_47/0.16)] sm:absolute sm:inset-x-4 sm:top-0">
               <div className="mb-1 flex items-center justify-between">
                 <span className="text-sm font-semibold text-navy">Your loan readiness</span>
                 <span className="rounded-full bg-success-soft px-2 py-0.5 text-xs font-bold text-success">Live AI score</span>
@@ -59,7 +59,7 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <div className="absolute right-0 bottom-0 w-64 animate-float rounded-2xl border bg-white p-4 shadow-xl">
+            <div className="rounded-2xl border bg-white p-4 shadow-xl sm:absolute sm:right-0 sm:bottom-0 sm:w-64 sm:animate-float">
               <div className="flex items-center gap-2.5">
                 <span className="grid size-9 place-items-center rounded-lg bg-trust-blue text-xs font-extrabold text-white">PB</span>
                 <div>
@@ -73,7 +73,7 @@ export default function HomePage() {
                 <div><div className="ff-num font-heading font-bold text-success">92%</div><div className="text-[10px] text-muted-foreground">Chance</div></div>
               </div>
             </div>
-            <div className="absolute bottom-8 -left-2 flex animate-float-slow items-center gap-2.5 rounded-2xl border bg-white px-4 py-3 shadow-xl">
+            <div className="flex items-center gap-2.5 rounded-2xl border bg-white px-4 py-3 shadow-xl sm:absolute sm:bottom-8 sm:-left-2 sm:animate-float-slow">
               <span className="grid size-8 place-items-center rounded-full bg-success-soft text-success"><FileCheck className="size-4" /></span>
               <div>
                 <div className="text-sm font-semibold text-navy">5 documents verified</div>

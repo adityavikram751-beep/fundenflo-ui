@@ -34,17 +34,23 @@ export function SiteHeader() {
   return (
     <>
       <div className="no-print bg-navy text-xs text-[#c9d4e3]">
-        <div className="ff-container flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-2">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="size-3.5 text-gold" /> RBI-regulated lending partners</span>
-            <span className="inline-flex items-center gap-1.5"><Lock className="size-3.5 text-gold" /> 256-bit encrypted</span>
-            <span className="hidden items-center gap-1.5 sm:inline-flex"><Sparkles className="size-3.5 text-gold" /> Zero hidden fees</span>
+        <div className="ff-container flex items-center justify-between gap-x-4 py-2">
+          <div className="flex min-w-0 items-center gap-x-5">
+            <span className="inline-flex items-center gap-1.5 truncate">
+              <ShieldCheck className="size-3.5 shrink-0 text-gold" />
+              <span className="hidden sm:inline">RBI-regulated lending partners</span>
+              <span className="sm:hidden">RBI-regulated partners</span>
+            </span>
+            <span className="hidden items-center gap-1.5 md:inline-flex"><Lock className="size-3.5 shrink-0 text-gold" /> 256-bit encrypted</span>
+            <span className="hidden items-center gap-1.5 lg:inline-flex"><Sparkles className="size-3.5 shrink-0 text-gold" /> Zero hidden fees</span>
           </div>
-          <span className="font-semibold text-gold">Demo mode · sample data only</span>
+          <span className="shrink-0 font-semibold text-gold">
+            Demo mode<span className="hidden sm:inline"> · sample data only</span>
+          </span>
         </div>
       </div>
       <header className="no-print sticky top-0 z-40 border-b bg-white/90 backdrop-blur-md">
-        <div className="ff-container flex h-[72px] items-center gap-6">
+        <div className="ff-container flex h-16 items-center gap-3 sm:h-[72px] sm:gap-6">
           <Link href="/" className="shrink-0" aria-label="FundenFlo home">
             <Image src="/brand/logo.png" alt="FundenFlo — The Right Funding, At the Right Time" width={178} height={40} priority className="h-10 w-[178px]" />
           </Link>
@@ -83,7 +89,7 @@ export function SiteHeader() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon-lg" className="ml-auto xl:hidden" aria-label="Open menu"><Menu className="size-6" /></Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72">
+            <SheetContent side="right" className="w-72 overflow-y-auto pb-6">
               <SheetHeader>
                 <SheetTitle>
                   <Image src="/brand/logo.png" alt="FundenFlo" width={143} height={32} className="h-8 w-[143px]" />
