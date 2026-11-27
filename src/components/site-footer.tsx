@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Mail } from "lucide-react"
+import { ProtectedLink } from "@/components/auth/require-login"
 
 export function SiteFooter() {
   return (
@@ -25,11 +26,11 @@ export function SiteFooter() {
         </div>
         <div>
           <h4 className="mb-3 text-white">Company & Tools</h4>
-          <Link href="/apply" className="block py-1 hover:text-white">Check My Score</Link>
-          <Link href="/assess" className="block py-1 hover:text-white">Smart Credit Assessment</Link>
+          <ProtectedLink href="/apply" className="block py-1 hover:text-white">Check My Score</ProtectedLink>
+          <ProtectedLink href="/assess" className="block py-1 hover:text-white">Smart Credit Assessment</ProtectedLink>
           <Link href="/loans" className="block py-1 hover:text-white">Compare Loans</Link>
           <Link href="/about" className="block py-1 hover:text-white">About Us</Link>
-          <Link href="/contact" className="block py-1 hover:text-white">Contact</Link>
+          <Link href="/contact" className="block py-1 hover:text-white">Contact Us</Link>
           <Link href="/tools" className="block py-1 hover:text-white">EMI Calculator</Link>
           <Link href="/tools#eligibility" className="block py-1 hover:text-white">Eligibility Calculator</Link>
           <Link href="/dashboard" className="block py-1 hover:text-white">My Dashboard</Link>

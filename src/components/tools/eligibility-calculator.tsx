@@ -1,10 +1,10 @@
 "use client"
 import { useState } from "react"
-import Link from "next/link"
 import { ArrowRight, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SliderRow } from "@/components/tools/emi-calculator"
+import { ProtectedLink } from "@/components/auth/require-login"
 import { inr, principalFromEmi } from "@/lib/data"
 
 export function EligibilityCalculator() {
@@ -40,7 +40,7 @@ export function EligibilityCalculator() {
           </div>
           <p className="mt-5 text-xs leading-relaxed text-[#c9d4e3]">Indicative only. Your credit score, job/business stability and documents change the final amount — get your exact number with the FundenFlo Score.</p>
           <Button asChild className="mt-auto h-11 rounded-xl bg-gold font-bold text-navy hover:bg-[#ffc727]">
-            <Link href="/apply">Get My Exact Eligibility <ArrowRight /></Link>
+            <ProtectedLink href="/apply">Get My Exact Eligibility <ArrowRight /></ProtectedLink>
           </Button>
         </div>
       </CardContent>

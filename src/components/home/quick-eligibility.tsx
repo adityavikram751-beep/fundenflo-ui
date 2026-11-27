@@ -1,9 +1,9 @@
 "use client"
 import { useState } from "react"
-import Link from "next/link"
 import { ArrowRight, Briefcase, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
+import { ProtectedLink } from "@/components/auth/require-login"
 import { inr, principalFromEmi } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
@@ -62,7 +62,7 @@ export function QuickEligibility() {
       </div>
       <p className="mt-3 text-xs text-muted-foreground">Indicative, assuming a good credit score. Your exact eligibility depends on your FundenFlo Score.</p>
       <Button asChild className="mt-4 h-11 w-full rounded-xl text-sm font-semibold">
-        <Link href={`/apply?type=${type}`}>Get My Exact Score & Offers <ArrowRight /></Link>
+        <ProtectedLink href={`/apply?type=${type}`}>Get My Exact Score & Offers <ArrowRight /></ProtectedLink>
       </Button>
     </div>
   )

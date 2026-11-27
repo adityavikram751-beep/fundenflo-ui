@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/page-hero"
 import { SmartAssessment } from "@/components/assess/smart-assessment"
+import { RequireLogin } from "@/components/auth/require-login"
 
 export const metadata = { title: "Smart Credit Assessment — Speak Or Write | FundenFlo" }
 
@@ -13,7 +14,9 @@ export default function AssessPage() {
         sub="Speak or write about your business and loan need — in English or Hindi. Then upload your balance sheets and bank statements to verify it and boost your score."
       />
       <div className="ff-container relative -mt-12 pb-10 sm:-mt-16">
-        <SmartAssessment />
+        <RequireLogin>
+          <SmartAssessment />
+        </RequireLogin>
       </div>
     </>
   )

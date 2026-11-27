@@ -1,6 +1,6 @@
-import Link from "next/link"
 import { ArrowRight, CircleCheck, FileCheck, Mic, ShieldCheck, Sparkles, TriangleExclamationPoint } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ProtectedLink } from "@/components/auth/require-login"
 
 /** Home-page section introducing the voice/text Smart Credit Assessment */
 export function AssessShowcase() {
@@ -28,7 +28,7 @@ export function AssessShowcase() {
               )
             })}
           </ol>
-          <Button asChild className="mt-8 h-12 rounded-xl bg-gold px-6 text-base font-bold text-navy shadow-[0_10px_24px_rgb(253_185_1/0.28)] transition-all hover:-translate-y-0.5 hover:bg-[#ffc727]"><Link href="/assess"><Mic className="size-5" /> Try It Now — It&apos;s Free</Link></Button>
+          <Button asChild className="mt-8 h-12 rounded-xl bg-gold px-6 text-base font-bold text-navy shadow-[0_10px_24px_rgb(253_185_1/0.28)] transition-all hover:-translate-y-0.5 hover:bg-[#ffc727]"><ProtectedLink href="/assess"><Mic className="size-5" /> Try It Now — It&apos;s Free</ProtectedLink></Button>
         </div>
 
         {/* mock product UI */}

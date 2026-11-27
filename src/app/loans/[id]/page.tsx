@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { MiniEmi } from "@/components/loans/mini-emi"
+import { ProtectedLink } from "@/components/auth/require-login"
 import { DOCS, PRODUCTS } from "@/lib/data"
 import { PRODUCT_CONTENT, SEGMENT_ELIGIBILITY } from "@/lib/product-content"
 
@@ -44,8 +45,8 @@ export default async function LoanDetailPage({ params }: PageProps<"/loans/[id]"
               <h1 className="mt-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">{p.name}</h1>
               <p className="mt-3 max-w-xl text-lg text-[#c9d4e3]">{c.tagline}</p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <Button asChild className="h-12 rounded-xl bg-gold px-6 font-bold text-navy hover:bg-[#ffc727]"><Link href={`/apply?type=${p.seg}&product=${p.id}`}>Check Eligibility <ArrowRight /></Link></Button>
-                <Button asChild variant="outline" className="h-12 rounded-xl border-white/25 bg-white/10 px-6 font-semibold text-white hover:bg-white/20 hover:text-white"><Link href="/assess"><Mic /> Speak Your Requirement</Link></Button>
+                <Button asChild className="h-12 rounded-xl bg-gold px-6 font-bold text-navy hover:bg-[#ffc727]"><ProtectedLink href={`/apply?type=${p.seg}&product=${p.id}`}>Check Eligibility <ArrowRight /></ProtectedLink></Button>
+                <Button asChild variant="outline" className="h-12 rounded-xl border-white/25 bg-white/10 px-6 font-semibold text-white hover:bg-white/20 hover:text-white"><ProtectedLink href="/assess"><Mic /> Speak Your Requirement</ProtectedLink></Button>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
@@ -132,7 +133,7 @@ export default async function LoanDetailPage({ params }: PageProps<"/loans/[id]"
             <CardContent className="grid gap-3">
               <div className="flex items-center gap-2 font-heading font-semibold text-navy"><Mic className="size-4 text-gold-deep" /> Not Sure What You Qualify For?</div>
               <p className="text-sm text-[#5a4200]">Tell us about your {p.seg === "business" ? "business" : "income"} in your own words — get a credit assessment in a minute.</p>
-              <Button asChild className="rounded-xl"><Link href="/assess">Try Smart Assessment <ArrowRight /></Link></Button>
+              <Button asChild className="rounded-xl"><ProtectedLink href="/assess">Try Smart Assessment <ArrowRight /></ProtectedLink></Button>
             </CardContent>
           </Card>
           <Card>

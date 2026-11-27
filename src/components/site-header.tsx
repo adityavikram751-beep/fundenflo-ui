@@ -7,6 +7,7 @@ import { ArrowRight, Calculator, ChevronDown, FileText, Gauge, House, Info, Layo
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { toast } from "@/components/toaster"
+import { ProtectedLink } from "@/components/auth/require-login"
 import { maskPhone, signOut, useAuth } from "@/lib/auth"
 import { PRODUCTS, initials } from "@/lib/data"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu"
@@ -18,10 +19,10 @@ export const NAV: { href: string; label: string; icon: typeof House; badge?: str
   { href: "/loans", label: "Loans", icon: Wallet },
   { href: "/assess", label: "Smart Assessment", icon: Mic, badge: "NEW" },
   { href: "/tools", label: "EMI Tools", icon: Calculator },
-  { href: "/about", label: "About", icon: Info },
-  { href: "/contact", label: "Contact", icon: Mail },
+  { href: "/about", label: "About Us", icon: Info },
+  { href: "/contact", label: "Contact Us", icon: Mail },
 ]
-const linkCls = "inline-flex h-10 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-navy transition-colors hover:bg-subtle"
+const linkCls = "inline-flex h-10 items-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-sm font-semibold text-navy transition-colors hover:bg-subtle"
 
 export function SiteHeader() {
   const path = usePathname()
@@ -66,10 +67,17 @@ export function SiteHeader() {
               ) : (
                 <NavigationMenuItem key={n.href}>
                   <NavigationMenuLink asChild>
-                    <Link href={n.href} className={cn(linkCls, isActive(n.href) && "bg-info-soft/60 text-navy-pressed")}>
-                      {n.label}
-                      {n.badge && <span className="rounded bg-gold px-1.5 py-px text-[9px] font-extrabold tracking-wide text-navy">{n.badge}</span>}
-                    </Link>
+                    {n.href === "/assess" ? (
+                      <ProtectedLink href={n.href} className={cn(linkCls, isActive(n.href) && "bg-info-soft/60 text-navy-pressed")}>
+                        {n.label}
+                        {n.badge && <span className="rounded bg-gold px-1.5 py-px text-[9px] font-extrabold tracking-wide text-navy">{n.badge}</span>}
+                      </ProtectedLink>
+                    ) : (
+                      <Link href={n.href} className={cn(linkCls, isActive(n.href) && "bg-info-soft/60 text-navy-pressed")}>
+                        {n.label}
+                        {n.badge && <span className="rounded bg-gold px-1.5 py-px text-[9px] font-extrabold tracking-wide text-navy">{n.badge}</span>}
+                      </Link>
+                    )}
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
@@ -82,12 +90,12 @@ export function SiteHeader() {
               </Button>
             ))}
             <Button asChild className="h-10 rounded-xl bg-gold px-4 font-bold text-navy shadow-[0_6px_16px_rgb(253_185_1/0.3)] hover:bg-[#ffc727]">
-              <Link href="/apply"><Gauge /> Check My Score</Link>
+              <ProtectedLink href="/apply"><Gauge /> Check My Score</ProtectedLink>
             </Button>
           </div>
           <div className="ml-auto flex items-center gap-2 xl:hidden">
             <Button asChild size="sm" className="h-9 rounded-lg bg-gold px-3 text-xs font-bold text-navy shadow-xs hover:bg-[#ffc727]">
-              <Link href="/apply">Check Score</Link>
+              <ProtectedLink href="/apply">Check Score</ProtectedLink>
             </Button>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
@@ -100,7 +108,17 @@ export function SiteHeader() {
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="grid gap-1 px-4" aria-label="Mobile">
-                  {NAV.map((n) => (
+                  {NAV.map((n) => n.href === "/assess" ? (
+                    <ProtectedLink
+                      key={n.href}
+                      href={n.href}
+                      onClick={() => setOpen(false)}
+                      className={cn("flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-navy hover:bg-subtle", isActive(n.href) && "bg-navy text-white hover:bg-navy")}
+                    >
+                      <n.icon className="size-4" /> {n.label}
+                      {n.badge && <span className="ml-auto rounded bg-gold px-1.5 py-px text-[9px] font-extrabold text-navy">{n.badge}</span>}
+                    </ProtectedLink>
+                  ) : (
                     <Link
                       key={n.href}
                       href={n.href}
@@ -113,7 +131,7 @@ export function SiteHeader() {
                   ))}
                 </nav>
                 <div className="px-4">
-                  <Button asChild className="h-11 w-full rounded-xl bg-gold font-bold text-navy hover:bg-[#ffc727]"><Link href="/apply" onClick={() => setOpen(false)}><Gauge /> Check My Score</Link></Button>
+                  <Button asChild className="h-11 w-full rounded-xl bg-gold font-bold text-navy hover:bg-[#ffc727]"><ProtectedLink href="/apply" onClick={() => setOpen(false)}><Gauge /> Check My Score</ProtectedLink></Button>
                 </div>
                 <div className="mt-2 border-t px-4 pt-4">
                   {user ? (
@@ -186,7 +204,7 @@ function LoansMega() {
         <div className="mt-3 font-heading text-base font-semibold">Not Sure Which Loan?</div>
         <p className="mt-1 text-xs text-[#c9d4e3]">Just tell us about your business — get a credit assessment in a minute.</p>
         <NavigationMenuLink asChild>
-          <Link href="/assess" className="mt-auto inline-flex items-center gap-1 rounded-lg bg-gold px-3 py-2 text-xs font-bold text-navy hover:bg-[#ffc727]">Speak Or Write <ArrowRight className="size-3.5" /></Link>
+          <ProtectedLink href="/assess" className="mt-auto inline-flex items-center gap-1 rounded-lg bg-gold px-3 py-2 text-xs font-bold text-navy hover:bg-[#ffc727]">Speak Or Write <ArrowRight className="size-3.5" /></ProtectedLink>
         </NavigationMenuLink>
         <NavigationMenuLink asChild>
           <Link href="/loans" className="mt-2 text-xs font-semibold text-gold hover:underline">View & Compare All Loans →</Link>

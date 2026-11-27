@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { PageHero } from "@/components/page-hero"
 import { ApplyWizard } from "@/components/apply/apply-wizard"
+import { RequireLogin } from "@/components/auth/require-login"
 import { Card } from "@/components/ui/card"
 
 export const metadata = { title: "Apply For A Loan | FundenFlo" }
@@ -15,10 +16,12 @@ export default function ApplyPage({ searchParams }: PageProps<"/apply">) {
         sub="Four quick steps. Soft check only — no impact on your CIBIL. Use “Fill demo data” to try it instantly."
       />
       <div className="ff-container relative -mt-12 pb-10 sm:-mt-16">
-        {/* searchParams are request-time data: stream the wizard so the page shell stays prerendered */}
-        <Suspense fallback={<Card className="h-[520px] animate-pulse" />}>
-          <WizardFromParams searchParams={searchParams} />
-        </Suspense>
+        <RequireLogin>
+          {/* searchParams are request-time data: stream the wizard so the page shell stays prerendered */}
+          <Suspense fallback={<Card className="h-[520px] animate-pulse" />}>
+            <WizardFromParams searchParams={searchParams} />
+          </Suspense>
+        </RequireLogin>
       </div>
     </>
   )

@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Bot, Send, X } from "lucide-react"
 import { DEFAULT_CHIPS, esc, greeting, reply, type BotReply } from "@/lib/chat-engine"
+import { useAuth } from "@/lib/auth"
 import { KEYS, useStored, type SavedOffer, type SavedResult } from "@/lib/store"
+import { loginRedirectHref } from "@/components/auth/require-login"
 import { cn } from "@/lib/utils"
 
 interface Msg { id: number; who: "bot" | "user"; html: string; typing?: boolean }
@@ -16,6 +18,7 @@ export function openChat(message?: string) {
 
 export function ChatWidget() {
   const router = useRouter()
+  const { user, ready } = useAuth()
   const [open, setOpen] = useState(false)
   const [msgs, setMsgs] = useState<Msg[]>([])
   const [chips, setChips] = useState<string[]>(DEFAULT_CHIPS)
@@ -73,7 +76,9 @@ export function ChatWidget() {
   const onBodyClick = (e: React.MouseEvent) => {
     const nav = (e.target as HTMLElement).closest<HTMLElement>("[data-nav]")
     if (nav?.dataset.nav) {
-      router.push(nav.dataset.nav)
+      const target = nav.dataset.nav
+      const gated = target.startsWith("/apply") || target.startsWith("/assess")
+      router.push(gated && (!ready || !user) ? loginRedirectHref(target) : target)
       if (window.innerWidth < 640) setOpen(false)
     }
   }

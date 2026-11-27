@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { PRODUCTS, type ApplicantType } from "@/lib/data"
 import { PRODUCT_CONTENT } from "@/lib/product-content"
+import { ProtectedLink } from "@/components/auth/require-login"
 import { cn } from "@/lib/utils"
 
 type Sort = "popular" | "rate" | "amount"
@@ -78,7 +79,7 @@ export function LoanExplorer() {
                   <Checkbox checked={on} onCheckedChange={() => toggle(p.id)} disabled={!on && compare.length >= 3} aria-label={`Compare ${p.name}`} /> Compare
                 </label>
                 <Button asChild variant="outline" size="sm"><Link href={`/loans/${p.id}`}>Details</Link></Button>
-                <Button asChild size="sm"><Link href={`/apply?type=${p.seg}&product=${p.id}`}>Check Eligibility <ArrowRight /></Link></Button>
+                <Button asChild size="sm"><ProtectedLink href={`/apply?type=${p.seg}&product=${p.id}`}>Check Eligibility <ArrowRight /></ProtectedLink></Button>
               </div>
             </div>
           )

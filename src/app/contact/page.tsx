@@ -1,8 +1,8 @@
-import Link from "next/link"
 import { Clock, Mail, MessageCircle, Mic } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import { Card, CardContent } from "@/components/ui/card"
 import { ContactForm } from "@/components/contact-form"
+import { ProtectedLink } from "@/components/auth/require-login"
 
 export const metadata = { title: "Contact Us | FundenFlo" }
 
@@ -16,7 +16,7 @@ const SOCIAL = [
 export default function ContactPage() {
   return (
     <>
-      <PageHero crumb="Contact" eyebrow="Get In Touch" title="Talk To A FundenFlo Advisor" sub="Share your requirement and we'll call you back — or chat with Flo, our AI assistant, any time." />
+      <PageHero crumb="Contact Us" eyebrow="Get In Touch" title="Talk To A FundenFlo Advisor" sub="Share your requirement and we'll call you back — or chat with Flo, our AI assistant, any time." />
       <div className="ff-container relative -mt-12 grid items-start gap-6 pb-10 sm:-mt-16 lg:grid-cols-[1.3fr_0.7fr] [&>*]:min-w-0">
         <ContactForm />
         <div className="grid gap-4">
@@ -40,7 +40,7 @@ export default function ContactPage() {
             <CardContent className="grid gap-3">
               <div className="flex items-center gap-2 font-heading font-semibold text-gold"><Mic className="size-4" /> Faster Than A Form</div>
               <p className="text-sm text-[#c9d4e3]">Speak your requirement and get a credit assessment instantly — no waiting for a callback.</p>
-              <Link href="/assess" className="inline-flex w-fit items-center gap-1.5 rounded-xl bg-gold px-4 py-2 text-sm font-bold text-navy hover:bg-[#ffc727]">Try Smart Assessment →</Link>
+              <ProtectedLink href="/assess" className="inline-flex w-fit items-center gap-1.5 rounded-xl bg-gold px-4 py-2 text-sm font-bold text-navy hover:bg-[#ffc727]">Try Smart Assessment →</ProtectedLink>
             </CardContent>
           </Card>
           <Card>

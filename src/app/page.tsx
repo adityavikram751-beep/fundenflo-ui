@@ -8,79 +8,88 @@ import { ScoreGauge } from "@/components/score-gauge"
 import { ProductsSection } from "@/components/home/products-section"
 import { AssessShowcase } from "@/components/home/assess-showcase"
 import { QuickEligibility } from "@/components/home/quick-eligibility"
+import { ProtectedLink } from "@/components/auth/require-login"
 import { FAQS, FEATURES, SERVE, STEPS, TESTIMONIALS, initials } from "@/lib/data"
 
 export default function HomePage() {
   return (
     <>
       {/* ---------------- HERO ---------------- */}
-      <section className="ff-hero-bg relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-35 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_30%,#000_40%,transparent_100%)]" />
-        <div className="ff-container relative grid items-center gap-8 py-10 sm:gap-12 sm:py-14 lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
+      <section className="relative overflow-hidden border-b border-slate-200/70 bg-[linear-gradient(180deg,#ebf3ff_0%,#f6faff_55%,#ffffff_100%)]">
+        <div className="pointer-events-none absolute -top-32 right-0 size-[480px] rounded-full bg-[radial-gradient(circle,rgb(29_78_158/0.12),transparent_65%)]" />
+        <div className="pointer-events-none absolute -bottom-32 -left-24 size-[420px] rounded-full bg-[radial-gradient(circle,rgb(253_185_1/0.14),transparent_65%)]" />
+        <div className="ff-container relative grid items-center gap-8 py-9 sm:gap-10 sm:py-12 lg:grid-cols-[1.08fr_0.92fr] lg:py-16">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-trust-blue/15 bg-white/85 px-3.5 py-1.5 text-xs font-semibold tracking-wider text-navy-pressed uppercase shadow-xs backdrop-blur">
+            <span className="inline-flex items-center gap-2 rounded-full border border-trust-blue/20 bg-white px-3.5 py-1.5 text-xs font-bold tracking-wider text-trust-blue uppercase shadow-xs">
               <Sparkles className="size-3.5 text-gold-deep" /> AI-Powered Loan Advisory · Business & Individual
             </span>
-            <h1 className="mt-4 text-3xl leading-[1.12] font-bold sm:mt-5 sm:text-4xl md:text-5xl lg:text-[3.4rem]">
+            <h1 className="mt-4 text-3xl leading-[1.12] font-bold sm:mt-5 sm:text-4xl md:text-5xl lg:text-[3.35rem]">
               A Clearer Path To{" "}
               <span className="relative isolate text-trust-blue">
                 Capital.
-                <span className="absolute inset-x-0 bottom-1.5 -z-10 h-3 rounded bg-gold/45" />
+                <span className="absolute inset-x-0 bottom-1.5 -z-10 h-3 rounded bg-gold/50" />
               </span>
             </h1>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-5 sm:text-lg">
               Check eligibility, get your <b className="text-navy">FundenFlo Score</b> and compare offers from <b className="text-navy">50+ banks & NBFCs</b> — for MSMEs, businesses and individuals. Your ambition. Our direction.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap">
-              <Button asChild className="h-12 w-full rounded-xl bg-gold px-6 text-base font-bold text-navy shadow-[0_10px_24px_rgb(253_185_1/0.35)] transition-all hover:-translate-y-0.5 hover:bg-[#ffc727] sm:w-auto">
-                <Link href="/apply"><Gauge className="size-5" /> Check Eligibility — 2 Min</Link>
+              <Button asChild className="h-12 w-full rounded-xl bg-trust-blue px-6 text-base font-bold text-white shadow-[0_10px_24px_rgb(29_78_158/0.25)] transition-all hover:-translate-y-0.5 hover:bg-navy-pressed sm:w-auto">
+                <ProtectedLink href="/apply"><Gauge className="size-5 text-gold" /> Check Eligibility — 2 Min</ProtectedLink>
               </Button>
-              <Button asChild variant="outline" className="h-12 w-full rounded-xl border-input bg-white/90 px-6 text-base font-semibold text-navy shadow-xs transition-all hover:-translate-y-0.5 hover:bg-white sm:w-auto">
-                <Link href="/assess"><Mic className="size-5 text-trust-blue" /> Speak Your Requirement</Link>
+              <Button asChild variant="outline" className="h-12 w-full rounded-xl border-trust-blue/25 bg-white px-6 text-base font-semibold text-navy shadow-xs transition-all hover:-translate-y-0.5 hover:border-trust-blue hover:bg-white sm:w-auto">
+                <ProtectedLink href="/assess"><Mic className="size-5 text-trust-blue" /> Speak Your Requirement</ProtectedLink>
               </Button>
             </div>
-            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2.5 text-sm font-medium text-muted-foreground">
-              <span className="inline-flex items-center gap-2"><span className="grid size-5 place-items-center rounded-full bg-success-soft text-success"><ShieldCheck className="size-3.5" /></span> No Impact On CIBIL</span>
-              <span className="inline-flex items-center gap-2"><span className="grid size-5 place-items-center rounded-full bg-success-soft text-success"><Lock className="size-3.5" /></span> 256-Bit Encrypted</span>
-              <span className="inline-flex items-center gap-2"><span className="grid size-5 place-items-center rounded-full bg-success-soft text-success"><BadgeCheck className="size-3.5" /></span> Zero Hidden Fees</span>
+            <div className="mt-7 grid grid-cols-1 gap-2.5 text-sm font-medium text-navy/80 sm:flex sm:flex-wrap sm:gap-x-5">
+              <span className="inline-flex items-center gap-2"><span className="grid size-6 shrink-0 place-items-center rounded-full bg-success-soft text-success"><ShieldCheck className="size-3.5" /></span> No Impact On CIBIL</span>
+              <span className="inline-flex items-center gap-2"><span className="grid size-6 shrink-0 place-items-center rounded-full bg-success-soft text-success"><Lock className="size-3.5" /></span> 256-Bit Encrypted</span>
+              <span className="inline-flex items-center gap-2"><span className="grid size-6 shrink-0 place-items-center rounded-full bg-success-soft text-success"><BadgeCheck className="size-3.5" /></span> Zero Hidden Fees</span>
             </div>
           </div>
 
-          <div className="relative mx-auto grid w-full max-w-[480px] gap-3 sm:block sm:h-[540px]">
-            <div className="rounded-3xl border border-slate-200/80 bg-white/95 p-6 shadow-[0_24px_64px_-12px_rgb(10_25_47/0.18)] backdrop-blur sm:absolute sm:inset-x-4 sm:top-0">
-              <div className="mb-1 flex items-center justify-between">
-                <span className="text-sm font-semibold text-navy">Your Loan Readiness</span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-success-soft px-2.5 py-0.5 text-xs font-bold text-success"><span className="size-1.5 animate-pulse rounded-full bg-success" /> Live AI Score</span>
+          {/* Paisabazaar-style structured Credit Score & Match Bento Card */}
+          <div className="mx-auto w-full max-w-[490px]">
+            <div className="overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_24px_60px_-15px_rgb(29_78_158/0.18)]">
+              <div className="ff-navy-grad flex items-center justify-between px-5 py-3.5 text-white sm:px-6">
+                <span className="text-sm font-semibold">Your Loan Readiness</span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-0.5 text-xs font-bold text-gold"><span className="size-1.5 animate-pulse rounded-full bg-gold" /> Live AI Score</span>
               </div>
-              <ScoreGauge score={782} compact />
-              <div className="mt-4 grid gap-2.5">
-                {[["Credit History", 94], ["Repayment Capacity", 81], ["Business Stability", 100]].map(([k, v]) => (
-                  <div key={k as string}>
-                    <div className="mb-1 flex justify-between text-xs"><span className="text-muted-foreground">{k}</span><b className="ff-num text-navy">{v}/100</b></div>
-                    <div className="h-2 overflow-hidden rounded-full bg-track"><div className="h-full rounded-full bg-[linear-gradient(90deg,#1d4e9e,#3f5f90)]" style={{ width: `${v}%` }} /></div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="rounded-2xl border border-slate-200/80 bg-white/95 p-4 shadow-[0_16px_40px_-10px_rgb(10_25_47/0.16)] backdrop-blur sm:absolute sm:right-0 sm:bottom-0 sm:w-64 sm:animate-float">
-              <div className="flex items-center gap-2.5">
-                <span className="grid size-9 place-items-center rounded-lg bg-trust-blue text-xs font-extrabold text-white shadow-xs">PB</span>
-                <div>
-                  <div className="text-sm font-semibold text-navy">Best Offer Matched</div>
-                  <div className="text-xs text-muted-foreground">Private Bank A</div>
+              <div className="p-5 sm:p-6">
+                <ScoreGauge score={782} compact />
+                <div className="mt-4 grid gap-2.5">
+                  {[["Credit History", 94], ["Repayment Capacity", 81], ["Business Stability", 100]].map(([k, v]) => (
+                    <div key={k as string}>
+                      <div className="mb-1 flex justify-between text-xs"><span className="text-muted-foreground">{k}</span><b className="ff-num text-navy">{v}/100</b></div>
+                      <div className="h-2 overflow-hidden rounded-full bg-track"><div className="h-full rounded-full bg-[linear-gradient(90deg,#1d4e9e,#3f5f90)]" style={{ width: `${v}%` }} /></div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-              <div className="mt-3 grid grid-cols-3 gap-2 rounded-xl bg-subtle/70 p-2 text-center">
-                <div><div className="ff-num font-heading font-bold text-navy">10.75%</div><div className="text-[10px] text-muted-foreground">Rate</div></div>
-                <div><div className="ff-num font-heading font-bold text-navy">₹45 L</div><div className="text-[10px] text-muted-foreground">Amount</div></div>
-                <div><div className="ff-num font-heading font-bold text-success">92%</div><div className="text-[10px] text-muted-foreground">Chance</div></div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2.5 rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-3 shadow-[0_16px_40px_-10px_rgb(10_25_47/0.16)] backdrop-blur sm:absolute sm:bottom-8 sm:-left-2 sm:animate-float-slow">
-              <span className="grid size-8 place-items-center rounded-full bg-success-soft text-success"><FileCheck className="size-4" /></span>
-              <div>
-                <div className="text-sm font-semibold text-navy">5 Documents Verified</div>
-                <div className="text-xs text-muted-foreground">AI Check · 12 Sec</div>
+
+                <div className="mt-5 grid gap-3 border-t border-slate-100 pt-4 sm:grid-cols-[1.25fr_0.95fr]">
+                  <div className="rounded-2xl border border-trust-blue/15 bg-[#f5f9ff] p-3.5">
+                    <div className="flex items-center gap-2.5">
+                      <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-trust-blue text-[11px] font-extrabold text-white">PB</span>
+                      <div className="min-w-0">
+                        <div className="truncate text-xs font-bold text-navy">Best Offer Matched</div>
+                        <div className="truncate text-[11px] text-muted-foreground">Private Bank A</div>
+                      </div>
+                    </div>
+                    <div className="mt-2.5 grid grid-cols-3 gap-1.5 rounded-xl bg-white p-2 text-center shadow-2xs">
+                      <div><div className="ff-num font-heading text-xs font-bold text-navy sm:text-sm">10.75%</div><div className="text-[10px] text-muted-foreground">Rate</div></div>
+                      <div><div className="ff-num font-heading text-xs font-bold text-navy sm:text-sm">₹45 L</div><div className="text-[10px] text-muted-foreground">Amount</div></div>
+                      <div><div className="ff-num font-heading text-xs font-bold text-success sm:text-sm">92%</div><div className="text-[10px] text-muted-foreground">Chance</div></div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 rounded-2xl border border-emerald-200/70 bg-emerald-50/50 p-3.5 sm:flex-col sm:items-start sm:justify-center">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-success-soft text-success"><FileCheck className="size-4.5" /></span>
+                    <div>
+                      <div className="text-xs font-bold text-navy sm:text-sm">5 Documents Verified</div>
+                      <div className="text-[11px] text-muted-foreground">AI Check · 12 Sec</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -88,23 +97,23 @@ export default function HomePage() {
       </section>
 
       {/* ---------------- STATS ---------------- */}
-      <section className="ff-navy-grad relative overflow-hidden border-y border-white/10 text-white">
-        <div className="ff-container relative grid grid-cols-2 lg:grid-cols-4">
+      <section className="border-b border-slate-200/80 bg-white">
+        <div className="ff-container grid grid-cols-2 lg:grid-cols-4">
           {[["50+", "Lending partners across banks & NBFCs"], ["₹100Cr+", "Loans facilitated"], ["5,000+", "Families & businesses funded"], ["48 hrs", "To know your loan eligibility"]].map(([n, l], i) => (
-            <div key={n} className={`px-3 py-5 transition-colors hover:bg-white/[0.03] sm:px-5 sm:py-7 ${i % 2 === 0 ? "border-r border-white/10" : ""} ${i < 2 ? "border-b border-white/10 lg:border-b-0" : ""} lg:border-r lg:last:border-r-0`}>
-              <div className="font-heading text-2xl font-bold text-gold sm:text-3xl">{n}</div>
-              <div className="mt-0.5 text-xs text-[#c9d4e3] sm:text-sm">{l}</div>
+            <div key={n} className={`px-3 py-5 transition-colors hover:bg-subtle/40 sm:px-5 sm:py-6 ${i % 2 === 0 ? "border-r border-slate-200/70" : ""} ${i < 2 ? "border-b border-slate-200/70 lg:border-b-0" : ""} lg:border-r lg:border-slate-200/70 lg:last:border-r-0`}>
+              <div className="font-heading text-2xl font-bold text-trust-blue sm:text-3xl">{n}</div>
+              <div className="mt-0.5 text-xs font-medium text-muted-foreground sm:text-sm">{l}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* ---------------- LENDER NETWORK STRIP ---------------- */}
-      <section className="border-b bg-white py-5 sm:py-6">
-        <div className="ff-container flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+      <section className="border-b border-slate-200/70 bg-[#f8fbff] py-4 sm:py-5">
+        <div className="ff-container flex flex-wrap items-center justify-center gap-2 sm:gap-3">
           <span className="mr-1 text-xs font-bold tracking-wider text-navy uppercase">Our Lender Network</span>
           {["Private Sector Banks", "Public Sector Banks", "Small Finance Banks", "MSME-Focused NBFCs", "Digital Lenders"].map((x) => (
-            <span key={x} className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-background px-3.5 py-1 text-xs font-semibold text-navy/85 shadow-2xs sm:text-sm">
+            <span key={x} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1 text-xs font-semibold text-navy/85 shadow-2xs sm:text-sm">
               <span className="size-1.5 rounded-full bg-gold-deep" />{x}
             </span>
           ))}
@@ -159,7 +168,7 @@ export default function HomePage() {
                 <p className="mt-1 text-sm text-[#5a4200]">Answer a few questions about your income, EMIs and credit. Your FundenFlo Score, eligibility and the exact reasons behind it update live.</p>
               </div>
             </div>
-            <Button asChild className="h-11 w-full shrink-0 rounded-xl px-5 shadow-xs sm:w-auto"><Link href="/apply">Check My Score <ArrowRight /></Link></Button>
+            <Button asChild className="h-11 w-full shrink-0 rounded-xl px-5 shadow-xs sm:w-auto"><ProtectedLink href="/apply">Check My Score <ArrowRight /></ProtectedLink></Button>
           </div>
         </div>
       </section>
@@ -256,7 +265,7 @@ export default function HomePage() {
               <p className="mt-2 text-[#c9d4e3]">Get your FundenFlo Score and matched offers in under 2 minutes.</p>
             </div>
             <div className="relative flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
-              <Button asChild className="h-12 w-full rounded-xl bg-gold px-6 font-bold text-navy shadow-sm hover:bg-[#ffc727] sm:w-auto"><Link href="/apply"><Zap /> Start Now</Link></Button>
+              <Button asChild className="h-12 w-full rounded-xl bg-gold px-6 font-bold text-navy shadow-sm hover:bg-[#ffc727] sm:w-auto"><ProtectedLink href="/apply"><Zap /> Start Now</ProtectedLink></Button>
               <Button asChild variant="outline" className="h-12 w-full rounded-xl border-white/30 bg-white/5 px-6 font-semibold text-white hover:bg-white/15 hover:text-white sm:w-auto"><Link href="/tools">EMI Calculator</Link></Button>
             </div>
           </div>
@@ -278,7 +287,7 @@ function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; 
 
 function SegmentCard({ href, icon: Icon, title, sub, tags, className }: { href: string; icon: React.ElementType; title: string; sub: string; tags: string[]; className: string }) {
   return (
-    <Link href={href} className={`group relative flex min-h-[250px] flex-col overflow-hidden rounded-3xl border border-white/10 p-6 text-white shadow-[0_20px_50px_-15px_rgb(10_25_47/0.35)] transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-15px_rgb(10_25_47/0.45)] sm:min-h-[290px] sm:p-8 ${className}`}>
+    <ProtectedLink href={href} className={`group relative flex min-h-[250px] flex-col overflow-hidden rounded-3xl border border-white/10 p-6 text-white shadow-[0_20px_50px_-15px_rgb(10_25_47/0.35)] transition-all duration-200 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-15px_rgb(10_25_47/0.45)] sm:min-h-[290px] sm:p-8 ${className}`}>
       <div className="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-white/[0.06] blur-xl" />
       <Icon className="absolute -right-6 -bottom-6 size-44 opacity-[0.08] transition-transform duration-300 group-hover:scale-105" />
       <span className="mb-5 grid size-12 place-items-center rounded-xl bg-white/15 ring-1 ring-white/15 backdrop-blur-xs"><Icon className="size-6 text-gold" /></span>
@@ -290,6 +299,6 @@ function SegmentCard({ href, icon: Icon, title, sub, tags, className }: { href: 
       <span className="mt-auto inline-flex w-fit items-center gap-2 rounded-xl bg-gold px-5 py-2.5 text-sm font-bold text-navy shadow-xs transition-colors group-hover:bg-[#ffc727]">
         Check Eligibility <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
       </span>
-    </Link>
+    </ProtectedLink>
   )
 }
